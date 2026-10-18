@@ -1688,7 +1688,7 @@ tr.rs-grey{opacity:.62}
 .fin-kpi small{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.fin-kpi b{display:block;font-size:24px;line-height:1.1}.fin-kpi span{display:block;color:var(--muted);font-size:11px;margin-top:4px}
 .fin-kpi.hl{background:var(--hero)}html[data-theme="dark"] .fin-kpi.hl,html[data-theme="dark"] .fin-kpi.hl *{color:#fff}html:not([data-theme="dark"]) .fin-kpi.hl,html:not([data-theme="dark"]) .fin-kpi.hl *{color:#4A3315}
 .fin-note{margin-top:10px;color:var(--muted);font-size:11.5px}
-.occ{display:flex;align-items:center;gap:8px;min-width:130px}.occ .progress{flex:1;margin:0}.occ b{font-size:12px;min-width:38px;text-align:end}
+.occ{display:flex;align-items:center;gap:8px;min-width:130px}.occ .progress{flex:1;margin:0}.occ>b{font-size:12px;min-width:38px;text-align:end}
 tr.total-row td{font-weight:700;background:var(--panel-2);border-top:2px solid var(--line)}
 @media(max-width:860px){.fin-kpis{grid-template-columns:repeat(2,1fr)}.td-item .chip{display:none}}
 
@@ -2357,6 +2357,26 @@ function filteredLeads(){
 }
 
 /* ========================= theme / language / PWA ========================= */
+
+/* ========== English display of sheet data (names stay Arabic in the sheet) ========== */
+const EN_NAMES={
+ 'زراعة أسنان':'Dental Implants','هوليوود سمايل':'Hollywood Smile','تبييض أسنان':'Teeth Whitening','تقويم أسنان':'Orthodontics','حشو تجميلي':'Cosmetic Filling','علاج لثة':'Gum Treatment','فينير':'Veneers','أسنان أطفال':'Pediatric Dentistry','تيجان وتركيبات':'Crowns & Prosthetics','علاج عصب':'Root Canal Treatment','تنظيف أسنان':'Teeth Cleaning','كشف واستشارة':'Checkup & Consultation',
+ 'مدينة نصر':'Nasr City','القاهرة الجديدة':'New Cairo','الشيخ زايد':'Sheikh Zayed','نصر':'Nasr','التجمع':'Tagamoa','زايد':'Zayed',
+ 'د. أحمد علوان':'Dr. Ahmed Alwan','د. عمرو علي':'Dr. Amr Ali','د. علاء الشافعي':'Dr. Alaa El-Shafei','د. أحمد حاتم':'Dr. Ahmed Hatem','د. نورهان نبيل':'Dr. Nourhan Nabil','د. محمد شرف':'Dr. Mohamed Sharaf','د. بسنت':'Dr. Basant','د. أسامة عليوة':'Dr. Osama Elewa','د. عمار عبد الرحمن':'Dr. Ammar Abdelrahman','د. ميادة حمدي':'Dr. Mayada Hamdy',
+ 'استشاري زراعة وتركيبات':'Implant & Prosthodontics Consultant','أخصائي تقويم':'Orthodontist','أخصائي علاج جذور':'Endodontist','أخصائية أسنان أطفال':'Pediatric Dentist','جراحة الفم وزراعة الأسنان':'Oral Surgery & Implants','طبيب أسنان عام':'General Dentist','طبيب أسنان':'Dentist','طبيبة أسنان':'Dentist',
+ 'السعر عالي':'Price too high','مش بيرد':'Not responding','بعيد عن الفروع':'Too far from branches','حجز عند مركز تاني':'Booked elsewhere','مش مهتم':'Not interested','رقم غلط':'Wrong number','أخرى':'Other',
+ 'فورم الموقع':'Website form','إعلان فيسبوك':'Facebook ad','إعلان إنستجرام':'Instagram ad','تعليق إنستجرام':'Instagram comment','كول سنتر':'Call center','واتساب':'WhatsApp','إعلان':'Ad','الموقع':'Website','اتصال':'Call','زيارة':'Walk-in',
+ 'كاش':'Cash','فيزا':'Visa','إنستاباي':'InstaPay','تقسيط':'Installments','غير محدد':'Not specified'
+};
+const EN_RE=new RegExp('(?<![\\u0600-\\u06FF])('+Object.keys(EN_NAMES).sort((a,b)=>b.length-a.length).map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?![\\u0600-\\u06FF])','g');
+function enifyNode(root){
+  if(LANG!=='en') return;
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>/[\u0600-\u06FF]/.test(n.nodeValue)&&!n.parentElement.closest('script,style,textarea,input')?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT});
+  const nodes=[]; while(w.nextNode()) nodes.push(w.currentNode);
+  nodes.forEach(n=>{ const v=n.nodeValue.replace(EN_RE,m=>EN_NAMES[m]); if(v!==n.nodeValue) n.nodeValue=v; });
+}
+let enPending=false;
+new MutationObserver(()=>{ if(LANG!=='en'||enPending) return; enPending=true; setTimeout(()=>{ enPending=false; enifyNode(document.body); },30); }).observe(document.body,{childList:true,subtree:true,characterData:true});
 function applyLanguage(lang){
   LANG=lang; localStorage.setItem('gdc-lang',lang);
   document.documentElement.lang=lang; document.documentElement.dir=lang==='ar'?'rtl':'ltr';
@@ -2366,6 +2386,7 @@ function applyLanguage(lang){
   document.querySelectorAll(".lang-btn[data-lang]").forEach(b=>{ b.classList.toggle("active",b.dataset.lang===lang); b.setAttribute("aria-pressed",b.dataset.lang===lang); });
   document.querySelectorAll('.theme-toggle').forEach(b=>b.title=document.documentElement.getAttribute('data-theme')==="dark"?t('themeToLight'):t('themeToDark'));
   const lb=$("#logoutBtn"); if(lb) lb.title=t('logout');
+  if(lang==='en') enifyNode(document.body);
   fillSelects(); refreshSectionTitle(); setConnection(connState); renderAll();
   requestAnimationFrame(syncBannerHeight);
 }
@@ -2706,7 +2727,7 @@ function renderFinance(){
   const row=(name,sub,bks)=>{ const lv=bks.filter(b=>b.status!=='ملغي'); const sc=scheduledMinutes(name,from,to); const o=pct(sum(lv,b=>svcMinutes(b.service)),sc); return {name,sub,n:lv.length,att:bks.filter(b=>b.status==='حضر').length,col:sumP(bks.filter(b=>b.status==='حضر')),exp:sumP(bks.filter(b=>b.status==='مؤكد'||b.status==='بانتظار الرد')),o,sc}; };
   const rows=brs.map(x=>row(x.branch,x.area,inRange.filter(b=>b.branch===x.branch)));
   const tot={n:sum(rows,r=>r.n),att:sum(rows,r=>r.att),col:sum(rows,r=>r.col),exp:sum(rows,r=>r.exp),o:occ};
-  $("#finBranches").innerHTML=rows.map(r=>`<tr><td><b>${escHtml(r.name)}</b><br><small style="color:var(--muted)">${escHtml(r.sub)}</small></td><td>${r.n}</td><td>${r.att}</td><td><b>${money(r.col)}</b></td><td>${money(r.exp)}</td><td><div class="occ"><div class="progress"><b class="${r.o>=85?'danger':r.o>=60?'':'warn'}" data-w="${Math.max(r.o,r.sc?3:0)}"></b></div><b>${r.o}%</b></div></td></tr>`).join('')+(rows.length>1?`<tr class="total-row"><td>${t('finTotal')}</td><td>${tot.n}</td><td>${tot.att}</td><td>${money(tot.col)}</td><td>${money(tot.exp)}</td><td>${tot.o}%</td></tr>`:'')||`<tr><td colspan="6" class="empty">${t('noFinData')}</td></tr>`;
+  $("#finBranches").innerHTML=rows.map(r=>`<tr><td><b>${escHtml(r.name)}</b><br><small style="color:var(--muted)">${escHtml(r.sub)}</small></td><td>${r.n}</td><td>${r.att}</td><td><b>${money(r.col)}</b></td><td>${money(r.exp)}</td><td><div class="occ"><div class="progress"><b class="${r.o>=85?'danger':''}" data-w="${r.o>0?Math.max(r.o,3):0}"></b></div><b>${r.o}%</b></div></td></tr>`).join('')+(rows.length>1?`<tr class="total-row"><td>${t('finTotal')}</td><td>${tot.n}</td><td>${tot.att}</td><td>${money(tot.col)}</td><td>${money(tot.exp)}</td><td>${tot.o}%</td></tr>`:'')||`<tr><td colspan="6" class="empty">${t('noFinData')}</td></tr>`;
   const byKey=(key)=>{ const m={}; rev.forEach(b=>{ const k=b[key]; if(!k) return; m[k]=(m[k]||0)+priceOf(b); }); return Object.keys(m).map(k=>({name:k,count:m[k]})).sort((a,b)=>b.count-a.count); };
   const bars=(items,color)=>{ const tot=sum(items,x=>x.count); const mx=Math.max(...items.map(x=>x.count),1); return items.length?items.slice(0,8).map(it=>`<div class="channel-row"><div class="lbl"><span>${escHtml(it.name)}</span><b>${money(it.count)} · ${pct(it.count,tot)}%</b></div><div class="channel-bar"><b style="background:${color}" data-w="${Math.round(it.count/mx*100)}"></b></div></div>`).join(''):`<div class="panel-empty"><svg><use href="#i-wallet"/></svg>${t('noFinData')}</div>`; };
   const payMap={}; done.forEach(b=>{ const k=b.payment||t('noPayment'); payMap[k]=(payMap[k]||0)+priceOf(b); });
@@ -2888,7 +2909,7 @@ function openBookingForm(lead,opts){
   openModal(rs?`${t('rescheduleTitle')} #${rs.id}`:t('newBookingTitle'),`<form id="bkForm"><div class="fgrid">
     <div class="fld"><label>${t('fieldPatient')}</label><input id="bkPatient" required maxlength="80" value="${escHtml(patient)}"${lock}></div>
     <div class="fld"><label>${t('fieldPhone')}</label><input id="bkPhone" required dir="ltr" inputmode="tel" maxlength="20" value="${escHtml(phone)}"${lock}></div>
-    <div class="fld"><label>${t('fieldService')}</label><select id="bkService" required${lock}><option value="">${t('chooseService')}</option>${D.services.map(s=>`<option value="${escHtml(s.service)}"${s.service===svcMatch?' selected':''}>${escHtml(s.service)} (${escHtml(s.minutes)} د)</option>`).join('')}</select></div>
+    <div class="fld"><label>${t('fieldService')}</label><select id="bkService" required${lock}><option value="">${t('chooseService')}</option>${D.services.map(s=>`<option value="${escHtml(s.service)}"${s.service===svcMatch?' selected':''}>${escHtml(s.service)}</option>`).join('')}</select></div>
     <div class="fld"><label>${t('fieldBranch')}</label><select id="bkBranch" required><option value="">${t('chooseBranch')}</option>${D.branches.map(b=>`<option value="${escHtml(b.branch)}"${b.branch===branch?' selected':''}>${escHtml(b.branch)}</option>`).join('')}</select></div>
     <div class="fld full"><label>${t('pickDay')}</label><div class="daychips" id="bkDays"></div><div class="other-date"><span>${t('otherDate')}</span><input id="bkDate" type="date" min="${today}" value="${bk.date||today}"></div></div>
     <div class="fld full"><label>${t('pickDoctor')}</label><div class="doccards" id="bkDocs"></div></div>
