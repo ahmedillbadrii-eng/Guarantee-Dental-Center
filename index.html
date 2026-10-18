@@ -2035,6 +2035,7 @@ const API = {
   timeout: 20000
 };
 const REFRESH_MS = 60000;
+try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
 const PAGE_SIZE = 25;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $ = s => document.querySelector(s);
@@ -2729,6 +2730,7 @@ function showSection(id){
   $("#advancedToggle").hidden=!caps.adv; if(!caps.adv) $("#advancedFilters").classList.remove('open');
   const af=$("#advancedFilters").children; af[0].hidden=af[1].hidden=!caps.date; af[2].hidden=!caps.doctor; af[3].hidden=!caps.source;
   fillSectionFilters(); refreshSectionTitle(); closeDrawer(); renderAll();
+  window.scrollTo(0,0); const mn=document.querySelector('.main'); if(mn) mn.scrollTop=0; document.documentElement.scrollTop=0; document.body.scrollTop=0;
   if(location.hash!=='#'+id) history.replaceState(null,'','#'+id);
 }
 function renderAll(){
@@ -3088,7 +3090,7 @@ function setToken(token,remember){ clearToken(); (remember?localStorage:sessionS
 function clearToken(){ localStorage.removeItem(AUTH_KEY); sessionStorage.removeItem(AUTH_KEY); }
 function setUser(u,remember){ localStorage.removeItem(USER_KEY); sessionStorage.removeItem(USER_KEY); if(u)(remember?localStorage:sessionStorage).setItem(USER_KEY,JSON.stringify(u)); }
 function getUser(){ try{ return JSON.parse(localStorage.getItem(USER_KEY)||sessionStorage.getItem(USER_KEY)||"null"); }catch{ return null; } }
-function showApp(){ $("#loginScreen").hidden=true; $("#appRoot").hidden=false; renderUserChip(); boot(); }
+function showApp(){ $("#loginScreen").hidden=true; $("#appRoot").hidden=false; window.scrollTo(0,0); renderUserChip(); boot(); }
 function showLogin(msg){ hideSplash(); $("#appRoot").hidden=true; $("#loginScreen").hidden=false; if(msg){ $("#loginError").hidden=false; $("#loginError").textContent=msg; } $("#loginPass").value=""; }
 function forceLogout(msg){ clearToken(); setUser(null); booted=false; showLogin(msg); }
 function renderUserChip(){
