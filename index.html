@@ -18,10 +18,10 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="جارانتي">
+<meta name="apple-mobile-web-app-title" content="Guarantee">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="assets/logo-192.jpg">
-<title>جارانتي لطب الأسنان — لوحة التشغيل</title>
+<title>Guarantee Dental Center — لوحة التشغيل</title>
 <link rel="icon" type="image/jpeg" href="assets/logo-192.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1733,6 +1733,42 @@ html[dir="ltr"] .mb-arrow{transform:scaleX(-1)}
 .qf-chip.warn:not(.zero) b{background:var(--warning-bg);color:var(--warning-ink)}
 .qf-chip.danger:not(.zero) b{background:var(--danger-bg);color:var(--danger-ink)}
 .qf-chip.zero{opacity:.55}
+
+.paychips{display:flex;flex-wrap:wrap;gap:8px}
+.paychip{padding:10px 18px;border-radius:12px;background:var(--panel-2);border:1.5px solid var(--line);font-size:13.5px;font-weight:700}
+.paychip.on{background:var(--blue-soft);border-color:var(--blue);color:var(--blue-ink)}
+.att-note{color:var(--muted);font-size:11.5px;margin:-4px 0 12px}
+
+/* mobile FAB + drawer fit */
+.m-fab{display:none}
+@media(max-width:860px){
+  html .sidebar{height:100dvh;height:var(--app-h,100dvh);max-height:100dvh;display:flex;flex-direction:column;overflow:hidden;padding-bottom:max(14px,env(safe-area-inset-bottom))}
+  html .sidebar .nav{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  html .sidebar .side-spacer{flex:0 0 8px}
+  html .sidebar .side-lang{display:flex!important;flex:0 0 auto;margin-bottom:10px}
+  html .sidebar .user-chip{flex:0 0 auto}
+  .m-fab{display:flex;flex-direction:column;align-items:flex-end;gap:10px;position:fixed;inset-inline-end:16px;bottom:calc(92px + env(safe-area-inset-bottom));z-index:70}
+  .m-fab[hidden]{display:none}
+  .m-fab-btn{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#B8893C,#9A6F26);color:#fff;border:0;box-shadow:0 8px 22px rgba(120,80,20,.38);transition:transform .2s}
+  .m-fab-btn svg{width:24px;height:24px;stroke:#fff}
+  .m-fab.open .m-fab-btn{transform:rotate(45deg)}
+  .m-fab-menu{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+  .m-fab-menu[hidden]{display:none}
+  .m-fab-item{display:flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-weight:700;font-size:13.5px;box-shadow:0 6px 18px rgba(0,0,0,.14)}
+  .m-fab-item.primary{background:#B8893C;color:#fff;border-color:#B8893C}
+  .m-fab-item svg{width:18px;height:18px}
+}
+
+/* patient profile */
+.p-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.p-hm{flex:1;min-width:140px;display:flex;flex-direction:column;gap:2px}
+.p-hm b{font-size:16px}.p-hm small{color:var(--muted)}.p-note{font-style:italic}
+.p-ph{width:56px;height:56px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;overflow:hidden;background:linear-gradient(135deg,#C9A25E,#A87B32);color:#fff;font-weight:800;font-size:22px}
+.p-ph.big{width:84px;height:84px;font-size:32px}.p-ph img{width:100%;height:100%;object-fit:cover}
+.p-edit-ph{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.p-edit-btns{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+#ptNotes{width:100%;resize:vertical;border:1px solid var(--line,#e6dccb);border-radius:12px;padding:10px;background:inherit;color:inherit;font:inherit}
+.user-chip{cursor:pointer}.user-avatar{overflow:hidden}.user-avatar img{width:100%;height:100%;object-fit:cover;display:block}
 </style>
 
 </head>
@@ -1741,7 +1777,7 @@ html[dir="ltr"] .mb-arrow{transform:scaleX(-1)}
   <div class="splash-glow"></div>
   <div class="splash-inner">
     <div class="splash-logo"><img src="assets/logo-192.jpg" alt=""></div>
-    <div class="splash-name">جارانتي لطب الأسنان</div>
+    <div class="splash-name">Guarantee Dental Center</div>
     <div class="splash-bar"><i></i></div>
     <div class="splash-tag">GUARANTEE DENTAL CENTER</div>
   </div>
@@ -1790,7 +1826,7 @@ html[dir="ltr"] .mb-arrow{transform:scaleX(-1)}
 
 <div class="install-banner" id="installBanner" hidden>
   <img src="assets/logo-192.jpg" alt="">
-  <div class="ib-text"><b data-i18n="installTitle">ثبّت تطبيق جارانتي</b><small data-i18n="installSub">افتح اللوحة بلمسة من الشاشة الرئيسية</small></div>
+  <div class="ib-text"><b data-i18n="installTitle">ثبّت تطبيق Guarantee</b><small data-i18n="installSub">افتح اللوحة بلمسة من الشاشة الرئيسية</small></div>
   <button class="btn primary" id="installBtn" data-i18n="installBtn">تثبيت</button>
   <button class="ib-close" id="installClose" aria-label="close"><svg><use href="#i-x"/></svg></button>
 </div>
@@ -1810,7 +1846,7 @@ html[dir="ltr"] .mb-arrow{transform:scaleX(-1)}
 <div id="loginScreen" class="login-screen" hidden>
   <div class="login-card">
     <div class="login-logo"><img src="assets/logo-192.jpg" alt="Guarantee Dental Center"></div>
-    <div class="login-title" data-i18n="brandWord">جارانتي لطب الأسنان</div>
+    <div class="login-title" data-i18n="brandWord">Guarantee Dental Center</div>
     <div class="login-sub" data-i18n="loginSub">سجّل الدخول للوصول للوحة التشغيل</div>
     <div class="auth-tabs" role="tablist">
       <button type="button" class="auth-tab active" data-auth-tab="login" data-i18n="tabSignIn">تسجيل الدخول</button>
@@ -1835,11 +1871,18 @@ html[dir="ltr"] .mb-arrow{transform:scaleX(-1)}
 </div>
 
 <div class="app" id="appRoot" hidden>
+<div class="m-fab" id="mFab" hidden>
+  <div class="m-fab-menu" id="mFabMenu" hidden>
+    <button type="button" class="m-fab-item" id="mFabLead"><svg><use href="#i-funnel"/></svg><span data-i18n="btnAddLead">ليد جديد</span></button>
+    <button type="button" class="m-fab-item primary" id="mFabBook"><svg><use href="#i-calendar"/></svg><span data-i18n="btnAddBooking">إضافة حجز</span></button>
+  </div>
+  <button type="button" class="m-fab-btn" id="mFabBtn" aria-label="add"><svg><use href="#i-plus"/></svg></button>
+</div>
 <aside class="sidebar">
   <div class="brand">
     <div class="logo-chip"><img src="assets/logo-192.jpg" alt=""></div>
     <div>
-      <div class="brand-word" data-i18n="brandWord">جارانتي لطب الأسنان</div>
+      <div class="brand-word" data-i18n="brandWord">Guarantee Dental Center</div>
       <div class="brand-tag" data-i18n="brandTag">لوحة التشغيل</div>
     </div>
   </div>
@@ -1864,13 +1907,13 @@ html[dir="ltr"] .mb-arrow{transform:scaleX(-1)}
 <main class="main">
 <div class="m-topbar">
   <button class="m-icon-btn" id="mMenuBtn" aria-label="menu"><svg><use href="#i-menu"/></svg></button>
-  <div class="m-brand"><img src="assets/logo-192.jpg" alt=""><b data-i18n="brandWord">جارانتي لطب الأسنان</b></div>
+  <div class="m-brand"><img src="assets/logo-192.jpg" alt=""><b data-i18n="brandWord">Guarantee Dental Center</b></div>
   <button class="m-icon-btn" id="mSyncBtn" aria-label="sync"><svg id="mSyncIco"><use href="#i-refresh"/></svg></button>
   <button class="m-icon-btn theme-toggle" aria-label="theme"><svg><use class="theme-use" href="#i-moon"/></svg></button>
 </div>
 
 <header class="top">
-  <div class="title"><div class="greet" id="greet"></div><h1 id="pageTitle" data-i18n="titleHome">لوحة التحكم</h1><p id="pageSub" data-i18n="subHome">كل اللي محتاج تعرفه عن المواعيد والليدز في شاشة واحدة</p></div>
+  <div class="title"><div class="greet" id="greet"></div><h1 id="pageTitle" data-i18n="titleHome">لوحة التحكم</h1><p id="pageSub"></p></div>
   <div class="actions">
     <div class="lang-switch" role="group" aria-label="Language">
       <button class="lang-btn" data-lang="ar" id="langAr">AR</button>
@@ -1943,7 +1986,7 @@ html[dir="ltr"] .mb-arrow{transform:scaleX(-1)}
 <section id="leads" class="section" hidden>
 <div class="pipe" id="pipe"></div>
 <div class="qf" id="qfLead"></div>
-<div class="card"><div class="card-head"><h2 data-i18n="leadsManageTitle">متابعة الليدز</h2><span id="leadCount" class="badge b-blue"></span></div><div class="table-wrap"><table class="table"><thead><tr><th>#</th><th data-i18n="colLead">الاسم</th><th data-i18n="colSourceCampaign">المصدر / الحملة</th><th data-i18n="colService">الخدمة</th><th data-i18n="colStatus">الحالة</th><th data-i18n="colAgent">الموظف</th><th data-i18n="colEntry">دخل من</th><th data-i18n="colAction">إجراء</th></tr></thead><tbody id="leadTable"></tbody></table></div></div>
+<div class="card"><div class="card-head"><h2 data-i18n="leadsManageTitle">متابعة الليدز</h2><span id="leadCount" class="badge b-blue"></span></div><div class="table-wrap"><table class="table"><thead><tr><th>#</th><th data-i18n="colLead">الاسم</th><th data-i18n="colSourceCampaign">المصدر / الحملة</th><th data-i18n="colService">الخدمة</th><th data-i18n="colStatus">الحالة</th><th data-i18n="colBooking">الحجز</th><th data-i18n="colAgent">الموظف</th><th data-i18n="colEntry">دخل من</th><th data-i18n="colAction">إجراء</th></tr></thead><tbody id="leadTable"></tbody></table></div></div>
 </section>
 
 <section id="doctors" class="section" hidden>
@@ -1962,7 +2005,7 @@ html[dir="ltr"] .mb-arrow{transform:scaleX(-1)}
 <section id="finance" class="section" hidden>
 <div class="card" style="margin-bottom:16px"><div class="card-head"><h2 data-i18n="finTitle">ملخص الحسابات</h2><div class="seg" role="tablist"><button type="button" data-fin="today" data-i18n="finToday">اليوم</button><button type="button" data-fin="week" class="on" data-i18n="finWeek">الأسبوع</button><button type="button" data-fin="month" data-i18n="finMonth">الشهر</button><button type="button" data-fin="all" data-i18n="finAll">الكل</button></div></div><div class="card-body"><div class="fin-kpis" id="finKpis"></div><div class="fin-note" id="finRange"></div></div></div>
 <div class="card" style="margin-bottom:16px"><div class="card-head"><h2 data-i18n="finBranchTitle">الدخل والإشغال لكل فرع</h2></div><div class="table-wrap"><table class="table"><thead><tr><th data-i18n="navBranches">الفرع</th><th data-i18n="colBookings">الحجوزات</th><th data-i18n="colArrivedShort">حضروا</th><th data-i18n="colCollected">المحصّل</th><th data-i18n="colExpected">المتوقع</th><th data-i18n="colOccupancy">الإشغال</th></tr></thead><tbody id="finBranches"></tbody></table></div></div>
-<div class="bottom-grid"><div class="card"><div class="card-head"><h2 data-i18n="revByService">الدخل حسب الخدمة</h2></div><div class="card-body" id="finServices"></div></div><div class="card"><div class="card-head"><h2 data-i18n="revByDoctor">الدخل حسب الدكتور</h2></div><div class="card-body" id="finDoctors"></div></div></div>
+<div class="bottom-grid"><div class="card"><div class="card-head"><h2 data-i18n="revByService">الدخل حسب الخدمة</h2></div><div class="card-body" id="finServices"></div></div><div class="card"><div class="card-head"><h2 data-i18n="revByDoctor">الدخل حسب الدكتور</h2></div><div class="card-body" id="finDoctors"></div></div><div class="card"><div class="card-head"><h2 data-i18n="finByPayment">الدخل حسب طريقة الدفع</h2></div><div class="card-body" id="finPay"></div></div></div>
 </section>
 
 <section id="reports" class="section" hidden>
@@ -2048,12 +2091,12 @@ let booted = false;
 let LANG = localStorage.getItem('gdc-lang') || 'ar';
 const I18N = {
  ar:{
-  brandWord:"جارانتي لطب الأسنان", brandTag:"لوحة التشغيل",
+  brandWord:"Guarantee Dental Center", brandTag:"لوحة التشغيل",
   navHome:"الرئيسية", navAppointments:"المواعيد", navLeads:"الليدز", navDoctors:"الدكاترة", navBranches:"الفروع", navPatients:"المرضى", navReports:"التقارير", navActivity:"سجل النشاط", navMore:"المزيد",
   kickerOperations:"العمليات", kickerInsights:"التحليلات", notifications:"التنبيهات", export:"تصدير",
   btnSync:"مزامنة الآن", btnAddBooking:"إضافة حجز", searchPlaceholder:"ابحث باسم المريض، الهاتف، رقم الحجز...",
   allBranches:"كل الفروع", allStatuses:"كل الحالات", allDoctors:"كل الدكاترة", allSources:"كل المصادر", btnClearFilters:"مسح الفلاتر", advancedFilters:"فلاتر متقدمة", fromDate:"من تاريخ", toDate:"إلى تاريخ",
-  titleHome:"لوحة التحكم", subHome:"كل اللي محتاج تعرفه عن المواعيد والليدز في شاشة واحدة",
+  titleHome:"لوحة التحكم", subHome:"",
   titleAppointments:"المواعيد", subAppointments:"إدارة ومتابعة كل الحجوزات",
   titleLeads:"الليدز", subLeads:"متابعة العملاء المحتملين من الإعلانات والموقع",
   titleDoctors:"الدكاترة", subDoctors:"جداول الدكاترة وحمل اليوم",
@@ -2093,7 +2136,7 @@ const I18N = {
   days:["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"],
   daysShort:["اثنين","ثلاثاء","أربعاء","خميس","جمعة","سبت","أحد"],
   addressLbl:"العنوان", areaLbl:"المنطقة", branchPhone:"تليفون الفرع", visitsWord:"زيارة", noShowWord:"لم يحضر",
-  installTitle:"ثبّت تطبيق جارانتي", installSub:"افتح اللوحة بلمسة من الشاشة الرئيسية", installBtn:"تثبيت", iosSheetTitle:"تثبيت التطبيق على آيفون", iosStep1:"اضغط زر المشاركة في شريط Safari", iosStep2:"اختار «إضافة إلى الشاشة الرئيسية»", iosStep3:"اضغط «إضافة» — والتطبيق هيظهر مع باقي تطبيقاتك", gotIt:"تمام",
+  installTitle:"ثبّت تطبيق Guarantee", installSub:"افتح اللوحة بلمسة من الشاشة الرئيسية", installBtn:"تثبيت", iosSheetTitle:"تثبيت التطبيق على آيفون", iosStep1:"اضغط زر المشاركة في شريط Safari", iosStep2:"اختار «إضافة إلى الشاشة الرئيسية»", iosStep3:"اضغط «إضافة» — والتطبيق هيظهر مع باقي تطبيقاتك", gotIt:"تمام",
   themeToDark:"تفعيل الوضع الليلي", themeToLight:"تفعيل الوضع النهاري",
   loginSub:"سجّل الدخول للوصول للوحة التشغيل", tabSignIn:"تسجيل الدخول", tabSignUp:"إنشاء حساب", fieldEmail:"البريد الإلكتروني", fieldPassword:"كلمة المرور", fieldName:"الاسم", fieldConfirmPassword:"تأكيد كلمة المرور",
   rememberMe:"تذكرني على هذا الجهاز", signIn:"تسجيل الدخول", createAccount:"إنشاء الحساب", logout:"تسجيل الخروج",
@@ -2101,14 +2144,15 @@ const I18N = {
   pwTooShort:"كلمة المرور لازم تكون 8 حروف على الأقل", pwMismatch:"كلمتا المرور غير متطابقتين", signupPending:"تم إنشاء الحساب — في انتظار موافقة الإدارة قبل ما تقدر تدخل",
   accountPending:"حسابك لسه في انتظار موافقة الإدارة", signupFailed:"تعذر إنشاء الحساب", accountDisabled:"الحساب ده موقوف — كلّم الإدارة",
   emailTaken:"الإيميل ده مسجل قبل كده — سجّل دخول بدل ما تعمل حساب جديد", invalidEmail:"البريد الإلكتروني مش صحيح", invalidName:"اكتب اسمك (80 حرف كحد أقصى)",
-  greetMorning:"صباح الخير", greetEvening:"مساء الخير", noNotifs:"مفيش تنبيهات جديدة", markRead:"تعليم الكل كمقروء", currency:"ج", qfAll:"الكل", qfToday:"النهارده", qfPending:"بانتظار التأكيد", qfLate:"فاتت ومحتاجة تحديث", qfUpcoming:"مؤكدة قادمة", qfNoShow:"لم يحضروا", qfCancelled:"ملغية", qfNew:"جديدة", qfStale:"متأخرة +ساعتين", qfNoAgent:"بدون موظف", qfFollow:"تحتاج متابعة (+يوم)", qfLost:"ضايعة", back:"رجوع", phAppointments:"ابحث باسم المريض أو الهاتف أو رقم الحجز...", phLeads:"ابحث باسم العميل أو الهاتف أو الحملة...", phDoctors:"ابحث باسم الدكتور أو التخصص أو الخدمة...", phPatients:"ابحث باسم المريض أو رقم الهاتف...", pickDay:"اختار اليوم", pickDoctor:"اختار الدكتور", tomorrowWord:"بكرة", slotsCount:"مواعيد", firstAt:"أول ميعاد", otherDate:"تاريخ تاني:", noAvailAny:"مفيش مواعيد متاحة في الـ 3 أسابيع الجاية للخدمة والفرع دول — جرّب فرع تاني", pickDoctorHint:"اختار الدكتور عشان تظهر مواعيده", toastForbidden:"مفيش عندك صلاحية للعملية دي", upcomingGroup:"القادمة", doneGroup:"خلصت", lateGroup:"فاتت وتحتاج تحديث الحالة",
+  greetMorning:"صباح الخير", greetEvening:"مساء الخير", noNotifs:"مفيش تنبيهات جديدة", markRead:"تعليم الكل كمقروء", currency:"ج", payCash:"كاش", attendTitle:"تأكيد الحضور والدفع", amountPaid:"المبلغ المدفوع", paymentMethod:"طريقة الدفع", payPickHint:"اختار طريقة الدفع", confirmAttend:"تأكيد الحضور والدفع", editAmount:"تعديل المبلغ", saveAmount:"حفظ التعديل", confirmedByLbl:"أكّد بواسطة", toastAttended:"تم تأكيد الحضور والدفع", toastAmountSaved:"تم تحديث المبلغ", needAttendPerm:"محتاج صلاحية تأكيد الحضور", qfBookedPending:"حجزوا ولسه ما حضروش", qfAttended:"حضروا", colBooking:"الحجز", finByPayment:"الدخل حسب طريقة الدفع", noPayment:"غير محدد", defaultAmountNote:"المبلغ متعبّي بسعر الخدمة الافتراضي — عدّله لو اتحاسب بمبلغ مختلف (زيادة خدمة مثلًا).", qfAll:"الكل", qfToday:"النهارده", qfPending:"بانتظار التأكيد", qfLate:"فاتت ومحتاجة تحديث", qfUpcoming:"مؤكدة قادمة", qfNoShow:"لم يحضروا", qfCancelled:"ملغية", qfNew:"جديدة", qfStale:"متأخرة +ساعتين", qfNoAgent:"بدون موظف", qfFollow:"تحتاج متابعة (+يوم)", qfLost:"ضايعة", back:"رجوع", phAppointments:"ابحث باسم المريض أو الهاتف أو رقم الحجز...", phLeads:"ابحث باسم العميل أو الهاتف أو الحملة...", phDoctors:"ابحث باسم الدكتور أو التخصص أو الخدمة...", phPatients:"ابحث باسم المريض أو رقم الهاتف...", pickDay:"اختار اليوم", pickDoctor:"اختار الدكتور", tomorrowWord:"بكرة", slotsCount:"مواعيد", firstAt:"أول ميعاد", otherDate:"تاريخ تاني:", noAvailAny:"مفيش مواعيد متاحة في الـ 3 أسابيع الجاية للخدمة والفرع دول — جرّب فرع تاني", pickDoctorHint:"اختار الدكتور عشان تظهر مواعيده", toastForbidden:"مفيش عندك صلاحية للعملية دي", upcomingGroup:"القادمة", doneGroup:"خلصت", lateGroup:"فاتت وتحتاج تحديث الحالة",
   navFinance:"الحسابات", titleFinance:"الحسابات", subFinance:"الدخل ونسبة الإشغال لكل فرع",
   finTitle:"ملخص الحسابات", finToday:"اليوم", finWeek:"الأسبوع", finMonth:"الشهر", finAll:"الكل", finBranchTitle:"الدخل والإشغال لكل فرع", revByService:"الدخل حسب الخدمة", revByDoctor:"الدخل حسب الدكتور",
-  finCollected:"المحصّل (حضروا)", finExpected:"المتوقع (مؤكد وبانتظار)", finAvg:"متوسط قيمة الزيارة", finOccupancy:"نسبة الإشغال", finOccSub:"ساعات محجوزة من ساعات العمل", finVisits:"زيارة", finRange:"الفترة", finNote:"الأسعار من عمود price في تاب Services، ولو فيه مبلغ مختلف اكتبه في عمود amount في تاب Bookings.", finTotal:"الإجمالي",
+  finCollected:"المحصّل (حضروا)", finExpected:"المتوقع (مؤكد وبانتظار)", finAvg:"متوسط قيمة الزيارة", finOccupancy:"نسبة الإشغال", finOccSub:"ساعات محجوزة من ساعات العمل", finVisits:"زيارة", finRange:"الفترة", finNote:"الأسعار الافتراضية من قائمة الخدمات، والمبلغ الفعلي هو اللي بيتسجّل عند تأكيد الحضور.", finTotal:"الإجمالي",
   colCollected:"المحصّل", colExpected:"المتوقع", colOccupancy:"الإشغال", amountLbl:"المبلغ", defaultPrice:"سعر الخدمة الافتراضي", recordedAmount:"مبلغ مسجّل", nextUp:"الجاي", noFinData:"مفيش حجوزات في الفترة دي",
   btnAddLead:"ليد جديد", newLeadTitle:"ليد جديد", fieldLeadName:"اسم العميل", fieldCampaign:"الحملة (اختياري)", fieldAgent:"الموظف المسؤول (اختياري)", optionalService:"الخدمة المطلوبة (اختياري)", saveLead:"حفظ الليد", toastLeadSaved:"تم إضافة الليد", toastDupLead:"فيه ليد مفتوح بنفس الرقم",
   rescheduleBtn:"إعادة جدولة", rescheduleTitle:"إعادة جدولة حجز", saveReschedule:"تأكيد الموعد الجديد", toastRescheduled:"تمت إعادة الجدولة",
   viewList:"قائمة", viewAgenda:"جدول اليوم", agendaEmpty:"مفيش دكاترة شغالين في اليوم ده",
+  myProfile:"ملفي الشخصي", saveProfile:"حفظ بياناتي", toastProfileSaved:"تم حفظ بياناتك", pEdit:"تعديل بيانات المريض", pBirth:"تاريخ الميلاد", pGender:"الجنس", pMale:"ذكر", pFemale:"أنثى", pNotes:"ملاحظات", pPhoto:"الصورة", pChoosePhoto:"اختيار / التقاط صورة", pRemovePhoto:"حذف الصورة", pSavePatient:"حفظ البيانات", toastPatientSaved:"تم حفظ بيانات المريض", pAge:"السن", pYears:"سنة", pBadPhoto:"الصورة غير صالحة",
   patientProfile:"ملف المريض", pVisits:"زيارات", pBookings:"حجوزات", pNoShows:"لم يحضر", pCancelled:"ملغي", pLastVisit:"آخر زيارة", pNext:"الموعد القادم", pHistory:"سجل الحجوزات", pLeads:"الليدز المرتبطة", pNew:"حجز جديد", pNone:"—",
   gsPatients:"المرضى", gsLeads:"الليدز", gsBookings:"الحجوزات", gsNone:"مفيش نتائج"
  },
@@ -2118,7 +2162,7 @@ const I18N = {
   kickerOperations:"Operations", kickerInsights:"Insights", notifications:"Notifications", export:"Export",
   btnSync:"Sync now", btnAddBooking:"Add booking", searchPlaceholder:"Search patient, phone, booking ID...",
   allBranches:"All branches", allStatuses:"All statuses", allDoctors:"All doctors", allSources:"All sources", btnClearFilters:"Clear filters", advancedFilters:"Advanced filters", fromDate:"From date", toDate:"To date",
-  titleHome:"Dashboard", subHome:"Appointments and leads at a glance",
+  titleHome:"Dashboard", subHome:"",
   titleAppointments:"Appointments", subAppointments:"Manage and track every booking",
   titleLeads:"Leads", subLeads:"Follow up leads from ads and the website",
   titleDoctors:"Doctors", subDoctors:"Doctor schedules and today's load",
@@ -2166,14 +2210,15 @@ const I18N = {
   pwTooShort:"Password must be at least 8 characters", pwMismatch:"Passwords don't match", signupPending:"Account created — waiting for admin approval before you can sign in",
   accountPending:"Your account is still waiting for admin approval", signupFailed:"Couldn't create the account", accountDisabled:"This account is disabled — contact the admin",
   emailTaken:"This email is already registered — sign in instead", invalidEmail:"That email address isn't valid", invalidName:"Enter your name (80 characters max)",
-  greetMorning:"Good morning", greetEvening:"Good evening", noNotifs:"No new notifications", markRead:"Mark all as read", currency:"EGP", qfAll:"All", qfToday:"Today", qfPending:"Awaiting confirmation", qfLate:"Past time — update", qfUpcoming:"Confirmed upcoming", qfNoShow:"No-shows", qfCancelled:"Cancelled", qfNew:"New", qfStale:"Overdue 2h+", qfNoAgent:"No agent", qfFollow:"Needs follow-up (1d+)", qfLost:"Lost", back:"Back", phAppointments:"Search patient, phone or booking ID...", phLeads:"Search customer, phone or campaign...", phDoctors:"Search doctor, specialty or service...", phPatients:"Search patient name or phone...", pickDay:"Pick a day", pickDoctor:"Pick a doctor", tomorrowWord:"Tomorrow", slotsCount:"slots", firstAt:"first at", otherDate:"Other date:", noAvailAny:"No availability in the next 3 weeks for this service and branch — try another branch", pickDoctorHint:"Pick a doctor to see their times", toastForbidden:"You do not have permission for this action", upcomingGroup:"Upcoming", doneGroup:"Finished", lateGroup:"Past time — update status",
+  greetMorning:"Good morning", greetEvening:"Good evening", noNotifs:"No new notifications", markRead:"Mark all as read", currency:"EGP", payCash:"Cash", attendTitle:"Confirm attendance & payment", amountPaid:"Amount paid", paymentMethod:"Payment method", payPickHint:"Choose a payment method", confirmAttend:"Confirm attendance & payment", editAmount:"Edit amount", saveAmount:"Save changes", confirmedByLbl:"Confirmed by", toastAttended:"Attendance and payment confirmed", toastAmountSaved:"Amount updated", needAttendPerm:"Needs the attendance permission", qfBookedPending:"Booked, not attended yet", qfAttended:"Attended", colBooking:"Booking", finByPayment:"Revenue by payment method", noPayment:"Unspecified", defaultAmountNote:"Pre-filled with the default service price — change it if the bill is different (extra service, for example).", qfAll:"All", qfToday:"Today", qfPending:"Awaiting confirmation", qfLate:"Past time — update", qfUpcoming:"Confirmed upcoming", qfNoShow:"No-shows", qfCancelled:"Cancelled", qfNew:"New", qfStale:"Overdue 2h+", qfNoAgent:"No agent", qfFollow:"Needs follow-up (1d+)", qfLost:"Lost", back:"Back", phAppointments:"Search patient, phone or booking ID...", phLeads:"Search customer, phone or campaign...", phDoctors:"Search doctor, specialty or service...", phPatients:"Search patient name or phone...", pickDay:"Pick a day", pickDoctor:"Pick a doctor", tomorrowWord:"Tomorrow", slotsCount:"slots", firstAt:"first at", otherDate:"Other date:", noAvailAny:"No availability in the next 3 weeks for this service and branch — try another branch", pickDoctorHint:"Pick a doctor to see their times", toastForbidden:"You do not have permission for this action", upcomingGroup:"Upcoming", doneGroup:"Finished", lateGroup:"Past time — update status",
   navFinance:"Accounts", titleFinance:"Accounts", subFinance:"Revenue and occupancy per branch",
   finTitle:"Accounts summary", finToday:"Today", finWeek:"Week", finMonth:"Month", finAll:"All", finBranchTitle:"Revenue and occupancy per branch", revByService:"Revenue by service", revByDoctor:"Revenue by doctor",
-  finCollected:"Collected (attended)", finExpected:"Expected (confirmed & pending)", finAvg:"Average visit value", finOccupancy:"Occupancy", finOccSub:"booked hours of working hours", finVisits:"visits", finRange:"Period", finNote:"Prices come from the price column in the Services tab; to override a booking's amount, write it in the amount column of the Bookings tab.", finTotal:"Total",
+  finCollected:"Collected (attended)", finExpected:"Expected (confirmed & pending)", finAvg:"Average visit value", finOccupancy:"Occupancy", finOccSub:"booked hours of working hours", finVisits:"visits", finRange:"Period", finNote:"Default prices come from the service list; the actual amount is the one recorded when attendance is confirmed.", finTotal:"Total",
   colCollected:"Collected", colExpected:"Expected", colOccupancy:"Occupancy", amountLbl:"Amount", defaultPrice:"Default service price", recordedAmount:"Recorded amount", nextUp:"Next", noFinData:"No bookings in this period",
   btnAddLead:"New lead", newLeadTitle:"New lead", fieldLeadName:"Customer name", fieldCampaign:"Campaign (optional)", fieldAgent:"Responsible agent (optional)", optionalService:"Requested service (optional)", saveLead:"Save lead", toastLeadSaved:"Lead added", toastDupLead:"An open lead with this number already exists",
   rescheduleBtn:"Reschedule", rescheduleTitle:"Reschedule booking", saveReschedule:"Confirm new time", toastRescheduled:"Booking rescheduled",
   viewList:"List", viewAgenda:"Day schedule", agendaEmpty:"No doctors are working that day",
+  myProfile:"My profile", saveProfile:"Save my details", toastProfileSaved:"Your details were saved", pEdit:"Edit patient details", pBirth:"Birth date", pGender:"Gender", pMale:"Male", pFemale:"Female", pNotes:"Notes", pPhoto:"Photo", pChoosePhoto:"Choose / take photo", pRemovePhoto:"Remove photo", pSavePatient:"Save details", toastPatientSaved:"Patient details saved", pAge:"Age", pYears:"yrs", pBadPhoto:"Invalid photo",
   patientProfile:"Patient profile", pVisits:"Visits", pBookings:"Bookings", pNoShows:"No-shows", pCancelled:"Cancelled", pLastVisit:"Last visit", pNext:"Next appointment", pHistory:"Booking history", pLeads:"Linked leads", pNew:"New booking", pNone:"—",
   gsPatients:"Patients", gsLeads:"Leads", gsBookings:"Bookings", gsNone:"No results"
  }
@@ -2220,7 +2265,8 @@ function applyPerms(){
   const p=P();
   document.querySelectorAll('#nav button[data-section],#mBottomNav button[data-section]').forEach(b=>{ b.hidden=!can(b.dataset.section); });
   document.querySelectorAll('#nav .nav-group-label').forEach(l=>{ let el=l.nextElementSibling, any=false; while(el&&!el.classList.contains('nav-group-label')){ if(el.matches('button')&&!el.hidden) any=true; el=el.nextElementSibling; } l.hidden=!any; });
-  $("#quick").hidden=!p.appointments; $("#quickLead").hidden=!p.leads; $("#exportBtn").hidden=!(p.appointments||p.leads);
+  $("#branch").hidden=!(CAPS[currentSection]||{}).branch||!!(D.user&&D.user.branch);
+  $("#quick").hidden=!p.appointments; $("#quickLead").hidden=!p.leads; $("#mFabBook").hidden=!p.appointments; $("#mFabLead").hidden=!p.leads; $("#mFab").hidden=!(p.appointments||p.leads); $("#exportBtn").hidden=!(p.appointments||p.leads);
   const cardOf=sel=>{ const el=document.querySelector(sel); return el?el.closest('.card'):null; };
   [['#kToday',p.appointments],['#kPending',p.appointments],['#kArrived',p.appointments],['#kMissed',p.appointments],['#kAttend',p.appointments],['#kNewLeads',p.leads],['#kConv',p.leads],['#chart',p.appointments],['#homeAppts',p.appointments],['#branchSummary',p.branches]].forEach(([sel,ok])=>{ const c=cardOf(sel); if(c) c.hidden=!ok; });
 }
@@ -2247,6 +2293,7 @@ const LS={
 const LS_ORDER=['جديد','تم الاتصال','تم الحجز','ضايع'];
 const LOSS_REASONS=['السعر عالي','مش بيرد','بعيد عن الفروع','حجز عند مركز تاني','مش مهتم','رقم غلط','أخرى'];
 const SOURCES_BOOK=[['كول سنتر','srcCall'],['واتساب','srcWhats'],['إعلان','srcAd'],['الموقع','srcSite'],['زيارة','srcWalk']];
+const PAYS=['كاش','فيزا','إنستاباي','تقسيط'];
 function bsLabel(s){ const m=BS[s]; return m?t(m.key):(s||'—'); }
 function lsLabel(s){ const m=LS[s]; return m?t(m.key):(s||'—'); }
 function bsTransitions(b){
@@ -2254,7 +2301,7 @@ function bsTransitions(b){
   const m={'بانتظار الرد':['مؤكد','ملغي'],'مؤكد':['حضر','لم يحضر','ملغي'],'حضر':['لم يحضر'],'لم يحضر':['حضر'],'ملغي':[]};
   return (m[b.status]||[]).filter(s=>!(s==='حضر'||s==='لم يحضر')||b.date<=today);
 }
-function lsTransitions(l){ return ({'جديد':['تم الاتصال','ضايع'],'تم الاتصال':['ضايع'],'ضايع':['جديد'],'تم الحجز':[]})[l.status]||[]; }
+function lsTransitions(l){ return ({'جديد':['تم الاتصال','ضايع'],'تم الاتصال':['ضايع'],'ضايع':[],'تم الحجز':[]})[l.status]||[]; }
 function badgeStatus(kind,rec){
   const isB=kind==='b'; const s=rec.status; const m=(isB?BS:LS)[s]||{c:'blue'}; const label=isB?bsLabel(s):lsLabel(s);
   const canChange=(isB?bsTransitions(rec):lsTransitions(rec)).length>0;
@@ -2268,7 +2315,7 @@ function leadById(id){ return D.leads.find(l=>String(l.id)===String(id)); }
 const qf={appointments:'all',leads:'all'};
 function nowMinutes(){ return toMin(nowStr().slice(11,16)); }
 const QF_APPT=[['all','qfAll',()=>true,''],['today','qfToday',b=>b.date===TODAY()&&b.status!=='ملغي',''],['pending','qfPending',b=>b.status==='بانتظار الرد'&&b.date>=TODAY(),'warn'],['late','qfLate',b=>(b.status==='مؤكد'||b.status==='بانتظار الرد')&&(b.date<TODAY()||(b.date===TODAY()&&toMin(b.time)<nowMinutes())),'danger'],['upcoming','qfUpcoming',b=>b.status==='مؤكد'&&b.date>=TODAY(),''],['noshow','qfNoShow',b=>b.status==='لم يحضر',''],['cancelled','qfCancelled',b=>b.status==='ملغي','']];
-const QF_LEAD=[['all','qfAll',()=>true,''],['new','qfNew',l=>l.status==='جديد','warn'],['stale','qfStale',l=>l.status==='جديد'&&(ageMin(l.entry)||0)>120,'danger'],['noagent','qfNoAgent',l=>(l.status==='جديد'||l.status==='تم الاتصال')&&!l.agent,'warn'],['follow','qfFollow',l=>l.status==='تم الاتصال'&&(ageMin(l.updated)||0)>1440,'warn'],['lost','qfLost',l=>l.status==='ضايع','']];
+const QF_LEAD=[['all','qfAll',()=>true,''],['new','qfNew',l=>l.status==='جديد','warn'],['stale','qfStale',l=>l.status==='جديد'&&(ageMin(l.entry)||0)>120,'danger'],['noagent','qfNoAgent',l=>(l.status==='جديد'||l.status==='تم الاتصال')&&!l.agent,'warn'],['follow','qfFollow',l=>l.status==='تم الاتصال'&&(ageMin(l.updated)||0)>1440,'warn'],['booked','qfBookedPending',l=>l.status==='تم الحجز'&&!!l.booking_status&&l.booking_status!=='حضر'&&l.booking_status!=='ملغي','warn'],['attended','qfAttended',l=>l.booking_status==='حضر',''],['lost','qfLost',l=>l.status==='ضايع','']];
 function renderQf(){
   const mk=(list,key,data)=>list.map(([k,lab,fn,cls])=>{ const n=k==='all'?data.length:data.filter(fn).length; return `<button type="button" class="qf-chip ${cls}${qf[key]===k?' on':''}${n===0&&k!=='all'?' zero':''}" data-qf="${key}:${k}">${t(lab)}<b>${n}</b></button>`; }).join('');
   const a=$("#qfAppt"), l=$("#qfLead");
@@ -2313,7 +2360,7 @@ function filteredLeads(){
 function applyLanguage(lang){
   LANG=lang; localStorage.setItem('gdc-lang',lang);
   document.documentElement.lang=lang; document.documentElement.dir=lang==='ar'?'rtl':'ltr';
-  document.title=lang==='ar'?'جارانتي لطب الأسنان — لوحة التشغيل':'Guarantee Dental Center — Operations';
+  document.title=lang==='ar'?'Guarantee Dental Center — لوحة التشغيل':'Guarantee Dental Center — Operations';
   document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent=t(el.dataset.i18n); });
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{ el.placeholder=t(el.dataset.i18nPh); });
   document.querySelectorAll(".lang-btn[data-lang]").forEach(b=>{ b.classList.toggle("active",b.dataset.lang===lang); b.setAttribute("aria-pressed",b.dataset.lang===lang); });
@@ -2427,8 +2474,8 @@ async function loadData(showToast=false){
       const data=await fetchJson(API.data+"?token="+encodeURIComponent(getToken()||''),{method:'GET'});
       if(data._http===401||data.code===401){ forceLogout(t('sessionExpired')); return; }
       if(!data.ok) throw new Error(data.error||'bad response');
-      D=normalizeData(data); applyPerms(); if(!can(currentSection)) showSection('home');
-      lastSync=Date.now(); setConnection('online'); detectNew(); fillSelects(); renderAll();
+      const firstLoad=!D.user; D=normalizeData(data); applyPerms(); if(firstLoad&&D.user&&D.user.branch){ qf.appointments='today'; } if(!can(currentSection)) showSection('home');
+      loadMyPhoto(); lastSync=Date.now(); setConnection('online'); detectNew(); fillSelects(); renderAll();
       if(showToast) toast(t('toastDataRefreshed'));
     }catch(err){
       setConnection('offline'); if(showToast) toast(t('toastCantConnect'),true);
@@ -2549,7 +2596,7 @@ function renderAppointments(){
   const pages=Math.max(1,Math.ceil(arr.length/PAGE_SIZE)); if(apptPage>pages) apptPage=pages;
   const start=(apptPage-1)*PAGE_SIZE; const page=arr.slice(start,start+PAGE_SIZE); const today=TODAY();
   $("#apptCount").textContent=`${arr.length} ${t('bookingsUnit')}`;
-  $("#apptTable").innerHTML=page.map((b,i)=>`<tr class="clickable rs-${b.status==='ملغي'?'grey':(BS[b.status]||{c:'blue'}).c}" data-view="b:${escHtml(b.id)}" style="animation-delay:${Math.min(i,10)*25}ms"><td><span class="order-id">${escHtml(b.id)}</span></td><td class="nowrap">${b.date===today?`<b>${t('todayShort')}</b>`:escHtml(fmtDay(b.date))}<br><small style="color:var(--muted)">${fmtTime(b.time)}</small></td><td><button type="button" class="plink" data-patient="${escHtml(b.phone||b.patient)}">${escHtml(b.patient)}</button><br><small style="color:var(--muted)">${escHtml(b.phone)}</small></td><td>${escHtml(b.service)}</td><td>${escHtml(b.doctor)}</td><td>${escHtml(b.branch)}</td><td><span class="badge b-blue">${escHtml(b.source)}</span></td><td>${badgeStatus('b',b)}</td><td><button class="mini" data-view="b:${escHtml(b.id)}">${t('details')}</button></td></tr>`).join('')||`<tr><td colspan="9" class="empty">${t('noMatching')}</td></tr>`;
+  $("#apptTable").innerHTML=page.map((b,i)=>`<tr class="clickable rs-${b.status==='ملغي'?'grey':(BS[b.status]||{c:'blue'}).c}" data-view="b:${escHtml(b.id)}" style="animation-delay:${Math.min(i,10)*25}ms"><td><span class="order-id">${escHtml(b.id)}</span></td><td class="nowrap">${b.date===today?`<b>${t('todayShort')}</b>`:escHtml(fmtDay(b.date))}<br><small style="color:var(--muted)">${fmtTime(b.time)}</small></td><td><button type="button" class="plink" data-patient="${escHtml(b.phone||b.patient)}">${escHtml(b.patient)}</button><br><small style="color:var(--muted)">${escHtml(b.phone)}</small></td><td>${escHtml(b.service)}</td><td>${escHtml(b.doctor)}</td><td>${escHtml(b.branch)}</td><td><span class="badge b-blue">${escHtml(b.source)}</span></td><td>${badgeStatus('b',b)}${(b.status==='حضر'&&(P().finance||P().attendance))?`<br><small style="color:var(--muted)">${money(priceOf(b))}${b.payment?' · '+escHtml(b.payment):''}</small>`:''}</td><td><button class="mini" data-view="b:${escHtml(b.id)}">${t('details')}</button></td></tr>`).join('')||`<tr><td colspan="9" class="empty">${t('noMatching')}</td></tr>`;
   $("#apptPageInfo").textContent=`${arr.length?start+1:0}–${Math.min(start+page.length,arr.length)} / ${arr.length}`;
   $("#apptPrev").disabled=apptPage<=1; $("#apptNext").disabled=apptPage>=pages;
   const pend=D.bookings.filter(b=>b.status==='بانتظار الرد'&&b.date>=today).length;
@@ -2564,7 +2611,7 @@ function renderLeads(){
   const arr=filteredLeads();
   $("#leadCount").textContent=`${arr.length} ${t('leadsWord')}`;
   $("#leadTable").innerHTML=arr.map((l,i)=>{ const age=ageMin(l.entry); const stale=l.status==='جديد'&&(age||0)>120;
-    return `<tr class="clickable rs-${l.status==='ضايع'?'grey':(LS[l.status]||{c:'blue'}).c}" data-view="l:${escHtml(l.id)}" style="animation-delay:${Math.min(i,10)*25}ms"><td><span class="order-id">${escHtml(l.id)}</span></td><td>${escHtml(l.name)}<br><small style="color:var(--muted)">${escHtml(l.phone)}</small></td><td>${escHtml(l.source)}<br><small style="color:var(--muted)">${escHtml(l.campaign&&l.campaign!=='—'?l.campaign:'')}</small></td><td>${escHtml(l.service||'—')}</td><td>${badgeStatus('l',l)}</td><td>${escHtml(l.agent||'—')}</td><td class="nowrap${stale?' age-bad':''}">${escHtml(ageText(age))}</td><td><button class="mini" data-view="l:${escHtml(l.id)}">${t('details')}</button> ${l.status!=='تم الحجز'&&l.status!=='ضايع'?`<button class="mini green" data-book-lead="${escHtml(l.id)}">${t('bookNow')}</button>`:''}</td></tr>`; }).join('')||`<tr><td colspan="8" class="empty">${t('noMatching')}</td></tr>`;
+    return `<tr class="clickable rs-${l.status==='ضايع'?'grey':(LS[l.status]||{c:'blue'}).c}" data-view="l:${escHtml(l.id)}" style="animation-delay:${Math.min(i,10)*25}ms"><td><span class="order-id">${escHtml(l.id)}</span></td><td>${escHtml(l.name)}<br><small style="color:var(--muted)">${escHtml(l.phone)}</small></td><td>${escHtml(l.source)}<br><small style="color:var(--muted)">${escHtml(l.campaign&&l.campaign!=='—'?l.campaign:'')}</small></td><td>${escHtml(l.service||'—')}</td><td>${badgeStatus('l',l)}</td><td>${l.booking_status?`<span class="badge b-${(BS[l.booking_status]||{c:'blue'}).c}">${escHtml(bsLabel(l.booking_status))}</span><br><small style="color:var(--muted)">${escHtml(fmtDay(l.booking_date))} · ${fmtTime(l.booking_time)}</small>`:(l.booking_id?`#${escHtml(l.booking_id)}`:'—')}</td><td>${escHtml(l.agent||'—')}</td><td class="nowrap${stale?' age-bad':''}">${escHtml(ageText(age))}</td><td><button class="mini" data-view="l:${escHtml(l.id)}">${t('details')}</button> ${l.status!=='تم الحجز'&&l.status!=='ضايع'?`<button class="mini green" data-book-lead="${escHtml(l.id)}">${t('bookNow')}</button>`:''}</td></tr>`; }).join('')||`<tr><td colspan="9" class="empty">${t('noMatching')}</td></tr>`;
   const nl=D.leads.filter(l=>l.status==='جديد').length; const nc=$("#navLeadCount"); nc.hidden=!nl; nc.textContent=nl;
 }
 
@@ -2662,9 +2709,12 @@ function renderFinance(){
   $("#finBranches").innerHTML=rows.map(r=>`<tr><td><b>${escHtml(r.name)}</b><br><small style="color:var(--muted)">${escHtml(r.sub)}</small></td><td>${r.n}</td><td>${r.att}</td><td><b>${money(r.col)}</b></td><td>${money(r.exp)}</td><td><div class="occ"><div class="progress"><b class="${r.o>=85?'danger':r.o>=60?'':'warn'}" data-w="${Math.max(r.o,r.sc?3:0)}"></b></div><b>${r.o}%</b></div></td></tr>`).join('')+(rows.length>1?`<tr class="total-row"><td>${t('finTotal')}</td><td>${tot.n}</td><td>${tot.att}</td><td>${money(tot.col)}</td><td>${money(tot.exp)}</td><td>${tot.o}%</td></tr>`:'')||`<tr><td colspan="6" class="empty">${t('noFinData')}</td></tr>`;
   const byKey=(key)=>{ const m={}; rev.forEach(b=>{ const k=b[key]; if(!k) return; m[k]=(m[k]||0)+priceOf(b); }); return Object.keys(m).map(k=>({name:k,count:m[k]})).sort((a,b)=>b.count-a.count); };
   const bars=(items,color)=>{ const tot=sum(items,x=>x.count); const mx=Math.max(...items.map(x=>x.count),1); return items.length?items.slice(0,8).map(it=>`<div class="channel-row"><div class="lbl"><span>${escHtml(it.name)}</span><b>${money(it.count)} · ${pct(it.count,tot)}%</b></div><div class="channel-bar"><b style="background:${color}" data-w="${Math.round(it.count/mx*100)}"></b></div></div>`).join(''):`<div class="panel-empty"><svg><use href="#i-wallet"/></svg>${t('noFinData')}</div>`; };
+  const payMap={}; done.forEach(b=>{ const k=b.payment||t('noPayment'); payMap[k]=(payMap[k]||0)+priceOf(b); });
+  const payItems=Object.keys(payMap).map(k=>({name:k,count:payMap[k]})).sort((a,b)=>b.count-a.count);
+  $("#finPay").innerHTML=bars(payItems,'var(--blue-light)');
   $("#finServices").innerHTML=bars(byKey('service'),'var(--blue)');
   $("#finDoctors").innerHTML=bars(byKey('doctor'),'var(--pink)');
-  requestAnimationFrame(()=>document.querySelectorAll("#finBranches .progress b,#finServices .channel-bar b,#finDoctors .channel-bar b").forEach(b=>b.style.width=b.dataset.w+"%"));
+  requestAnimationFrame(()=>document.querySelectorAll("#finBranches .progress b,#finServices .channel-bar b,#finDoctors .channel-bar b,#finPay .channel-bar b").forEach(b=>b.style.width=b.dataset.w+"%"));
 }
 
 /* ========================= render: reports ========================= */
@@ -2713,7 +2763,7 @@ const CAPS={ // which filter controls make sense per section
   home:{search:1,branch:1}, appointments:{search:1,branch:1,status:1,adv:1,date:1,doctor:1,source:1}, leads:{search:1,status:1,adv:1,source:1},
   doctors:{search:1,branch:1}, branches:{branch:1}, patients:{search:1,branch:1}, finance:{branch:1}, reports:{branch:1}, activity:{}
 };
-function sectionTitle(id){ const k=id[0].toUpperCase()+id.slice(1); return {title:t('title'+k),sub:t('sub'+k)}; }
+function sectionTitle(id){ const k=id[0].toUpperCase()+id.slice(1); const sub=id==='home'?new Date().toLocaleDateString(LANG==='ar'?'ar-EG':'en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}):t('sub'+k); return {title:t('title'+k),sub:sub}; }
 function refreshSectionTitle(){ $("#search").placeholder=t(PH[currentSection]||'searchPlaceholder'); const s=sectionTitle(currentSection); $("#pageTitle").textContent=s.title; $("#pageSub").textContent=s.sub; renderGreeting(); }
 function renderGreeting(){
   const el=$("#greet"); if(!el) return; const u=getUser(); const h=Number(nowStr().slice(11,13));
@@ -2727,6 +2777,7 @@ function showSection(id){
   const caps=CAPS[id]||{};
   $("#filtersBox").hidden=!Object.keys(caps).length;
   $(".search-box").hidden=!caps.search; $("#branch").hidden=!caps.branch; $("#status").hidden=!caps.status;
+  $("#branch").hidden=!caps.branch||!!(D.user&&D.user.branch);
   $("#advancedToggle").hidden=!caps.adv; if(!caps.adv) $("#advancedFilters").classList.remove('open');
   const af=$("#advancedFilters").children; af[0].hidden=af[1].hidden=!caps.date; af[2].hidden=!caps.doctor; af[3].hidden=!caps.source;
   fillSectionFilters(); refreshSectionTitle(); closeDrawer(); renderAll();
@@ -2757,9 +2808,9 @@ function openStatusMenu(ref,anchor){
   const avail=new Set(isB?bsTransitions(rec):lsTransitions(rec)); const all=isB?BS_ORDER:LS_ORDER; const M=isB?BS:LS;
   const menu=document.createElement("div"); menu.id="statusActionMenu"; menu.className="status-action-menu"; menu.setAttribute("role","menu");
   menu.innerHTML=`<div class="status-menu-title">${t('changeStatusTitle')}</div>`+all.filter(v=>!(!isB&&v==='تم الحجز'&&!avail.has(v)&&rec.status!==v)).map(v=>{
-    const cur=v===rec.status, en=avail.has(v), dis=cur||!en; const lab=isB?bsLabel(v):lsLabel(v);
-    const futureBlock=isB&&!en&&(v==='حضر'||v==='لم يحضر')&&rec.date>TODAY()&&(rec.status==='مؤكد'||rec.status==='حضر'||rec.status==='لم يحضر');
-    const note=cur?t('currentStatus'):(futureBlock?t('onlyAfterDate'):(!en?t('notAvailable'):''));
+    const needPerm=isB&&(v==='حضر'||v==='لم يحضر'||rec.status==='حضر')&&!P().attendance; const cur=v===rec.status, en=avail.has(v)&&!needPerm, dis=cur||!en; const lab=isB?bsLabel(v):lsLabel(v);
+    const futureBlock=isB&&!avail.has(v)&&(v==='حضر'||v==='لم يحضر')&&rec.date>TODAY()&&(rec.status==='مؤكد'||rec.status==='حضر'||rec.status==='لم يحضر');
+    const note=cur?t('currentStatus'):(needPerm&&avail.has(v)?t('needAttendPerm'):(futureBlock?t('onlyAfterDate'):(!en?t('notAvailable'):'')));
     return `<button type="button" role="menuitem" class="status-menu-item b-${M[v].c}${cur?' is-current':''}${dis?' is-disabled':''}" data-menu-status="${escHtml(v)}" ${dis?'disabled':''}><span class="status-menu-dot"></span><span class="status-menu-label">${escHtml(lab)}</span>${note?`<small>${escHtml(note)}</small>`:''}</button>`; }).join('');
   document.body.appendChild(menu); anchor.setAttribute("aria-expanded","true");
   positionStatusMenu(menu,anchor); requestAnimationFrame(()=>{ positionStatusMenu(menu,anchor); menu.classList.add("open"); });
@@ -2767,6 +2818,7 @@ function openStatusMenu(ref,anchor){
 }
 function askStatus(kind,id,to){
   const isB=kind==='b'; const rec=isB?bookingById(id):leadById(id); if(!rec) return;
+  if(isB&&to==='حضر'){ if($("#modal").classList.contains('open')) pushNext=true; openAttend(id,false); return; }
   closeModal();
   confirmPending={kind,id,to};
   $("#confirmTitle").textContent=t('confirmChange');
@@ -2781,7 +2833,7 @@ async function runStatus(c){
     if(d.ok){ toast(t('toastUpdated')); await loadData(false); } else toast(errText(d),true);
   }catch(e){ if(e.message!=='unauthorized') toast(t('toastActionFailed'),true); }
 }
-function errText(d){ if(d&&d.error==='forbidden') return t('toastForbidden'); if(d&&d.error==='duplicate_lead') return t('toastDupLead'); if(d&&d.error==='slot_taken') return t('toastSlotTaken'); if(d&&d.error==='duplicate_booking') return t('toastDuplicate'); return t('toastActionFailed'); }
+function errText(d){ if(d&&d.error==='use_attend') return t('needAttendPerm'); if(d&&d.error==='forbidden') return t('toastForbidden'); if(d&&d.error==='duplicate_lead') return t('toastDupLead'); if(d&&d.error==='slot_taken') return t('toastSlotTaken'); if(d&&d.error==='duplicate_booking') return t('toastDuplicate'); return t('toastActionFailed'); }
 
 /* ========================= details modals ========================= */
 function contactLinks(phone){
@@ -2791,14 +2843,14 @@ function contactLinks(phone){
 function openBooking(id){
   const b=bookingById(id); if(!b) return; nextRe=()=>openBooking(id);
   const trans=bsTransitions(b); const canResched=(b.status==='بانتظار الرد'||b.status==='مؤكد');
-  const btn=(s)=>{ const cls=s==='ملغي'||s==='لم يحضر'?'danger':(s==='حضر'||s==='مؤكد'?'good':''); return `<button type="button" class="btn ${cls}" data-ask-status="b:${escHtml(b.id)}:${escHtml(s)}">${escHtml(bsLabel(s))}</button>`; };
-  openModal(`${t('bookingN')} #${b.id}`,`<div class="kv"><div><small>${t('patientLbl')}</small><button type="button" class="plink" data-patient="${escHtml(b.phone||b.patient)}">${escHtml(b.patient)}</button></div><div><small>${t('phoneLbl')}</small><b dir="ltr">${escHtml(b.phone)}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(b.service)}</b></div><div><small>${t('doctorLbl')}</small><b>${escHtml(b.doctor)}</b></div><div><small>${t('branchLbl')}</small><b>${escHtml(b.branch)}</b></div><div><small>${t('dateLbl')}</small><b>${escHtml(fmtDay(b.date))} · ${fmtTime(b.time)}</b></div><div><small>${t('sourceLbl')}</small><b>${escHtml(b.source)}</b></div>${P().finance?`<div><small>${t('amountLbl')}</small><b>${money(priceOf(b))}</b><small>${Number(String(b.amount||'').replace(/[^0-9.]/g,''))>0?t('recordedAmount'):t('defaultPrice')}</small></div>`:''}<div><small>${t('statusLbl')}</small><span class="badge b-${(BS[b.status]||{c:'blue'}).c}">${escHtml(bsLabel(b.status))}</span></div><div class="full"><small>${t('createdLbl')}</small><b>${escHtml(b.created_at)}</b></div></div>${(trans.length||canResched)?`<div class="m-actions">${trans.map(btn).join('')}${canResched?`<button type="button" class="btn" data-reschedule="${escHtml(b.id)}"><svg><use href="#i-calendar"/></svg>${t('rescheduleBtn')}</button>`:''}</div>`:''}${contactLinks(b.phone)}`);
+  const btn=(s)=>{ if((s==='حضر'||s==='لم يحضر')&&!P().attendance) return ''; const cls=s==='ملغي'||s==='لم يحضر'?'danger':(s==='حضر'||s==='مؤكد'?'good':''); return s==='حضر'?`<button type="button" class="btn good" data-attend="${escHtml(b.id)}"><svg><use href="#i-check"/></svg>${t('confirmAttend')}</button>`:`<button type="button" class="btn ${cls}" data-ask-status="b:${escHtml(b.id)}:${escHtml(s)}">${escHtml(bsLabel(s))}</button>`; };
+  openModal(`${t('bookingN')} #${b.id}`,`<div class="kv"><div><small>${t('patientLbl')}</small><button type="button" class="plink" data-patient="${escHtml(b.phone||b.patient)}">${escHtml(b.patient)}</button></div><div><small>${t('phoneLbl')}</small><b dir="ltr">${escHtml(b.phone)}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(b.service)}</b></div><div><small>${t('doctorLbl')}</small><b>${escHtml(b.doctor)}</b></div><div><small>${t('branchLbl')}</small><b>${escHtml(b.branch)}</b></div><div><small>${t('dateLbl')}</small><b>${escHtml(fmtDay(b.date))} · ${fmtTime(b.time)}</b></div><div><small>${t('sourceLbl')}</small><b>${escHtml(b.source)}</b></div>${P().finance?`<div><small>${t('amountLbl')}</small><b>${money(priceOf(b))}</b><small>${Number(String(b.amount||'').replace(/[^0-9.]/g,''))>0?t('recordedAmount'):t('defaultPrice')}</small></div>`:''}<div><small>${t('statusLbl')}</small><span class="badge b-${(BS[b.status]||{c:'blue'}).c}">${escHtml(bsLabel(b.status))}</span></div>${(b.status==='حضر'&&(P().finance||P().attendance)&&(b.payment||b.confirmed_by))?`<div><small>${t('paymentMethod')}</small><b>${escHtml(b.payment||t('noPayment'))}</b></div><div><small>${t('confirmedByLbl')}</small><b>${escHtml(b.confirmed_by||'—')}</b><small>${escHtml(b.confirmed_at||'')}</small></div>`:''}<div class="full"><small>${t('createdLbl')}</small><b>${escHtml(b.created_at)}</b></div></div>${(trans.length||canResched||(b.status==='حضر'&&P().attendance))?`<div class="m-actions">${trans.map(btn).join('')}${canResched?`<button type="button" class="btn" data-reschedule="${escHtml(b.id)}"><svg><use href="#i-calendar"/></svg>${t('rescheduleBtn')}</button>`:''}${(b.status==='حضر'&&P().attendance)?`<button type="button" class="btn" data-attend-edit="${escHtml(b.id)}"><svg><use href="#i-wallet"/></svg>${t('editAmount')}</button>`:''}</div>`:''}${contactLinks(b.phone)}`);
 }
 function openLead(id){
   const l=leadById(id); if(!l) return; nextRe=()=>openLead(id);
   const trans=lsTransitions(l); const bk=l.booking_id&&bookingById(l.booking_id);
   const btn=(s)=>`<button type="button" class="btn ${s==='ضايع'?'danger':'good'}" data-ask-status="l:${escHtml(l.id)}:${escHtml(s)}">${escHtml(lsLabel(s))}</button>`;
-  openModal(`${t('leadN')} #${l.id}`,`<div class="kv"><div><small>${t('colLead')}</small><b>${escHtml(l.name)}</b></div><div><small>${t('phoneLbl')}</small><b dir="ltr">${escHtml(l.phone)}</b></div><div><small>${t('sourceLbl')}</small><b>${escHtml(l.source)}</b></div><div><small>${t('campaignLbl')}</small><b>${escHtml(l.campaign||'—')}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(l.service||'—')}</b></div><div><small>${t('statusLbl')}</small><span class="badge b-${(LS[l.status]||{c:'blue'}).c}">${escHtml(lsLabel(l.status))}</span></div><div><small>${t('entryLbl')}</small><b>${escHtml(fmtDT(l.entry))}</b></div><div><small>${t('updatedLbl')}</small><b>${escHtml(fmtDT(l.updated))}</b></div>${l.loss?`<div class="full"><small>${t('lossLbl')}</small><b>${escHtml(l.loss)}</b></div>`:''}${bk?`<div class="full"><small>${t('linkedBooking')}</small><b>#${escHtml(bk.id)} — ${escHtml(fmtDay(bk.date))} ${fmtTime(bk.time)} — ${escHtml(bk.service)}</b></div>`:''}</div>
+  openModal(`${t('leadN')} #${l.id}`,`<div class="kv"><div><small>${t('colLead')}</small><b>${escHtml(l.name)}</b></div><div><small>${t('phoneLbl')}</small><b dir="ltr">${escHtml(l.phone)}</b></div><div><small>${t('sourceLbl')}</small><b>${escHtml(l.source)}</b></div><div><small>${t('campaignLbl')}</small><b>${escHtml(l.campaign||'—')}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(l.service||'—')}</b></div><div><small>${t('statusLbl')}</small><span class="badge b-${(LS[l.status]||{c:'blue'}).c}">${escHtml(lsLabel(l.status))}</span></div><div><small>${t('entryLbl')}</small><b>${escHtml(fmtDT(l.entry))}</b></div><div><small>${t('updatedLbl')}</small><b>${escHtml(fmtDT(l.updated))}</b></div>${l.loss?`<div class="full"><small>${t('lossLbl')}</small><b>${escHtml(l.loss)}</b></div>`:''}${(bk||l.booking_status)?`<div class="full"><small>${t('linkedBooking')}</small><b>#${escHtml(l.booking_id)} — ${escHtml(fmtDay((bk||{date:l.booking_date}).date))} ${fmtTime((bk||{time:l.booking_time}).time)}${bk?' — '+escHtml(bk.service):''}</b> <span class="badge b-${(BS[l.booking_status||(bk&&bk.status)]||{c:'blue'}).c}">${escHtml(bsLabel(l.booking_status||(bk&&bk.status)))}</span></div>`:''}</div>
   <div class="fld" style="margin-bottom:12px"><label>${t('agentLbl')}</label><div style="display:flex;gap:8px"><input id="agentInput" value="${escHtml(l.agent||'')}" placeholder="${t('agentPlaceholder')}" maxlength="60"><button type="button" class="btn" data-save-agent="${escHtml(l.id)}">${t('saveAgent')}</button></div></div>
   <div class="m-actions">${l.status!=='تم الحجز'&&l.status!=='ضايع'?`<button type="button" class="btn primary" data-book-lead="${escHtml(l.id)}"><svg><use href="#i-calendar"/></svg>${t('bookNow')}</button>`:''}${trans.map(btn).join('')}</div>${contactLinks(l.phone)}`);
 }
@@ -2826,7 +2878,7 @@ function dayLabel(d){ const today=TODAY(); if(d===today) return t('todayShort');
 function openBookingForm(lead,opts){
   opts=opts||{}; const rs=opts.resched||null; const pre=opts.pre||{};
   bk={slot:null,leadId:lead?String(lead.id):'',resched:rs,pre:{...pre},doctor:'',date:rs?(rs.date<TODAY()?'':rs.date):(pre.date||'')};
-  const today=TODAY(); const brSel=$("#branch").value!=='all'?$("#branch").value:'';
+  const today=TODAY(); const brSel=(D.user&&D.user.branch)?D.user.branch:($("#branch").value!=='all'?$("#branch").value:'');
   const svcMatch=rs?rs.service:(lead&&D.services.find(s=>s.service===lead.service)?lead.service:'');
   const srcDefault=lead?(/واتساب/.test(lead.source)?'واتساب':'إعلان'):'كول سنتر';
   const patient=rs?rs.patient:(pre.patient||(lead?lead.name:''));
@@ -2904,6 +2956,29 @@ async function submitBooking(e){
   $("#bkSave").disabled=false;
 }
 
+/* ========================= attendance + payment ========================= */
+function openAttend(id,edit){
+  const b=bookingById(id); if(!b) return; nextRe=()=>openAttend(id,edit);
+  const price=priceOf(b); const recorded=Number(String(b.amount||'').replace(/[^0-9.]/g,''))||0; const cur=edit?(recorded||price):price;
+  openModal(edit?t('editAmount'):t('attendTitle'),`<div class="kv"><div><small>${t('patientLbl')}</small><b>${escHtml(b.patient)}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(b.service)}</b></div><div><small>${t('doctorLbl')}</small><b>${escHtml(b.doctor)}</b></div><div><small>${t('branchLbl')}</small><b>${escHtml(b.branch)}</b></div></div>
+  <form id="attForm"><div class="fgrid"><div class="fld"><label>${t('amountPaid')} (${t('currency')})</label><input id="attAmount" type="number" min="0" step="1" inputmode="decimal" required value="${cur||''}"></div>
+  <div class="fld"><label>${t('paymentMethod')}</label><div class="paychips" id="attPay" data-sel="${edit?escHtml(b.payment||''):''}">${PAYS.map(p=>`<button type="button" class="paychip${edit&&b.payment===p?' on':''}" data-pay="${p}">${p}</button>`).join('')}</div></div></div>
+  ${price&&!edit?`<div class="att-note">${t('defaultAmountNote')}</div>`:''}
+  <div class="login-error" id="attErr" hidden></div><button type="submit" class="btn primary auth-submit" id="attSave"><svg><use href="#i-check"/></svg><span>${edit?t('saveAmount'):t('confirmAttend')}</span></button></form>`);
+  $("#attForm").addEventListener('submit',async e=>{
+    e.preventDefault(); const err=$("#attErr"); err.hidden=true; const pay=$("#attPay").dataset.sel; const amount=$("#attAmount").value;
+    if(!pay){ err.hidden=false; err.textContent=t('payPickHint'); return; }
+    if(amount===''||Number(amount)<0){ err.hidden=false; err.textContent=t('fillAll'); return; }
+    $("#attSave").disabled=true;
+    try{
+      const d=await act(edit?'booking_amount':'booking_attend',{id,amount,payment:pay});
+      if(d.ok){ closeModal(); toast(edit?t('toastAmountSaved'):t('toastAttended')); await loadData(false); }
+      else{ err.hidden=false; err.textContent=errText(d); }
+    }catch(ex){ if(ex.message!=='unauthorized'){ err.hidden=false; err.textContent=t('toastActionFailed'); } }
+    $("#attSave").disabled=false;
+  });
+}
+
 /* ========================= new lead modal ========================= */
 const LEAD_SOURCES_UI=['اتصال','واتساب','فورم الموقع','إعلان فيسبوك','إعلان إنستجرام','تعليق إنستجرام','زيارة'];
 function openLeadForm(){
@@ -2941,6 +3016,51 @@ function openPatient(key){ nextRe=()=>openPatient(key);
   <h3 style="margin:6px 0 8px">${t('pHistory')}</h3><div class="tl">${bks.map(b=>{ const m=BS[b.status]||{c:'blue'}; return `<div class="tl-item ${cmap[m.c]||''} clickable" data-view="b:${escHtml(b.id)}"><div><b>${escHtml(b.service)}</b><small>${escHtml(fmtDay(b.date))} · ${fmtTime(b.time)} · ${escHtml(b.doctor)} · ${escHtml(b.branch)}</small></div><span class="badge b-${m.c}">${escHtml(bsLabel(b.status))}</span></div>`; }).join('')}</div>
   ${leads.length?`<h3 style="margin:6px 0 8px">${t('pLeads')}</h3><div class="tl">${leads.map(l=>{ const m=LS[l.status]||{c:'blue'}; return `<div class="tl-item ${cmap[m.c]||''} clickable" data-view="l:${escHtml(l.id)}"><div><b>${escHtml(l.source)}${l.campaign&&l.campaign!=='—'?' · '+escHtml(l.campaign):''}</b><small>${escHtml(fmtDT(l.entry))} · ${escHtml(l.service||'—')}</small></div><span class="badge b-${m.c}">${escHtml(lsLabel(l.status))}</span></div>`; }).join('')}</div>`:''}
   <div class="m-actions"><button type="button" class="btn primary" data-book-patient="${escHtml(key)}"><svg><use href="#i-plus"/></svg>${t('pNew')}</button></div>${contactLinks(phone)}`);
+}
+let myPhoto=null;
+function paintAvatar(){ const av=$("#userAvatar"); if(!av) return; if(myPhoto) av.innerHTML=`<img src="${myPhoto}" alt="">`; else{ const u=getUser()||{}; av.textContent=(u.name||u.email||"?").trim().charAt(0).toUpperCase(); } }
+async function loadMyPhoto(){
+  if(!D.user||!D.user.has_photo){ myPhoto=''; paintAvatar(); return; }
+  if(myPhoto===null||myPhoto===''){ try{ const d=await fetchJson(API.data+"?token="+encodeURIComponent(getToken()||'')+"&photo=1",{method:'GET'}); myPhoto=d.ok?d.photo||'':''; }catch(e){ myPhoto=''; } }
+  paintAvatar();
+}
+function resizePhoto(file){
+  return new Promise((res,rej)=>{
+    const r=new FileReader(); r.onerror=()=>rej(new Error('read'));
+    r.onload=()=>{ const im=new Image(); im.onerror=()=>rej(new Error('img'));
+      im.onload=()=>{ const max=240, k=Math.min(1,max/Math.max(im.width,im.height)); const c=document.createElement('canvas'); c.width=Math.round(im.width*k); c.height=Math.round(im.height*k);
+        const g=c.getContext('2d'); g.fillStyle='#fff'; g.fillRect(0,0,c.width,c.height); g.drawImage(im,0,0,c.width,c.height);
+        let q=0.8, out=c.toDataURL('image/jpeg',q); while(out.length>55000&&q>0.3){ q-=0.1; out=c.toDataURL('image/jpeg',q); } res(out); };
+      im.src=r.result; };
+    r.readAsDataURL(file);
+  });
+}
+
+function openProfile(){
+  closeDrawer(); const u=D.user||{}; nextRe=null; const st={photo:'',remove:false};
+  openModal(t('myProfile'),`<form id="prForm"><div class="p-edit-ph"><div class="p-ph big" id="prPh">${myPhoto?`<img src="${myPhoto}" alt="">`:escHtml((u.name||u.email||'?').trim().charAt(0).toUpperCase())}</div><div class="p-edit-btns"><label class="btn"><input type="file" id="prFile" accept="image/*" hidden>${t('pChoosePhoto')}</label><button type="button" class="btn" id="prRm"${myPhoto?'':' hidden'}>${t('pRemovePhoto')}</button></div></div>
+  <div class="kv"><div><small>${t('fieldName')}</small><b>${escHtml(u.name||'—')}</b></div><div><small>${t('fieldEmail')}</small><b dir="ltr">${escHtml(u.email||'—')}</b></div></div>
+  <div class="fgrid"><div class="fld"><label>${t('pBirth')}</label><input id="prBirth" type="date" max="${TODAY()}" value="${escHtml(u.birth_date||'')}"></div>
+  <div class="fld"><label>${t('pGender')}</label><div class="paychips" id="prGender" data-sel="${escHtml(u.gender||'')}"><button type="button" class="paychip${u.gender==='ذكر'?' on':''}" data-g="ذكر">${t('pMale')}</button><button type="button" class="paychip${u.gender==='أنثى'?' on':''}" data-g="أنثى">${t('pFemale')}</button></div></div>
+  <div class="fld"><label>${t('fieldPhone')}</label><input id="prPhone" type="tel" inputmode="tel" dir="ltr" maxlength="20" value="${escHtml(u.phone||'')}"></div></div>
+  <div class="login-error" id="prErr" hidden></div><button type="submit" class="btn primary auth-submit" id="prSave"><svg><use href="#i-check"/></svg><span>${t('saveProfile')}</span></button></form>`);
+  $("#prGender").addEventListener('click',e=>{ const b=e.target.closest('[data-g]'); if(!b) return; const g=$("#prGender"); const same=g.dataset.sel===b.dataset.g; g.dataset.sel=same?'':b.dataset.g; g.querySelectorAll('.paychip').forEach(c=>c.classList.toggle('on',!same&&c===b)); });
+  $("#prFile").addEventListener('change',async e=>{ const f=e.target.files[0]; if(!f) return; const err=$("#prErr"); err.hidden=true;
+    try{ st.photo=await resizePhoto(f); st.remove=false; $("#prPh").innerHTML=`<img src="${st.photo}" alt="">`; $("#prRm").hidden=false; }catch(ex){ err.hidden=false; err.textContent=t('pBadPhoto'); } });
+  $("#prRm").addEventListener('click',()=>{ st.photo=''; st.remove=true; $("#prPh").textContent=(u.name||u.email||'?').trim().charAt(0).toUpperCase(); $("#prRm").hidden=true; });
+  $("#prForm").addEventListener('submit',async e=>{
+    e.preventDefault(); const err=$("#prErr"); err.hidden=true; const phone=$("#prPhone").value.trim();
+    if(phone&&!/^\+?[0-9 ]{8,20}$/.test(phone)){ err.hidden=false; err.textContent=t('fillAll'); return; }
+    $("#prSave").disabled=true;
+    const p={birth_date:$("#prBirth").value,gender:$("#prGender").dataset.sel,phone};
+    if(st.photo) p.photo=st.photo; else if(st.remove) p.remove_photo='1';
+    try{
+      const d=await act('profile_save',p);
+      if(d.ok){ if(st.photo) myPhoto=st.photo; else if(st.remove) myPhoto=''; closeModal(); toast(t('toastProfileSaved')); await loadData(false); paintAvatar(); }
+      else{ err.hidden=false; err.textContent=d.error==='invalid_photo'?t('pBadPhoto'):errText(d); }
+    }catch(ex){ if(ex.message!=='unauthorized'){ err.hidden=false; err.textContent=t('toastActionFailed'); } }
+    $("#prSave").disabled=false;
+  });
 }
 
 /* ========================= day agenda ========================= */
@@ -3012,6 +3132,12 @@ $("#mSyncBtn").addEventListener("click",()=>{ $("#mSyncIco").classList.add("spin
 $("#refresh").onclick=()=>{ $("#refreshIco").classList.add("spin"); loadData(true).finally(()=>$("#refreshIco").classList.remove("spin")); };
 $("#quick").onclick=()=>openBookingForm(null);
 $("#quickLead").onclick=()=>openLeadForm();
+const mFab=$("#mFab"); function fabToggle(o){ mFab.classList.toggle('open',o); $("#mFabMenu").hidden=!o; }
+$("#mFabBtn").onclick=()=>{ if(!$("#mFabBook").hidden&&$("#mFabLead").hidden) return openBookingForm(null); if($("#mFabBook").hidden&&!$("#mFabLead").hidden) return openLeadForm(); fabToggle(!mFab.classList.contains('open')); };
+$("#mFabBook").onclick=()=>{ fabToggle(false); openBookingForm(null); };
+$("#mFabLead").onclick=()=>{ fabToggle(false); openLeadForm(); };
+document.addEventListener('click',e=>{ if(!e.target.closest('#mFab')) fabToggle(false); });
+function setAppH(){ document.documentElement.style.setProperty('--app-h',window.innerHeight+'px'); } setAppH(); window.addEventListener('resize',setAppH);
 document.querySelectorAll('[data-fin]').forEach(b=>b.addEventListener('click',()=>{ finPeriod=b.dataset.fin; renderFinance(); }));
 $("#viewList").onclick=()=>setAgenda(false); $("#viewAgenda").onclick=()=>setAgenda(true);
 $("#agPrev").onclick=()=>{ agendaDate=addDays(agendaDate||TODAY(),LANG==='ar'?-1:-1); renderAgenda(); };
@@ -3049,6 +3175,9 @@ document.addEventListener("click",e=>{
   const rsb=e.target.closest("[data-reschedule]"); if(rsb){ const b=bookingById(rsb.dataset.reschedule); if(b){ closeModal(); openBookingForm(null,{resched:b}); } return; }
   const agc=e.target.closest("[data-ag]"); if(agc){ const [date,time,doctor,branch]=agc.dataset.ag.split('|'); openBookingForm(null,{pre:{date,time,doctor,branch}}); return; }
   if(!e.target.closest(".search-box")) $("#gsearchPop").hidden=true;
+  const att=e.target.closest("[data-attend]"); if(att){ if(att.closest('#modal')) pushNext=true; openAttend(att.dataset.attend,false); return; }
+  const atte=e.target.closest("[data-attend-edit]"); if(atte){ if(atte.closest('#modal')) pushNext=true; openAttend(atte.dataset.attendEdit,true); return; }
+  const pyc=e.target.closest("[data-pay]"); if(pyc){ const box=pyc.closest('#attPay'); if(box){ box.dataset.sel=pyc.dataset.pay; box.querySelectorAll('.paychip').forEach(x=>x.classList.toggle('on',x===pyc)); } return; }
   const bl=e.target.closest("[data-book-lead]"); if(bl){ const l=leadById(bl.dataset.bookLead); if(l){ closeModal(); openBookingForm(l); } return; }
   const sv=e.target.closest("[data-save-agent]"); if(sv){ saveAgent(sv.dataset.saveAgent); return; }
   const dyc=e.target.closest("[data-day]"); if(dyc){ bk.date=dyc.dataset.day; bk.doctor=''; bk.slot=null; $("#bkDate").value=bk.date; document.querySelectorAll('#bkDays .daychip').forEach(x=>x.classList.toggle('on',x===dyc)); refreshDoctors(); return; }
@@ -3096,7 +3225,7 @@ function forceLogout(msg){ clearToken(); setUser(null); booted=false; showLogin(
 function renderUserChip(){
   const u=getUser(); if(!u||!(u.name||u.email)){ $("#userChip").hidden=true; return; }
   $("#userChip").hidden=false; $("#userName").textContent=u.name||u.email; $("#userEmail").textContent=u.email||"";
-  $("#userAvatar").textContent=(u.name||u.email||"?").trim().charAt(0).toUpperCase();
+  paintAvatar();
 }
 const AUTH_CODES={bad_credentials:'loginFailed',pending:'accountPending',disabled:'accountDisabled',email_taken:'emailTaken',invalid_email:'invalidEmail',weak_password:'pwTooShort',invalid_name:'invalidName'};
 function authErr(data,fallback){ const k=data&&AUTH_CODES[data.code]; return k?t(k):(data&&data.message)||t(fallback); }
@@ -3132,6 +3261,7 @@ $("#signupForm").addEventListener("submit",async e=>{
   }catch(err){ authMsg(msg,t('loginConnFailed')); }
   $("#signupSubmit").disabled=false;
 });
+$("#userChip").addEventListener("click",e=>{ if(e.target.closest('#logoutBtn')) return; openProfile(); });
 $("#logoutBtn").addEventListener("click",()=>{ clearToken(); setUser(null); booted=false; showLogin(); });
 
 /* ---------- mobile table labels ---------- */
