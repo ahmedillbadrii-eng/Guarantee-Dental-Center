@@ -47,13 +47,13 @@
 html[data-theme="dark"]{
   --ink:#F6EEE2; --muted:#A18F76; --muted-2:#A18F76;
   --bg:#17110B; --panel:#221810; --panel-2:#1C140D; --line:#3A2B1D; --line-soft:#2E2217;
-  --blue:#8A5A2B; --blue-light:#E3C08E; --blue-soft:rgba(91,151,245,.16); --blue-ink:#F0DDC0;
+  --blue:#8A5A2B; --blue-light:#E3C08E; --blue-soft:rgba(217,178,124,.16); --blue-ink:#F0DDC0;
   --pink:#E8A48E; --pink-light:#F0BCAA; --pink-soft:rgba(255,88,179,.16);
   --gold:#DAB853; --gold-soft:rgba(218,184,83,.14); --gold-border:rgba(218,184,83,.4);
   --success:#34D399; --success-bg:rgba(52,211,153,.14); --success-ink:#7BE8B0;
   --warning:#F4B740; --warning-bg:rgba(244,183,64,.14); --warning-ink:#FFCF87;
   --danger:#F87171; --danger-bg:rgba(248,113,113,.14); --danger-ink:#FFB3B3;
-  --info:#E3C08E; --info-bg:rgba(34,195,230,.14);
+  --info:#E3C08E; --info-bg:rgba(227,192,142,.14);
   --sh-sm:0 2px 10px rgba(0,0,0,.35);
   --sh-md:0 10px 28px rgba(0,0,0,.42);
   --sh-lg:0 26px 60px rgba(0,0,0,.58);
@@ -176,27 +176,27 @@ html[data-theme="dark"] .live-strip.offline{color:#FFCF87}
 .badge{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:8px;font-size:10px;font-weight:700;letter-spacing:.05px}
 .status-click{cursor:pointer;user-select:none;transition:transform .12s,box-shadow .12s}.status-click:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
 /* ---------- STATUS ACTION MENU ---------- */
-.status-action{appearance:none;-webkit-appearance:none;border:1px solid var(--status-border,#E5D9C7);min-width:118px;min-height:34px;padding:7px 10px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font:700 10px/1.2 var(--font);cursor:pointer;transition:box-shadow .15s,transform .12s,filter .15s;box-shadow:0 1px 2px rgba(18,32,54,.04),inset 0 1px 0 rgba(255,255,255,.55)}
-.status-chevron{font-size:14px;line-height:1;opacity:.72;transition:transform .15s}.status-action[aria-expanded="true"] .status-chevron{transform:rotate(180deg)}.status-action:hover{filter:brightness(.98);transform:translateY(-1px);box-shadow:0 3px 10px rgba(18,32,54,.09)}
+.status-action{appearance:none;-webkit-appearance:none;border:1px solid var(--status-border,#E5D9C7);min-width:118px;min-height:34px;padding:7px 10px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font:700 10px/1.2 var(--font);cursor:pointer;transition:box-shadow .15s,transform .12s,filter .15s;box-shadow:0 1px 2px rgba(46,34,20,.04),inset 0 1px 0 rgba(255,255,255,.55)}
+.status-chevron{font-size:14px;line-height:1;opacity:.72;transition:transform .15s}.status-action[aria-expanded="true"] .status-chevron{transform:rotate(180deg)}.status-action:hover{filter:brightness(.98);transform:translateY(-1px);box-shadow:0 3px 10px rgba(46,34,20,.09)}
 .status-action.b-yellow{background:#FFF8E9;color:#8A6518;border-color:#EAD7AD}.status-action.b-blue{background:#F6EEE3;color:#7A5A33;border-color:#DCCDB8}.status-action.b-green{background:#EEFAF3;color:#237A4A;border-color:#C8E7D4}.status-action.b-red{background:#FFF0F0;color:#B42F35;border-color:#F1C9CB}
-.status-action-menu{position:fixed;z-index:100000;min-width:190px;max-width:min(240px,calc(100vw - 16px));padding:6px;border:1px solid var(--line);border-radius:14px;background:var(--panel);box-shadow:0 18px 50px rgba(18,32,54,.22);opacity:0;transform:translateY(-4px) scale(.98);pointer-events:none;visibility:hidden;transition:opacity .12s,transform .12s,visibility 0s linear .12s}.status-action-menu.open{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition:opacity .12s,transform .12s,visibility 0s}
+.status-action-menu{position:fixed;z-index:100000;min-width:190px;max-width:min(240px,calc(100vw - 16px));padding:6px;border:1px solid var(--line);border-radius:14px;background:var(--panel);box-shadow:0 18px 50px rgba(46,34,20,.22);opacity:0;transform:translateY(-4px) scale(.98);pointer-events:none;visibility:hidden;transition:opacity .12s,transform .12s,visibility 0s linear .12s}.status-action-menu.open{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition:opacity .12s,transform .12s,visibility 0s}
 .status-menu-item{width:100%;border:0;background:transparent;border-radius:10px;padding:10px 11px;display:flex;align-items:center;gap:9px;text-align:start;font:700 11px/1.2 var(--font);color:var(--ink);cursor:pointer}.status-menu-item:hover:not(:disabled){background:var(--soft)}.status-menu-item.is-disabled{opacity:.42;cursor:not-allowed}.status-menu-item.is-current{box-shadow:inset 0 0 0 1px var(--line);background:var(--soft)}.status-menu-item small{margin-inline-start:auto;font-size:9px;font-weight:600;opacity:.7;white-space:nowrap}.status-menu-title{padding:7px 10px 6px;color:var(--muted);font:700 9px/1.2 var(--font);border-bottom:1px solid var(--line);margin-bottom:4px}.status-menu-dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}.status-menu-item.b-yellow{color:#8A6518}.status-menu-item.b-blue{color:#7A5A33}.status-menu-item.b-green{color:#237A4A}.status-menu-item.b-red{color:#B42F35}@media(max-width:860px){.status-action{min-width:108px}.status-action-menu{min-width:180px}}
 .status-select{appearance:none;-webkit-appearance:none;border:0;outline:0;cursor:pointer;font:inherit;font-size:11px;font-weight:700;line-height:1.2;padding:8px 30px 8px 12px;border-radius:999px;min-width:118px;text-align:center;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 13px) 50%,calc(100% - 9px) 50%;background-size:4px 4px,4px 4px;background-repeat:no-repeat;transition:filter .15s,box-shadow .15s,transform .12s}.status-select:hover{filter:brightness(.97);box-shadow:0 4px 12px rgba(0,0,0,.08);transform:translateY(-1px)}.status-select:focus{box-shadow:0 0 0 3px var(--blue-soft)}.status-select.b-yellow{background-color:var(--warning-bg);color:var(--warning-ink)}.status-select.b-blue{background-color:var(--blue-soft);color:var(--blue-ink)}.status-select.b-green{background-color:var(--success-bg);color:var(--success-ink)}.status-select option{font-weight:700;background:#fff;color:#2E2217}.status-select.b-yellow option[value="pending"]{color:var(--warning-ink)}.status-select.b-blue option[value="paid"],.status-select.b-blue option[value="processing"]{color:var(--blue-ink)}.status-select.b-green option[value="done"]{color:var(--success-ink)}
 
 /* ---------- ENTERPRISE STATUS SYSTEM ---------- */
 .status-select{
   border:1px solid var(--status-border,#E5D9C7);
-  box-shadow:0 1px 2px rgba(18,32,54,.04), inset 0 1px 0 rgba(255,255,255,.55);
+  box-shadow:0 1px 2px rgba(46,34,20,.04), inset 0 1px 0 rgba(255,255,255,.55);
   letter-spacing:.05px;
   min-height:34px;
 }
 .status-select:hover{
   filter:none;
-  box-shadow:0 2px 8px rgba(18,32,54,.08);
+  box-shadow:0 2px 8px rgba(46,34,20,.08);
 }
 .status-select:focus{
   outline:none;
-  box-shadow:0 0 0 3px rgba(49,91,155,.12),0 2px 8px rgba(18,32,54,.06);
+  box-shadow:0 0 0 3px rgba(122,90,51,.12),0 2px 8px rgba(46,34,20,.06);
 }
 .status-select.b-yellow{
   --status-border:#EAD7AD;
@@ -522,7 +522,7 @@ html[data-theme="dark"] .kpis .kpi::before{background:radial-gradient(420px circ
 .integ-ico svg{width:21px;height:21px}
 .integ-ico::after{content:"";position:absolute;inset:1px 1px 52% 1px;border-radius:12px 12px 8px 8px;background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,0))}
 .integ-ico.wa{background:linear-gradient(145deg,#4ADE80,#16A34A);box-shadow:0 8px 16px rgba(22,163,74,.3)}
-.integ-ico.tg{background:linear-gradient(145deg,#D9B27C,#C9A06A);box-shadow:0 8px 16px rgba(14,165,233,.3)}
+.integ-ico.tg{background:linear-gradient(145deg,#D9B27C,#C9A06A);box-shadow:0 8px 16px rgba(201,160,106,.3)}
 .integ-ico.n8{background:linear-gradient(145deg,#E39A84,#B25A44);box-shadow:0 8px 16px rgba(224,30,140,.3)}
 .integ-ico.gs{background:linear-gradient(145deg,#34D399,#0F9D58);box-shadow:0 8px 16px rgba(15,157,88,.3)}
 .integ-meta{flex:1;min-width:0}
@@ -587,9 +587,9 @@ img,svg{max-width:100%}
 
 /* splash */
 .splash{position:fixed;inset:0;z-index:300;display:grid;place-items:center;overflow:hidden;
-  background:radial-gradient(700px 420px at 50% 38%,rgba(79,142,240,.28),transparent 70%),linear-gradient(170deg,#3E2713,#2A1A0C 70%);transition:opacity .5s ease,visibility .5s ease}
+  background:radial-gradient(700px 420px at 50% 38%,rgba(201,160,106,.28),transparent 70%),linear-gradient(170deg,#3E2713,#2A1A0C 70%);transition:opacity .5s ease,visibility .5s ease}
 .splash.hide{opacity:0;visibility:hidden}
-.splash-glow{position:absolute;width:360px;height:360px;border-radius:50%;background:conic-gradient(from 0deg,rgba(224,30,140,.0),rgba(224,30,140,.35),rgba(79,142,240,.35),rgba(224,30,140,0));filter:blur(40px);animation:spinSlow 6s linear infinite;opacity:.7}
+.splash-glow{position:absolute;width:360px;height:360px;border-radius:50%;background:conic-gradient(from 0deg,rgba(224,30,140,.0),rgba(224,30,140,.35),rgba(201,160,106,.35),rgba(224,30,140,0));filter:blur(40px);animation:spinSlow 6s linear infinite;opacity:.7}
 @keyframes spinSlow{to{transform:rotate(360deg)}}
 .splash-inner{position:relative;display:flex;flex-direction:column;align-items:center;perspective:800px}
 .splash-logo{width:112px;height:112px;border-radius:30px;background:#fff;padding:8px;box-shadow:0 30px 60px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.2);
@@ -875,7 +875,7 @@ html{scroll-behavior:smooth;text-rendering:optimizeLegibility}
 body{
   background:
     radial-gradient(1100px 620px at 88% -8%,rgba(224,30,140,.075),transparent 60%),
-    radial-gradient(900px 560px at 6% 4%,rgba(79,111,173,.10),transparent 58%),
+    radial-gradient(900px 560px at 6% 4%,rgba(138,90,43,.10),transparent 58%),
     radial-gradient(800px 600px at 50% 110%,rgba(185,139,35,.06),transparent 60%),
     var(--bg);
   background-attachment:fixed;
@@ -885,7 +885,7 @@ body{
 html[data-theme="dark"] body{
   background:
     radial-gradient(1000px 600px at 88% -8%,rgba(255,88,179,.10),transparent 60%),
-    radial-gradient(900px 560px at 6% 4%,rgba(91,151,245,.10),transparent 58%),
+    radial-gradient(900px 560px at 6% 4%,rgba(217,178,124,.10),transparent 58%),
     #000;
   background-attachment:fixed;
 }
@@ -943,7 +943,7 @@ html[data-theme="dark"] .lang-btn.active{background:#636366;color:#fff}
 .live-strip{background:var(--glass);border:0;box-shadow:0 0 0 1px var(--line-soft);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);font-weight:600}
 .filters{background:var(--glass);border:0;border-radius:20px;box-shadow:0 0 0 1px var(--line-soft),var(--sh-sm);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}
 .search-box input,.filters select{background:rgba(120,120,128,.12);border:0;border-radius:12px;transition:background .2s var(--ease),box-shadow .2s var(--ease)}
-.filters input:focus,.filters select:focus{background:var(--panel);border:0;box-shadow:0 0 0 4px rgba(79,142,240,.28)}
+.filters input:focus,.filters select:focus{background:var(--panel);border:0;box-shadow:0 0 0 4px rgba(201,160,106,.28)}
 
 /* ---- Tables: airy rows, soft hover, glass header ---- */
 .table th{background:var(--glass);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
@@ -960,14 +960,14 @@ html[data-theme="dark"] .table tbody tr:hover{background:rgba(255,255,255,.04)}
 .status-action-menu{border:0;border-radius:16px;box-shadow:0 0 0 1px var(--line-soft),var(--sh-lg);-webkit-backdrop-filter:saturate(180%) blur(24px);backdrop-filter:saturate(180%) blur(24px);background:var(--glass)}
 
 /* ---- Focus: one consistent, visible ring ---- */
-button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:3px solid rgba(79,142,240,.55);outline-offset:2px;border-radius:10px}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:3px solid rgba(201,160,106,.55);outline-offset:2px;border-radius:10px}
 
 /* ---- Scrollbars: slim, native-feeling ---- */
 *{scrollbar-width:thin;scrollbar-color:rgba(120,120,128,.4) transparent}
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-thumb{background:rgba(120,120,128,.38);border-radius:999px;border:3px solid transparent;background-clip:content-box}
 ::-webkit-scrollbar-track{background:transparent}
-::selection{background:rgba(79,142,240,.28)}
+::selection{background:rgba(201,160,106,.28)}
 
 /* ---- Mobile: safe-area aware, comfortable padding ---- */
 @media (max-width:860px){
@@ -1026,7 +1026,7 @@ html[data-theme="dark"] .live-strip,html[data-theme="dark"] .filters{box-shadow:
 .auth-tab.active{box-shadow:0 1px 3px rgba(0,0,0,.14),0 0 0 .5px rgba(0,0,0,.04)}
 html[data-theme="dark"] .auth-tab.active{background:#636366;color:#fff}
 .auth-field input{background:rgba(120,120,128,.12);border:0;border-radius:13px;transition:background .2s var(--ease),box-shadow .2s var(--ease)}
-.auth-field input:focus{border:0;box-shadow:0 0 0 4px rgba(79,142,240,.28)}
+.auth-field input:focus{border:0;box-shadow:0 0 0 4px rgba(201,160,106,.28)}
 .auth-submit{border-radius:999px}
 
 /* Touch targets: at least 44px on touch devices */
@@ -1182,7 +1182,7 @@ html .kpis .kpi{grid-column:auto!important;border-radius:24px}
 html .kpis .kpi:nth-child(2){grid-column:span 2!important;order:-2}
 html .kpis .kpi:nth-child(1){order:-1}
 html .kpis .kpi:nth-child(2){color:#fff;border-color:transparent!important;
-  box-shadow:0 26px 44px rgba(62,39,19,.36),inset 0 2px 0 rgba(255,255,255,.22),inset 0 -8px 18px rgba(5,25,60,.30)!important;overflow:hidden;isolation:isolate}
+  box-shadow:0 26px 44px rgba(62,39,19,.36),inset 0 2px 0 rgba(255,255,255,.22),inset 0 -8px 18px rgba(42,26,12,.30)!important;overflow:hidden;isolation:isolate}
 html .kpis .kpi:nth-child(2) *{color:#fff}
 html .kpis .kpi:nth-child(2) .trend,html .kpis .kpi:nth-child(2) .kpi-top span:first-child{color:#EBDDC8}
 html .kpis .kpi:nth-child(2) .num{font-size:clamp(30px,3.2vw,42px)}
@@ -1336,8 +1336,8 @@ html .kpi-top > span:first-child{min-width:0;line-height:1.35}
   --blur:blur(20px) saturate(1.7);
 }
 html[data-theme="dark"]{
-  --glass:rgba(16,38,76,.52);
-  --glass-2:rgba(16,38,76,.36);
+  --glass:rgba(42,30,18,.52);
+  --glass-2:rgba(42,30,18,.36);
   --glass-line:rgba(255,255,255,.10);
   --glass-edge:rgba(0,0,0,.35);
   --glass-sh:0 14px 38px rgba(0,0,0,.42),0 2px 6px rgba(0,0,0,.25);
@@ -1422,7 +1422,7 @@ html .nav button{color:var(--muted)}
 
 /* hero KPI: keep brand blue, add glass gloss on top */
 html .kpis .kpi:nth-child(2){border:1px solid rgba(255,255,255,.28)!important;
-  box-shadow:0 24px 46px rgba(62,39,19,.34),inset 0 1px 0 rgba(255,255,255,.4),inset 0 -10px 22px rgba(5,25,60,.28)!important;
+  box-shadow:0 24px 46px rgba(62,39,19,.34),inset 0 1px 0 rgba(255,255,255,.4),inset 0 -10px 22px rgba(42,26,12,.28)!important;
   -webkit-backdrop-filter:none;backdrop-filter:none}
 html .kpis .kpi:nth-child(2)::before{content:"";position:absolute;inset:0 0 55% 0;z-index:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0));border-radius:24px 24px 60% 60%/24px 24px 30% 30%}
@@ -1496,7 +1496,7 @@ html #ordersTable .mini-actions{flex-wrap:nowrap}
 html .kpis .kpi:nth-child(2){background:var(--hero)!important}
 html .kpis .kpi:nth-child(2)::after{border-top-width:5px;opacity:.75}
 /* placeholder button with no real action yet */
-html #quick{display:none!important}
+
 @media (max-width:860px){
   html body{font-size:13.5px}
   html .kpi .num{font-size:20px}
@@ -1544,7 +1544,7 @@ html .table td:last-child:has(.mini-actions) .mini-actions{margin-top:0}
 .chip{padding:3px 10px;border-radius:999px;background:var(--blue-soft);color:var(--blue-ink);font-size:11px;font-weight:600}
 .doc-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .doc-stats div{background:var(--panel-2);border-radius:var(--r-sm);padding:9px 12px}
-.doc-stats small{display:block;color:var(--muted);font-size:11px}.doc-stats b{font-size:15px}
+.doc-stats small{display:block;color:var(--muted);font-size:11px}.doc-stats b{font-size:13.5px;line-height:1.3;display:block}
 .fun-row{margin-bottom:14px}.fun-row .lbl{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px}
 .fun-bar{height:10px;border-radius:5px;background:var(--line-soft);overflow:hidden}.fun-bar b{display:block;height:100%;border-radius:5px;background:var(--hero);width:0;transition:width .7s var(--ease)}
 .kv{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;margin-bottom:16px}
@@ -1668,6 +1668,54 @@ tr.rs-grey{opacity:.62}
 .tl-item.g{--stripe:var(--success)}.tl-item.y{--stripe:var(--warning)}.tl-item.r{--stripe:var(--danger)}
 .tl-item b{font-size:13px}.tl-item small{display:block;color:var(--muted);font-size:11px}.tl-item .badge{margin-inline-start:auto;flex:none}
 @media(max-width:860px){.pstats{grid-template-columns:repeat(2,1fr)}.agenda th,.agenda td{min-width:112px}}
+
+/* today list */
+.tday{display:grid;gap:8px;max-height:520px;overflow:auto;padding:14px}
+.td-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;background:var(--panel-2);border-inline-start:4px solid var(--stripe,var(--blue-light));cursor:pointer;transition:transform .12s,box-shadow .12s}
+.td-item:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(120,90,40,.10)}
+.td-item.rs-green{--stripe:var(--success)}.td-item.rs-yellow{--stripe:var(--warning)}.td-item.rs-red{--stripe:var(--danger)}.td-item.rs-blue{--stripe:var(--blue-light)}
+.td-item.done{opacity:.6}
+.td-item.next{background:var(--blue-soft);box-shadow:0 0 0 1.5px var(--blue-light)}
+.td-time{flex:none;min-width:62px;text-align:center;background:var(--panel);border-radius:10px;padding:6px 4px;border:1px solid var(--line)}
+.td-time b{display:block;font-size:15px;line-height:1.1;color:var(--ink)}.td-time small{font-size:10px;color:var(--muted)}
+.td-main{flex:1;min-width:0}.td-main b{display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.td-main small{display:block;color:var(--muted);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.td-group.late{color:var(--warning-ink)}.td-group{font-size:11px;font-weight:700;color:var(--muted);padding:6px 4px 0}.td-item .chip{flex:none}.td-item .badge{flex:none}
+.td-now{font-size:10px;font-weight:700;color:var(--blue-ink);background:var(--panel);border-radius:999px;padding:2px 8px;margin-inline-start:6px}
+/* finance */
+.fin-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.fin-kpi{background:var(--panel-2);border-radius:14px;padding:14px 16px;border:1px solid var(--line-soft)}
+.fin-kpi small{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.fin-kpi b{display:block;font-size:24px;line-height:1.1}.fin-kpi span{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+.fin-kpi.hl{background:var(--hero)}html[data-theme="dark"] .fin-kpi.hl,html[data-theme="dark"] .fin-kpi.hl *{color:#fff}html:not([data-theme="dark"]) .fin-kpi.hl,html:not([data-theme="dark"]) .fin-kpi.hl *{color:#4A3315}
+.fin-note{margin-top:10px;color:var(--muted);font-size:11.5px}
+.occ{display:flex;align-items:center;gap:8px;min-width:130px}.occ .progress{flex:1;margin:0}.occ b{font-size:12px;min-width:38px;text-align:end}
+tr.total-row td{font-weight:700;background:var(--panel-2);border-top:2px solid var(--line)}
+@media(max-width:860px){.fin-kpis{grid-template-columns:repeat(2,1fr)}.td-item .chip{display:none}}
+
+/* bigger logo */
+.logo-chip{width:68px;height:68px;padding:3px;border-radius:18px}
+.logo-chip img{border-radius:14px}
+.brand{gap:12px}
+.brand-word{font-size:16px}
+.login-logo{width:128px;height:128px;border-radius:30px;padding:4px;margin-bottom:14px}
+.login-logo img{border-radius:26px}
+.m-brand img{width:46px;height:46px;padding:2px;border-radius:14px}
+.splash-logo{width:150px!important;height:150px!important;padding:4px}
+.install-banner img{width:46px;height:46px;border-radius:12px;object-fit:contain;background:#fff}
+@media(max-width:860px){.login-logo{width:112px;height:112px}}
+
+/* guided booking */
+.daychips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:thin}
+.daychip{flex:none;min-width:84px;padding:9px 12px;border-radius:14px;background:var(--panel-2);border:1.5px solid var(--line);font-size:13px;font-weight:700;text-align:center;line-height:1.3}
+.daychip small{display:block;font-weight:500;color:var(--muted);font-size:10.5px}
+.daychip.on{background:var(--blue-soft);border-color:var(--blue);color:var(--blue-ink)}
+.other-date{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px;color:var(--muted)}
+.other-date input{width:auto;padding:6px 10px}
+.doccards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.doccard{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--panel-2);border:1.5px solid var(--line);text-align:start}
+.doccard.on{border-color:var(--blue);background:var(--blue-soft)}
+.doccard .dc-t b{display:block;font-size:13px}.doccard .dc-t small{display:block;color:var(--muted);font-size:11px;line-height:1.35}
+.doc-av.sm{width:38px;height:38px;font-size:15px}
 </style>
 
 </head>
@@ -1787,6 +1835,7 @@ tr.rs-grey{opacity:.62}
     <button data-section="branches"><svg><use href="#i-building"/></svg><span data-i18n="navBranches">الفروع</span></button>
     <button data-section="patients"><svg><use href="#i-users"/></svg><span data-i18n="navPatients">المرضى</span></button>
     <div class="nav-group-label" data-i18n="kickerInsights">التحليلات</div>
+    <button data-section="finance"><svg><use href="#i-wallet"/></svg><span data-i18n="navFinance">الحسابات</span></button>
     <button data-section="reports"><svg><use href="#i-chart"/></svg><span data-i18n="navReports">التقارير</span></button>
     <button data-section="activity"><svg><use href="#i-history"/></svg><span data-i18n="navActivity">سجل النشاط</span></button>
   </nav>
@@ -1861,7 +1910,7 @@ tr.rs-grey{opacity:.62}
   </div></div>
 </div>
 <div class="grid">
-  <div class="card"><div class="card-head"><h2 data-i18n="todayApptsTitle">مواعيد النهارده</h2><button class="btn" data-go="appointments"><span data-i18n="viewAll">عرض الكل</span></button></div><div class="table-wrap"><table class="table"><thead><tr><th data-i18n="colTime">الموعد</th><th data-i18n="colPatient">المريض</th><th data-i18n="colService">الخدمة</th><th data-i18n="colDoctor">الدكتور</th><th data-i18n="colBranch">الفرع</th><th data-i18n="colStatus">الحالة</th></tr></thead><tbody id="homeAppts"></tbody></table></div></div>
+  <div class="card"><div class="card-head"><h2 data-i18n="todayApptsTitle">مواعيد النهارده</h2><div class="card-head-tools"><span id="todayCount" class="badge b-blue"></span><button class="btn" data-go="appointments"><span data-i18n="viewAll">عرض الكل</span></button></div></div><div class="card-body tday" id="homeAppts"></div></div>
   <div class="card"><div class="card-head"><h2 data-i18n="navBranches">الفروع</h2><button class="btn" data-go="branches"><span data-i18n="details">التفاصيل</span></button></div><div class="card-body" id="branchSummary"></div></div>
 </div>
 </section>
@@ -1889,6 +1938,12 @@ tr.rs-grey{opacity:.62}
 
 <section id="patients" class="section" hidden>
 <div class="card"><div class="card-head"><h2 data-i18n="navPatients">المرضى</h2><span id="patientCount" class="badge b-blue"></span></div><div class="table-wrap"><table class="table"><thead><tr><th data-i18n="colPatient">المريض</th><th data-i18n="colPhone">الهاتف</th><th data-i18n="colVisits">الزيارات</th><th data-i18n="colBookings">الحجوزات</th><th data-i18n="colNoShow">لم يحضروا</th><th data-i18n="colLastVisit">آخر زيارة</th><th data-i18n="colNextAppt">الموعد القادم</th></tr></thead><tbody id="patientsTable"></tbody></table></div></div>
+</section>
+
+<section id="finance" class="section" hidden>
+<div class="card" style="margin-bottom:16px"><div class="card-head"><h2 data-i18n="finTitle">ملخص الحسابات</h2><div class="seg" role="tablist"><button type="button" data-fin="today" data-i18n="finToday">اليوم</button><button type="button" data-fin="week" class="on" data-i18n="finWeek">الأسبوع</button><button type="button" data-fin="month" data-i18n="finMonth">الشهر</button><button type="button" data-fin="all" data-i18n="finAll">الكل</button></div></div><div class="card-body"><div class="fin-kpis" id="finKpis"></div><div class="fin-note" id="finRange"></div></div></div>
+<div class="card" style="margin-bottom:16px"><div class="card-head"><h2 data-i18n="finBranchTitle">الدخل والإشغال لكل فرع</h2></div><div class="table-wrap"><table class="table"><thead><tr><th data-i18n="navBranches">الفرع</th><th data-i18n="colBookings">الحجوزات</th><th data-i18n="colArrivedShort">حضروا</th><th data-i18n="colCollected">المحصّل</th><th data-i18n="colExpected">المتوقع</th><th data-i18n="colOccupancy">الإشغال</th></tr></thead><tbody id="finBranches"></tbody></table></div></div>
+<div class="bottom-grid"><div class="card"><div class="card-head"><h2 data-i18n="revByService">الدخل حسب الخدمة</h2></div><div class="card-body" id="finServices"></div></div><div class="card"><div class="card-head"><h2 data-i18n="revByDoctor">الدخل حسب الدكتور</h2></div><div class="card-body" id="finDoctors"></div></div></div>
 </section>
 
 <section id="reports" class="section" hidden>
@@ -2011,7 +2066,7 @@ const I18N = {
   confirmChange:"تأكيد التغيير", confirmChangeText:"تغيير حالة {what} إلى «{to}»؟", lossReason:"سبب الضياع", chooseReason:"اختار السبب",
   bookingN:"حجز", leadN:"ليد", patientLbl:"المريض", phoneLbl:"الهاتف", serviceLbl:"الخدمة", branchLbl:"الفرع", doctorLbl:"الدكتور", dateLbl:"التاريخ", timeLbl:"الساعة", sourceLbl:"المصدر", statusLbl:"الحالة", createdLbl:"اتسجل", campaignLbl:"الحملة", agentLbl:"الموظف", entryLbl:"وقت الدخول", updatedLbl:"آخر تحديث", lossLbl:"سبب الضياع", linkedBooking:"الحجز المرتبط",
   bookNow:"احجز له", saveAgent:"حفظ الموظف", agentPlaceholder:"اسم الموظف المسؤول", call:"اتصال", whatsapp:"واتساب",
-  newBookingTitle:"حجز جديد", fieldPatient:"اسم المريض", fieldPhone:"رقم الموبايل", fieldService:"الخدمة", fieldBranch:"الفرع", fieldDate:"التاريخ", fieldDoctor:"الدكتور", anyDoctor:"أي دكتور متاح", fieldSlot:"المواعيد المتاحة", fieldSource:"مصدر الحجز", chooseService:"اختار الخدمة", chooseBranch:"اختار الفرع", saveBooking:"تأكيد الحجز", pickSlotHint:"اختار الخدمة والفرع والتاريخ عشان تظهر المواعيد", noSlots:"مفيش مواعيد متاحة في اليوم ده — جرّب يوم تاني", fillAll:"كمّل كل البيانات واختار ميعاد",
+  newBookingTitle:"حجز جديد", fieldPatient:"اسم المريض", fieldPhone:"رقم الموبايل", fieldService:"الخدمة", fieldBranch:"الفرع", fieldDate:"التاريخ", fieldDoctor:"الدكتور", anyDoctor:"أي دكتور متاح", fieldSlot:"المواعيد المتاحة", fieldSource:"مصدر الحجز", chooseService:"اختار الخدمة", chooseBranch:"اختار الفرع", saveBooking:"تأكيد الحجز", pickSlotHint:"اختار الخدمة والفرع وهتظهرلك الأيام والدكاترة المتاحين", noSlots:"مفيش مواعيد متاحة في اليوم ده — جرّب يوم تاني", fillAll:"كمّل كل البيانات واختار ميعاد",
   srcCall:"كول سنتر", srcWhats:"واتساب", srcAd:"إعلان", srcSite:"الموقع", srcWalk:"زيارة",
   toastBookingSaved:"تم تسجيل الحجز", toastUpdated:"تم التحديث", toastDataRefreshed:"تم تحديث البيانات", toastCantConnect:"تعذر الاتصال بالسيرفر", toastActionFailed:"تعذر تنفيذ العملية، حاول تاني", toastSlotTaken:"الميعاد اتحجز — اختار ميعاد تاني", toastDuplicate:"المريض عنده حجز بنفس الخدمة في نفس اليوم", toastFiltersCleared:"تم مسح الفلاتر", newBookingToast:"حجز جديد", newLeadToast:"ليد جديد",
   docSpecialty:"التخصص", docBranches:"الفروع", docServices:"الخدمات", docToday:"حجوزات اليوم", docNext:"الموعد القادم", docLoad:"حمل اليوم", docSchedule:"الجدول الأسبوعي", docUpcoming:"المواعيد القادمة", noUpcoming:"مفيش مواعيد قادمة", noSchedToday:"إجازة اليوم", dayOff:"إجازة",
@@ -2026,7 +2081,11 @@ const I18N = {
   pwTooShort:"كلمة المرور لازم تكون 8 حروف على الأقل", pwMismatch:"كلمتا المرور غير متطابقتين", signupPending:"تم إنشاء الحساب — في انتظار موافقة الإدارة قبل ما تقدر تدخل",
   accountPending:"حسابك لسه في انتظار موافقة الإدارة", signupFailed:"تعذر إنشاء الحساب", accountDisabled:"الحساب ده موقوف — كلّم الإدارة",
   emailTaken:"الإيميل ده مسجل قبل كده — سجّل دخول بدل ما تعمل حساب جديد", invalidEmail:"البريد الإلكتروني مش صحيح", invalidName:"اكتب اسمك (80 حرف كحد أقصى)",
-  greetMorning:"صباح الخير", greetEvening:"مساء الخير", noNotifs:"مفيش تنبيهات جديدة", markRead:"تعليم الكل كمقروء",
+  greetMorning:"صباح الخير", greetEvening:"مساء الخير", noNotifs:"مفيش تنبيهات جديدة", markRead:"تعليم الكل كمقروء", currency:"ج", pickDay:"اختار اليوم", pickDoctor:"اختار الدكتور", tomorrowWord:"بكرة", slotsCount:"مواعيد", firstAt:"أول ميعاد", otherDate:"تاريخ تاني:", noAvailAny:"مفيش مواعيد متاحة في الـ 3 أسابيع الجاية للخدمة والفرع دول — جرّب فرع تاني", pickDoctorHint:"اختار الدكتور عشان تظهر مواعيده", toastForbidden:"مفيش عندك صلاحية للعملية دي", upcomingGroup:"القادمة", doneGroup:"خلصت", lateGroup:"فاتت وتحتاج تحديث الحالة",
+  navFinance:"الحسابات", titleFinance:"الحسابات", subFinance:"الدخل ونسبة الإشغال لكل فرع",
+  finTitle:"ملخص الحسابات", finToday:"اليوم", finWeek:"الأسبوع", finMonth:"الشهر", finAll:"الكل", finBranchTitle:"الدخل والإشغال لكل فرع", revByService:"الدخل حسب الخدمة", revByDoctor:"الدخل حسب الدكتور",
+  finCollected:"المحصّل (حضروا)", finExpected:"المتوقع (مؤكد وبانتظار)", finAvg:"متوسط قيمة الزيارة", finOccupancy:"نسبة الإشغال", finOccSub:"ساعات محجوزة من ساعات العمل", finVisits:"زيارة", finRange:"الفترة", finNote:"الأسعار من عمود price في تاب Services، ولو فيه مبلغ مختلف اكتبه في عمود amount في تاب Bookings.", finTotal:"الإجمالي",
+  colCollected:"المحصّل", colExpected:"المتوقع", colOccupancy:"الإشغال", amountLbl:"المبلغ", defaultPrice:"سعر الخدمة الافتراضي", recordedAmount:"مبلغ مسجّل", nextUp:"الجاي", noFinData:"مفيش حجوزات في الفترة دي",
   btnAddLead:"ليد جديد", newLeadTitle:"ليد جديد", fieldLeadName:"اسم العميل", fieldCampaign:"الحملة (اختياري)", fieldAgent:"الموظف المسؤول (اختياري)", optionalService:"الخدمة المطلوبة (اختياري)", saveLead:"حفظ الليد", toastLeadSaved:"تم إضافة الليد", toastDupLead:"فيه ليد مفتوح بنفس الرقم",
   rescheduleBtn:"إعادة جدولة", rescheduleTitle:"إعادة جدولة حجز", saveReschedule:"تأكيد الموعد الجديد", toastRescheduled:"تمت إعادة الجدولة",
   viewList:"قائمة", viewAgenda:"جدول اليوم", agendaEmpty:"مفيش دكاترة شغالين في اليوم ده",
@@ -2072,7 +2131,7 @@ const I18N = {
   confirmChange:"Confirm change", confirmChangeText:"Change {what} status to “{to}”?", lossReason:"Loss reason", chooseReason:"Choose a reason",
   bookingN:"booking", leadN:"lead", patientLbl:"Patient", phoneLbl:"Phone", serviceLbl:"Service", branchLbl:"Branch", doctorLbl:"Doctor", dateLbl:"Date", timeLbl:"Time", sourceLbl:"Source", statusLbl:"Status", createdLbl:"Created", campaignLbl:"Campaign", agentLbl:"Agent", entryLbl:"Entered", updatedLbl:"Last update", lossLbl:"Loss reason", linkedBooking:"Linked booking",
   bookNow:"Book appointment", saveAgent:"Save agent", agentPlaceholder:"Responsible agent", call:"Call", whatsapp:"WhatsApp",
-  newBookingTitle:"New booking", fieldPatient:"Patient name", fieldPhone:"Mobile number", fieldService:"Service", fieldBranch:"Branch", fieldDate:"Date", fieldDoctor:"Doctor", anyDoctor:"Any available doctor", fieldSlot:"Available times", fieldSource:"Booking source", chooseService:"Choose a service", chooseBranch:"Choose a branch", saveBooking:"Confirm booking", pickSlotHint:"Choose service, branch and date to see available times", noSlots:"No slots available that day — try another day", fillAll:"Complete all fields and pick a time",
+  newBookingTitle:"New booking", fieldPatient:"Patient name", fieldPhone:"Mobile number", fieldService:"Service", fieldBranch:"Branch", fieldDate:"Date", fieldDoctor:"Doctor", anyDoctor:"Any available doctor", fieldSlot:"Available times", fieldSource:"Booking source", chooseService:"Choose a service", chooseBranch:"Choose a branch", saveBooking:"Confirm booking", pickSlotHint:"Choose a service and branch to see available days and doctors", noSlots:"No slots available that day — try another day", fillAll:"Complete all fields and pick a time",
   srcCall:"Call center", srcWhats:"WhatsApp", srcAd:"Ad", srcSite:"Website", srcWalk:"Walk-in",
   toastBookingSaved:"Booking saved", toastUpdated:"Updated", toastDataRefreshed:"Data refreshed", toastCantConnect:"Couldn't reach the server", toastActionFailed:"Couldn't complete the action, please try again", toastSlotTaken:"That slot was just taken — pick another", toastDuplicate:"This patient already has the same service booked that day", toastFiltersCleared:"Filters cleared", newBookingToast:"New booking", newLeadToast:"New lead",
   docSpecialty:"Specialty", docBranches:"Branches", docServices:"Services", docToday:"Bookings today", docNext:"Next appointment", docLoad:"Today's load", docSchedule:"Weekly schedule", docUpcoming:"Upcoming appointments", noUpcoming:"No upcoming appointments", noSchedToday:"Off today", dayOff:"Off",
@@ -2087,7 +2146,11 @@ const I18N = {
   pwTooShort:"Password must be at least 8 characters", pwMismatch:"Passwords don't match", signupPending:"Account created — waiting for admin approval before you can sign in",
   accountPending:"Your account is still waiting for admin approval", signupFailed:"Couldn't create the account", accountDisabled:"This account is disabled — contact the admin",
   emailTaken:"This email is already registered — sign in instead", invalidEmail:"That email address isn't valid", invalidName:"Enter your name (80 characters max)",
-  greetMorning:"Good morning", greetEvening:"Good evening", noNotifs:"No new notifications", markRead:"Mark all as read",
+  greetMorning:"Good morning", greetEvening:"Good evening", noNotifs:"No new notifications", markRead:"Mark all as read", currency:"EGP", pickDay:"Pick a day", pickDoctor:"Pick a doctor", tomorrowWord:"Tomorrow", slotsCount:"slots", firstAt:"first at", otherDate:"Other date:", noAvailAny:"No availability in the next 3 weeks for this service and branch — try another branch", pickDoctorHint:"Pick a doctor to see their times", toastForbidden:"You do not have permission for this action", upcomingGroup:"Upcoming", doneGroup:"Finished", lateGroup:"Past time — update status",
+  navFinance:"Accounts", titleFinance:"Accounts", subFinance:"Revenue and occupancy per branch",
+  finTitle:"Accounts summary", finToday:"Today", finWeek:"Week", finMonth:"Month", finAll:"All", finBranchTitle:"Revenue and occupancy per branch", revByService:"Revenue by service", revByDoctor:"Revenue by doctor",
+  finCollected:"Collected (attended)", finExpected:"Expected (confirmed & pending)", finAvg:"Average visit value", finOccupancy:"Occupancy", finOccSub:"booked hours of working hours", finVisits:"visits", finRange:"Period", finNote:"Prices come from the price column in the Services tab; to override a booking's amount, write it in the amount column of the Bookings tab.", finTotal:"Total",
+  colCollected:"Collected", colExpected:"Expected", colOccupancy:"Occupancy", amountLbl:"Amount", defaultPrice:"Default service price", recordedAmount:"Recorded amount", nextUp:"Next", noFinData:"No bookings in this period",
   btnAddLead:"New lead", newLeadTitle:"New lead", fieldLeadName:"Customer name", fieldCampaign:"Campaign (optional)", fieldAgent:"Responsible agent (optional)", optionalService:"Requested service (optional)", saveLead:"Save lead", toastLeadSaved:"Lead added", toastDupLead:"An open lead with this number already exists",
   rescheduleBtn:"Reschedule", rescheduleTitle:"Reschedule booking", saveReschedule:"Confirm new time", toastRescheduled:"Booking rescheduled",
   viewList:"List", viewAgenda:"Day schedule", agendaEmpty:"No doctors are working that day",
@@ -2120,6 +2183,7 @@ function ageText(min){
   if(min<1440){ const h=Math.floor(min/60); return LANG==='ar'?`منذ ${h} ${h<=10?'ساعات':'ساعة'}`.replace('1 ساعات','ساعة').replace('2 ساعات','ساعتين'):`${h}h ago`; }
   const d=Math.floor(min/1440); return LANG==='ar'?`منذ ${d} ${d<=10?'أيام':'يوم'}`.replace('1 أيام','يوم').replace('2 أيام','يومين'):`${d}d ago`;
 }
+function money(n){ return Number(n||0).toLocaleString('en-US')+' '+t('currency'); }
 function pct(a,b){ return b>0?Math.round(a/b*100):0; }
 function sum(arr,f){ return arr.reduce((s,x)=>s+(f?f(x):x),0); }
 function groupCount(arr,key){ const m={}; arr.forEach(x=>{ const k=typeof key==='function'?key(x):x[key]; if(k===''||k==null) return; m[k]=(m[k]||0)+1; }); return Object.keys(m).map(k=>({name:k,count:m[k]})).sort((a,b)=>b.count-a.count); }
@@ -2130,6 +2194,16 @@ function avatar(name){ return escHtml(String(name||'?').replace(/^د\.?\s*/,'').
 
 /* ========================= data ========================= */
 let D={now:'',bookings:[],leads:[],branches:[],services:[],doctors:[],schedule:[],activity:[]};
+function P(){ return (D.user&&D.user.perms)||{}; }
+function can(sec){ return sec==='home' ? true : !!P()[sec]; }
+function applyPerms(){
+  const p=P();
+  document.querySelectorAll('#nav button[data-section],#mBottomNav button[data-section]').forEach(b=>{ b.hidden=!can(b.dataset.section); });
+  document.querySelectorAll('#nav .nav-group-label').forEach(l=>{ let el=l.nextElementSibling, any=false; while(el&&!el.classList.contains('nav-group-label')){ if(el.matches('button')&&!el.hidden) any=true; el=el.nextElementSibling; } l.hidden=!any; });
+  $("#quick").hidden=!p.appointments; $("#quickLead").hidden=!p.leads; $("#exportBtn").hidden=!(p.appointments||p.leads);
+  const cardOf=sel=>{ const el=document.querySelector(sel); return el?el.closest('.card'):null; };
+  [['#kToday',p.appointments],['#kPending',p.appointments],['#kArrived',p.appointments],['#kMissed',p.appointments],['#kAttend',p.appointments],['#kNewLeads',p.leads],['#kConv',p.leads],['#chart',p.appointments],['#homeAppts',p.appointments],['#branchSummary',p.branches]].forEach(([sel,ok])=>{ const c=cardOf(sel); if(c) c.hidden=!ok; });
+}
 let apptPage=1;
 let notifItems=[];
 let seenBookings=null, seenLeads=null;
@@ -2294,15 +2368,15 @@ setInterval(renderSyncAgo,15000);
 function normalizeData(d){
   const arr=x=>Array.isArray(x)?x:[];
   return {
-    now:String(d.now||''), bookings:arr(d.bookings), leads:arr(d.leads), branches:arr(d.branches), services:arr(d.services),
+    now:String(d.now||''), user:d.user||null, bookings:arr(d.bookings), leads:arr(d.leads), branches:arr(d.branches), services:arr(d.services),
     doctors:arr(d.doctors), schedule:arr(d.schedule), activity:arr(d.activity)
   };
 }
 function detectNew(){
   const bIds=new Set(D.bookings.map(b=>String(b.id))), lIds=new Set(D.leads.map(l=>String(l.id)));
   if(seenBookings&&seenLeads){
-    D.bookings.forEach(b=>{ if(!seenBookings.has(String(b.id))) pushNotif({id:'b'+b.id,text:`${t('newBookingToast')}: ${b.patient} — ${fmtDay(b.date)} ${fmtTime(b.time)}`,section:'appointments'}); });
-    D.leads.forEach(l=>{ if(!seenLeads.has(String(l.id))) pushNotif({id:'l'+l.id,text:`${t('newLeadToast')}: ${l.name} — ${l.service||l.source}`,section:'leads'}); });
+    D.bookings.forEach(b=>{ if(!seenBookings.has(String(b.id))) pushNotif({id:'b'+b.id,text:`${t('newBookingToast')}: ${b.patient} — ${fmtDay(b.date)} ${fmtTime(b.time)}`,section:'appointments',view:'b:'+b.id}); });
+    D.leads.forEach(l=>{ if(!seenLeads.has(String(l.id))) pushNotif({id:'l'+l.id,text:`${t('newLeadToast')}: ${l.name} — ${l.service||l.source}`,section:'leads',view:'l:'+l.id}); });
   }
   seenBookings=bIds; seenLeads=lIds;
 }
@@ -2319,7 +2393,7 @@ async function loadData(showToast=false){
       const data=await fetchJson(API.data+"?token="+encodeURIComponent(getToken()||''),{method:'GET'});
       if(data._http===401||data.code===401){ forceLogout(t('sessionExpired')); return; }
       if(!data.ok) throw new Error(data.error||'bad response');
-      D=normalizeData(data);
+      D=normalizeData(data); applyPerms(); if(!can(currentSection)) showSection('home');
       lastSync=Date.now(); setConnection('online'); detectNew(); fillSelects(); renderAll();
       if(showToast) toast(t('toastDataRefreshed'));
     }catch(err){
@@ -2413,7 +2487,13 @@ function branchStats(name){
 function renderHome(){
   const today=TODAY();
   const list=branchScope(D.bookings).filter(b=>b.date===today&&b.status!=='ملغي').sort((a,b)=>a.time.localeCompare(b.time));
-  $("#homeAppts").innerHTML=list.slice(0,60).map((b,i)=>`<tr class="clickable rs-${(BS[b.status]||{c:'blue'}).c}" style="animation-delay:${i*25}ms" data-view="b:${escHtml(b.id)}"><td class="nowrap"><b>${fmtTime(b.time)}</b></td><td>${escHtml(b.patient)}</td><td>${escHtml(b.service)}</td><td>${escHtml(b.doctor)}</td><td>${escHtml(b.branch)}</td><td>${badgeStatus('b',b)}</td></tr>`).join('')||`<tr><td colspan="6" class="empty">${t('noApptsToday')}</td></tr>`;
+  const nowMin=toMin(nowStr().slice(11,16)); let nextMarked=false;
+  const isDoneB=b=>(b.status==='حضر'||b.status==='لم يحضر'); const todoL=list.filter(b=>!isDoneB(b)&&toMin(b.time)>=nowMin), lateL=list.filter(b=>!isDoneB(b)&&toMin(b.time)<nowMin), doneL=list.filter(isDoneB);
+  const card=b=>{ const m=BS[b.status]||{c:'blue'}; const tm=fmtTime(b.time).split(' '); const dn=isDoneB(b);
+    const isNext=!dn&&toMin(b.time)>=nowMin&&!nextMarked; if(isNext) nextMarked=true;
+    return `<div class="td-item rs-${m.c}${dn?' done':''}${isNext?' next':''}" data-view="b:${escHtml(b.id)}"><div class="td-time"><b>${tm[0]}</b><small>${tm[1]||''}</small></div><div class="td-main"><b>${escHtml(b.patient)}${isNext?`<span class="td-now">${t('nextUp')}</span>`:''}</b><small>${escHtml(b.service)} · ${escHtml(b.doctor)}</small></div><span class="chip">${escHtml(b.branch)}</span><span class="badge b-${m.c}">${escHtml(bsLabel(b.status))}</span></div>`; };
+  $("#homeAppts").innerHTML=(lateL.length?`<div class="td-group late">${t('lateGroup')} · ${lateL.length}</div>`+lateL.map(card).join(''):'')+(todoL.length?`<div class="td-group">${t('upcomingGroup')} · ${todoL.length}</div>`+todoL.map(card).join(''):'')+(doneL.length?`<div class="td-group">${t('doneGroup')} · ${doneL.length}</div>`+doneL.map(card).join(''):'')||`<div class="panel-empty"><svg><use href="#i-calendar"/></svg>${t('noApptsToday')}</div>`;
+  $("#todayCount").textContent=`${list.length} ${t('bookingsUnit')}`;
   const br=$("#branch").value; const bl=br==='all'?D.branches:D.branches.filter(b=>b.branch===br);
   $("#branchSummary").innerHTML=bl.map(b=>{ const s=branchStats(b.branch); const cls=s.pending>3?'yellow':'green';
     return `<div class="branch-tile"><div class="bt-ico"><svg><use href="#i-building"/></svg></div><div class="bt-meta"><b>${escHtml(b.branch)}</b><small>${s.today} ${t('bookingsUnit')} · ${s.arrived} ${t('arrivedWord')}</small><small>${t('colPendingShort')}: ${s.pending} · ${t('colUpcoming')}: ${s.upcoming}</small></div><span class="badge b-${cls}">${s.pending>3?t('needsFollowUp'):t('working')}</span></div>`; }).join('')||`<div class="panel-empty"><svg><use href="#i-building"/></svg>${t('waitingData')}</div>`;
@@ -2426,7 +2506,7 @@ function renderAppointments(){
   const pages=Math.max(1,Math.ceil(arr.length/PAGE_SIZE)); if(apptPage>pages) apptPage=pages;
   const start=(apptPage-1)*PAGE_SIZE; const page=arr.slice(start,start+PAGE_SIZE); const today=TODAY();
   $("#apptCount").textContent=`${arr.length} ${t('bookingsUnit')}`;
-  $("#apptTable").innerHTML=page.map((b,i)=>`<tr class="rs-${b.status==='ملغي'?'grey':(BS[b.status]||{c:'blue'}).c}" style="animation-delay:${Math.min(i,10)*25}ms"><td><span class="order-id">${escHtml(b.id)}</span></td><td class="nowrap">${b.date===today?`<b>${t('todayShort')}</b>`:escHtml(fmtDay(b.date))}<br><small style="color:var(--muted)">${fmtTime(b.time)}</small></td><td><button type="button" class="plink" data-patient="${escHtml(b.phone||b.patient)}">${escHtml(b.patient)}</button><br><small style="color:var(--muted)">${escHtml(b.phone)}</small></td><td>${escHtml(b.service)}</td><td>${escHtml(b.doctor)}</td><td>${escHtml(b.branch)}</td><td><span class="badge b-blue">${escHtml(b.source)}</span></td><td>${badgeStatus('b',b)}</td><td><button class="mini" data-view="b:${escHtml(b.id)}">${t('details')}</button></td></tr>`).join('')||`<tr><td colspan="9" class="empty">${t('noMatching')}</td></tr>`;
+  $("#apptTable").innerHTML=page.map((b,i)=>`<tr class="clickable rs-${b.status==='ملغي'?'grey':(BS[b.status]||{c:'blue'}).c}" data-view="b:${escHtml(b.id)}" style="animation-delay:${Math.min(i,10)*25}ms"><td><span class="order-id">${escHtml(b.id)}</span></td><td class="nowrap">${b.date===today?`<b>${t('todayShort')}</b>`:escHtml(fmtDay(b.date))}<br><small style="color:var(--muted)">${fmtTime(b.time)}</small></td><td><button type="button" class="plink" data-patient="${escHtml(b.phone||b.patient)}">${escHtml(b.patient)}</button><br><small style="color:var(--muted)">${escHtml(b.phone)}</small></td><td>${escHtml(b.service)}</td><td>${escHtml(b.doctor)}</td><td>${escHtml(b.branch)}</td><td><span class="badge b-blue">${escHtml(b.source)}</span></td><td>${badgeStatus('b',b)}</td><td><button class="mini" data-view="b:${escHtml(b.id)}">${t('details')}</button></td></tr>`).join('')||`<tr><td colspan="9" class="empty">${t('noMatching')}</td></tr>`;
   $("#apptPageInfo").textContent=`${arr.length?start+1:0}–${Math.min(start+page.length,arr.length)} / ${arr.length}`;
   $("#apptPrev").disabled=apptPage<=1; $("#apptNext").disabled=apptPage>=pages;
   const pend=D.bookings.filter(b=>b.status==='بانتظار الرد'&&b.date>=today).length;
@@ -2441,7 +2521,7 @@ function renderLeads(){
   const arr=filteredLeads();
   $("#leadCount").textContent=`${arr.length} ${t('leadsWord')}`;
   $("#leadTable").innerHTML=arr.map((l,i)=>{ const age=ageMin(l.entry); const stale=l.status==='جديد'&&(age||0)>120;
-    return `<tr class="rs-${l.status==='ضايع'?'grey':(LS[l.status]||{c:'blue'}).c}" style="animation-delay:${Math.min(i,10)*25}ms"><td><span class="order-id">${escHtml(l.id)}</span></td><td>${escHtml(l.name)}<br><small style="color:var(--muted)">${escHtml(l.phone)}</small></td><td>${escHtml(l.source)}<br><small style="color:var(--muted)">${escHtml(l.campaign&&l.campaign!=='—'?l.campaign:'')}</small></td><td>${escHtml(l.service||'—')}</td><td>${badgeStatus('l',l)}</td><td>${escHtml(l.agent||'—')}</td><td class="nowrap${stale?' age-bad':''}">${escHtml(ageText(age))}</td><td><button class="mini" data-view="l:${escHtml(l.id)}">${t('details')}</button> ${l.status!=='تم الحجز'&&l.status!=='ضايع'?`<button class="mini green" data-book-lead="${escHtml(l.id)}">${t('bookNow')}</button>`:''}</td></tr>`; }).join('')||`<tr><td colspan="8" class="empty">${t('noMatching')}</td></tr>`;
+    return `<tr class="clickable rs-${l.status==='ضايع'?'grey':(LS[l.status]||{c:'blue'}).c}" data-view="l:${escHtml(l.id)}" style="animation-delay:${Math.min(i,10)*25}ms"><td><span class="order-id">${escHtml(l.id)}</span></td><td>${escHtml(l.name)}<br><small style="color:var(--muted)">${escHtml(l.phone)}</small></td><td>${escHtml(l.source)}<br><small style="color:var(--muted)">${escHtml(l.campaign&&l.campaign!=='—'?l.campaign:'')}</small></td><td>${escHtml(l.service||'—')}</td><td>${badgeStatus('l',l)}</td><td>${escHtml(l.agent||'—')}</td><td class="nowrap${stale?' age-bad':''}">${escHtml(ageText(age))}</td><td><button class="mini" data-view="l:${escHtml(l.id)}">${t('details')}</button> ${l.status!=='تم الحجز'&&l.status!=='ضايع'?`<button class="mini green" data-book-lead="${escHtml(l.id)}">${t('bookNow')}</button>`:''}</td></tr>`; }).join('')||`<tr><td colspan="8" class="empty">${t('noMatching')}</td></tr>`;
   const nl=D.leads.filter(l=>l.status==='جديد').length; const nc=$("#navLeadCount"); nc.hidden=!nl; nc.textContent=nl;
 }
 
@@ -2465,7 +2545,7 @@ function renderDoctors(){
   $("#docGrid").innerHTML=list.map((d,i)=>{ const s=doctorToday(d.doctor);
     return `<div class="doc-card" data-doc="${escHtml(d.doctor)}" style="animation-delay:${i*40}ms"><div class="doc-head"><div class="doc-av">${avatar(d.doctor)}</div><div><b>${escHtml(d.doctor)}</b><small>${escHtml(d.specialty)}</small></div></div>
     <div class="chips">${listSplit(d.branches).map(b=>`<span class="chip">${escHtml(b)}</span>`).join('')}</div>
-    <div class="doc-stats"><div><small>${t('docToday')}</small><b>${s.count}</b></div><div><small>${t('docNext')}</small><b>${s.next?escHtml(s.next.date===TODAY()?fmtTime(s.next.time):fmtDay(s.next.date)+' '+fmtTime(s.next.time)):'—'}</b></div></div>
+    <div class="doc-stats"><div><small>${t('docToday')}</small><b>${s.count}</b></div><div><small>${t('docNext')}</small><b>${s.next?escHtml(s.next.date===TODAY()?fmtTime(s.next.time):fmtDate(s.next.date,{weekday:'short',day:undefined,month:undefined})+' '+fmtTime(s.next.time)):'—'}</b></div></div>
     <div><div class="lbl" style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:5px"><span>${t('docLoad')}</span><b>${s.total?s.load+'%':t('noSchedToday')}</b></div><div class="progress"><b class="${s.load>=90?'danger':s.load>=70?'warn':''}" data-w="${Math.max(s.load,s.total?3:0)}"></b></div></div></div>`; }).join('')||`<div class="panel-empty"><svg><use href="#i-tooth"/></svg>${t('noMatching')}</div>`;
   requestAnimationFrame(()=>document.querySelectorAll("#docGrid .progress b").forEach(b=>b.style.width=b.dataset.w+"%"));
 }
@@ -2497,6 +2577,51 @@ function patientsList(){
 function renderPatients(){
   const list=patientsList(); $("#patientCount").textContent=list.length;
   $("#patientsTable").innerHTML=list.slice(0,300).map(p=>`<tr class="clickable" data-patient="${escHtml(p.key)}"><td><b>${escHtml(p.name)}</b></td><td dir="ltr" style="text-align:start">${escHtml(p.phone)}</td><td>${p.visits}</td><td>${p.bookings}</td><td>${p.noshow?`<span class="badge b-red">${p.noshow}</span>`:'0'}</td><td>${p.last?escHtml(fmtDate(p.last)):'—'}</td><td>${p.next?escHtml(fmtDay(p.next)):'—'}</td></tr>`).join('')||`<tr><td colspan="7" class="empty">${t('noMatching')}</td></tr>`;
+}
+
+/* ========================= finance ========================= */
+let finPeriod='week';
+function priceOf(b){ const a=Number(String(b.amount||'').replace(/[^0-9.]/g,'')); if(a>0) return a; const sv=D.services.find(x=>x.service===b.service); return Number(String(sv&&sv.price||'').replace(/[^0-9.]/g,''))||0; }
+function weekStartSat(dateStr){ const d=new Date(pdt(dateStr)); const sinceSat=(d.getUTCDay()+1)%7; return addDays(dateStr,-sinceSat); }
+function finDates(){
+  const today=TODAY();
+  if(finPeriod==='today') return {from:today,to:today};
+  if(finPeriod==='week'){ const st=weekStartSat(today); return {from:st,to:addDays(st,6)}; }
+  if(finPeriod==='month'){ const y=+today.slice(0,4), m=+today.slice(5,7); const last=new Date(Date.UTC(y,m,0)).getUTCDate(); return {from:today.slice(0,7)+'-01',to:today.slice(0,7)+'-'+String(last).padStart(2,'0')}; }
+  const ds=D.bookings.map(b=>b.date).filter(Boolean).sort(); return {from:ds[0]||today,to:ds[ds.length-1]||today};
+}
+function scheduledMinutes(branch,from,to){
+  let total=0, d=from, n=0;
+  while(d<=to&&n<400){ const wd=pyWd(d); D.schedule.forEach(s=>{ if(s.branch===branch&&Number(s.weekday)===wd) total+=Math.max(0,toMin(s.to)-toMin(s.from)); }); d=addDays(d,1); n++; }
+  return total;
+}
+function renderFinance(){
+  const box=$("#finKpis"); if(!box) return;
+  document.querySelectorAll('[data-fin]').forEach(b=>b.classList.toggle('on',b.dataset.fin===finPeriod));
+  const {from,to}=finDates(); const br=$("#branch").value;
+  const inRange=D.bookings.filter(b=>b.date>=from&&b.date<=to&&(br==='all'||b.branch===br));
+  const live=inRange.filter(b=>b.status!=='ملغي');
+  const rev=inRange.filter(b=>b.status==='حضر'||b.status==='مؤكد'||b.status==='بانتظار الرد');
+  const done=inRange.filter(b=>b.status==='حضر'), exp=inRange.filter(b=>b.status==='مؤكد'||b.status==='بانتظار الرد');
+  const sumP=a=>a.reduce((x,b)=>x+priceOf(b),0);
+  const brs=D.branches.filter(x=>br==='all'||x.branch===br);
+  const sched=sum(brs,x=>scheduledMinutes(x.branch,from,to)); const booked=sum(live,b=>svcMinutes(b.service));
+  const occ=pct(booked,sched);
+  box.innerHTML=`<div class="fin-kpi hl"><small>${t('finCollected')}</small><b>${money(sumP(done))}</b><span>${done.length} ${t('finVisits')}</span></div>
+  <div class="fin-kpi"><small>${t('finExpected')}</small><b>${money(sumP(exp))}</b><span>${exp.length} ${t('bookingsUnit')}</span></div>
+  <div class="fin-kpi"><small>${t('finAvg')}</small><b>${money(done.length?Math.round(sumP(done)/done.length):0)}</b><span>${t('finCollected')}</span></div>
+  <div class="fin-kpi"><small>${t('finOccupancy')}</small><b>${occ}%</b><span>${(booked/60).toFixed(1)} / ${(sched/60).toFixed(0)} ${LANG==='ar'?'ساعة':'h'}</span></div>`;
+  $("#finRange").textContent=`${t('finRange')}: ${fmtDate(from)} → ${fmtDate(to)} · ${t('finNote')}`;
+  const occCls=v=>v>=85?'danger':v>=60?'':'warn';
+  const row=(name,sub,bks)=>{ const lv=bks.filter(b=>b.status!=='ملغي'); const sc=scheduledMinutes(name,from,to); const o=pct(sum(lv,b=>svcMinutes(b.service)),sc); return {name,sub,n:lv.length,att:bks.filter(b=>b.status==='حضر').length,col:sumP(bks.filter(b=>b.status==='حضر')),exp:sumP(bks.filter(b=>b.status==='مؤكد'||b.status==='بانتظار الرد')),o,sc}; };
+  const rows=brs.map(x=>row(x.branch,x.area,inRange.filter(b=>b.branch===x.branch)));
+  const tot={n:sum(rows,r=>r.n),att:sum(rows,r=>r.att),col:sum(rows,r=>r.col),exp:sum(rows,r=>r.exp),o:occ};
+  $("#finBranches").innerHTML=rows.map(r=>`<tr><td><b>${escHtml(r.name)}</b><br><small style="color:var(--muted)">${escHtml(r.sub)}</small></td><td>${r.n}</td><td>${r.att}</td><td><b>${money(r.col)}</b></td><td>${money(r.exp)}</td><td><div class="occ"><div class="progress"><b class="${r.o>=85?'danger':r.o>=60?'':'warn'}" data-w="${Math.max(r.o,r.sc?3:0)}"></b></div><b>${r.o}%</b></div></td></tr>`).join('')+(rows.length>1?`<tr class="total-row"><td>${t('finTotal')}</td><td>${tot.n}</td><td>${tot.att}</td><td>${money(tot.col)}</td><td>${money(tot.exp)}</td><td>${tot.o}%</td></tr>`:'')||`<tr><td colspan="6" class="empty">${t('noFinData')}</td></tr>`;
+  const byKey=(key)=>{ const m={}; rev.forEach(b=>{ const k=b[key]; if(!k) return; m[k]=(m[k]||0)+priceOf(b); }); return Object.keys(m).map(k=>({name:k,count:m[k]})).sort((a,b)=>b.count-a.count); };
+  const bars=(items,color)=>{ const tot=sum(items,x=>x.count); const mx=Math.max(...items.map(x=>x.count),1); return items.length?items.slice(0,8).map(it=>`<div class="channel-row"><div class="lbl"><span>${escHtml(it.name)}</span><b>${money(it.count)} · ${pct(it.count,tot)}%</b></div><div class="channel-bar"><b style="background:${color}" data-w="${Math.round(it.count/mx*100)}"></b></div></div>`).join(''):`<div class="panel-empty"><svg><use href="#i-wallet"/></svg>${t('noFinData')}</div>`; };
+  $("#finServices").innerHTML=bars(byKey('service'),'var(--blue)');
+  $("#finDoctors").innerHTML=bars(byKey('doctor'),'var(--pink)');
+  requestAnimationFrame(()=>document.querySelectorAll("#finBranches .progress b,#finServices .channel-bar b,#finDoctors .channel-bar b").forEach(b=>b.style.width=b.dataset.w+"%"));
 }
 
 /* ========================= render: reports ========================= */
@@ -2539,10 +2664,10 @@ function renderNotifications(){
 }
 
 /* ========================= section handling ========================= */
-const SECTIONS=['home','appointments','leads','doctors','branches','patients','reports','activity'];
+const SECTIONS=['home','appointments','leads','doctors','branches','patients','finance','reports','activity'];
 const CAPS={ // which filter controls make sense per section
   home:{search:1,branch:1}, appointments:{search:1,branch:1,status:1,adv:1,date:1,doctor:1,source:1}, leads:{search:1,status:1,adv:1,source:1},
-  doctors:{search:1,branch:1}, branches:{branch:1}, patients:{search:1,branch:1}, reports:{branch:1}, activity:{}
+  doctors:{search:1,branch:1}, branches:{branch:1}, patients:{search:1,branch:1}, finance:{branch:1}, reports:{branch:1}, activity:{}
 };
 function sectionTitle(id){ const k=id[0].toUpperCase()+id.slice(1); return {title:t('title'+k),sub:t('sub'+k)}; }
 function refreshSectionTitle(){ const s=sectionTitle(currentSection); $("#pageTitle").textContent=s.title; $("#pageSub").textContent=s.sub; renderGreeting(); }
@@ -2551,7 +2676,7 @@ function renderGreeting(){
   el.textContent=currentSection==='home'?`${h<12?t('greetMorning'):t('greetEvening')}${u&&u.name?'، '+u.name.split(' ')[0]:''}`:'';
 }
 function showSection(id){
-  if(!SECTIONS.includes(id)) id='home';
+  if(!SECTIONS.includes(id)||!can(id)) id='home';
   currentSection=id;
   SECTIONS.forEach(s=>{ const el=$("#"+s); if(el) el.hidden=s!==id; });
   document.querySelectorAll('#nav button[data-section],#mBottomNav button[data-section]').forEach(b=>b.classList.toggle('active',b.dataset.section===id));
@@ -2564,8 +2689,8 @@ function showSection(id){
   if(location.hash!=='#'+id) history.replaceState(null,'','#'+id);
 }
 function renderAll(){
-  renderKpis(); renderHome(); renderAppointments(); renderLeads(); renderDoctors(); renderBranches(); renderPatients(); renderReports(); renderActivity(); renderNotifications(); renderAgenda();
-  const u=getUser(); if($("#roleChip")&&u) $("#roleChip").textContent=u.role||'—';
+  renderKpis(); renderHome(); renderAppointments(); renderLeads(); renderDoctors(); renderBranches(); renderPatients(); renderFinance(); renderReports(); renderActivity(); renderNotifications(); renderAgenda();
+  const u=D.user||getUser(); if($("#roleChip")&&u) $("#roleChip").textContent=u.role||'—';
 }
 function openDrawer(){ $(".sidebar").classList.add("open"); $("#drawerBackdrop").classList.add("show"); }
 function closeDrawer(){ $(".sidebar").classList.remove("open"); $("#drawerBackdrop").classList.remove("show"); }
@@ -2611,7 +2736,7 @@ async function runStatus(c){
     if(d.ok){ toast(t('toastUpdated')); await loadData(false); } else toast(errText(d),true);
   }catch(e){ if(e.message!=='unauthorized') toast(t('toastActionFailed'),true); }
 }
-function errText(d){ if(d&&d.error==='duplicate_lead') return t('toastDupLead'); if(d&&d.error==='slot_taken') return t('toastSlotTaken'); if(d&&d.error==='duplicate_booking') return t('toastDuplicate'); return t('toastActionFailed'); }
+function errText(d){ if(d&&d.error==='forbidden') return t('toastForbidden'); if(d&&d.error==='duplicate_lead') return t('toastDupLead'); if(d&&d.error==='slot_taken') return t('toastSlotTaken'); if(d&&d.error==='duplicate_booking') return t('toastDuplicate'); return t('toastActionFailed'); }
 
 /* ========================= details modals ========================= */
 function contactLinks(phone){
@@ -2622,7 +2747,7 @@ function openBooking(id){
   const b=bookingById(id); if(!b) return;
   const trans=bsTransitions(b); const canResched=(b.status==='بانتظار الرد'||b.status==='مؤكد');
   const btn=(s)=>{ const cls=s==='ملغي'||s==='لم يحضر'?'danger':(s==='حضر'||s==='مؤكد'?'good':''); return `<button type="button" class="btn ${cls}" data-ask-status="b:${escHtml(b.id)}:${escHtml(s)}">${escHtml(bsLabel(s))}</button>`; };
-  openModal(`${t('bookingN')} #${b.id}`,`<div class="kv"><div><small>${t('patientLbl')}</small><button type="button" class="plink" data-patient="${escHtml(b.phone||b.patient)}">${escHtml(b.patient)}</button></div><div><small>${t('phoneLbl')}</small><b dir="ltr">${escHtml(b.phone)}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(b.service)}</b></div><div><small>${t('doctorLbl')}</small><b>${escHtml(b.doctor)}</b></div><div><small>${t('branchLbl')}</small><b>${escHtml(b.branch)}</b></div><div><small>${t('dateLbl')}</small><b>${escHtml(fmtDay(b.date))} · ${fmtTime(b.time)}</b></div><div><small>${t('sourceLbl')}</small><b>${escHtml(b.source)}</b></div><div><small>${t('statusLbl')}</small><span class="badge b-${(BS[b.status]||{c:'blue'}).c}">${escHtml(bsLabel(b.status))}</span></div><div class="full"><small>${t('createdLbl')}</small><b>${escHtml(b.created_at)}</b></div></div>${(trans.length||canResched)?`<div class="m-actions">${trans.map(btn).join('')}${canResched?`<button type="button" class="btn" data-reschedule="${escHtml(b.id)}"><svg><use href="#i-calendar"/></svg>${t('rescheduleBtn')}</button>`:''}</div>`:''}${contactLinks(b.phone)}`);
+  openModal(`${t('bookingN')} #${b.id}`,`<div class="kv"><div><small>${t('patientLbl')}</small><button type="button" class="plink" data-patient="${escHtml(b.phone||b.patient)}">${escHtml(b.patient)}</button></div><div><small>${t('phoneLbl')}</small><b dir="ltr">${escHtml(b.phone)}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(b.service)}</b></div><div><small>${t('doctorLbl')}</small><b>${escHtml(b.doctor)}</b></div><div><small>${t('branchLbl')}</small><b>${escHtml(b.branch)}</b></div><div><small>${t('dateLbl')}</small><b>${escHtml(fmtDay(b.date))} · ${fmtTime(b.time)}</b></div><div><small>${t('sourceLbl')}</small><b>${escHtml(b.source)}</b></div>${P().finance?`<div><small>${t('amountLbl')}</small><b>${money(priceOf(b))}</b><small>${Number(String(b.amount||'').replace(/[^0-9.]/g,''))>0?t('recordedAmount'):t('defaultPrice')}</small></div>`:''}<div><small>${t('statusLbl')}</small><span class="badge b-${(BS[b.status]||{c:'blue'}).c}">${escHtml(bsLabel(b.status))}</span></div><div class="full"><small>${t('createdLbl')}</small><b>${escHtml(b.created_at)}</b></div></div>${(trans.length||canResched)?`<div class="m-actions">${trans.map(btn).join('')}${canResched?`<button type="button" class="btn" data-reschedule="${escHtml(b.id)}"><svg><use href="#i-calendar"/></svg>${t('rescheduleBtn')}</button>`:''}</div>`:''}${contactLinks(b.phone)}`);
 }
 function openLead(id){
   const l=leadById(id); if(!l) return;
@@ -2651,48 +2776,67 @@ function computeSlots(service,branch,date,onlyDoctor,excludeId){
   });
   return out.sort((a,b)=>a.time<b.time?-1:a.time>b.time?1:0);
 }
-let bk={slot:null,leadId:'',resched:null,pre:null};
+let bk={slot:null,leadId:'',resched:null,pre:null,doctor:'',date:''};
+function dayLabel(d){ const today=TODAY(); if(d===today) return t('todayShort'); if(d===addDays(today,1)) return t('tomorrowWord'); return fmtDate(d,{weekday:'short',day:'numeric',month:'numeric'}); }
 function openBookingForm(lead,opts){
   opts=opts||{}; const rs=opts.resched||null; const pre=opts.pre||{};
-  bk={slot:null,leadId:lead?String(lead.id):'',resched:rs,pre:pre};
+  bk={slot:null,leadId:lead?String(lead.id):'',resched:rs,pre:{...pre},doctor:'',date:rs?(rs.date<TODAY()?'':rs.date):(pre.date||'')};
   const today=TODAY(); const brSel=$("#branch").value!=='all'?$("#branch").value:'';
   const svcMatch=rs?rs.service:(lead&&D.services.find(s=>s.service===lead.service)?lead.service:'');
   const srcDefault=lead?(/واتساب/.test(lead.source)?'واتساب':'إعلان'):'كول سنتر';
   const patient=rs?rs.patient:(pre.patient||(lead?lead.name:''));
   const phone=rs?rs.phone:(pre.phone||(lead&&phoneDigits(lead.phone)?lead.phone:''));
   const branch=rs?rs.branch:(pre.branch||brSel);
-  const date=rs?(rs.date<today?today:rs.date):(pre.date||today);
   const lock=rs?' disabled':'';
   openModal(rs?`${t('rescheduleTitle')} #${rs.id}`:t('newBookingTitle'),`<form id="bkForm"><div class="fgrid">
     <div class="fld"><label>${t('fieldPatient')}</label><input id="bkPatient" required maxlength="80" value="${escHtml(patient)}"${lock}></div>
     <div class="fld"><label>${t('fieldPhone')}</label><input id="bkPhone" required dir="ltr" inputmode="tel" maxlength="20" value="${escHtml(phone)}"${lock}></div>
     <div class="fld"><label>${t('fieldService')}</label><select id="bkService" required${lock}><option value="">${t('chooseService')}</option>${D.services.map(s=>`<option value="${escHtml(s.service)}"${s.service===svcMatch?' selected':''}>${escHtml(s.service)} (${escHtml(s.minutes)} د)</option>`).join('')}</select></div>
     <div class="fld"><label>${t('fieldBranch')}</label><select id="bkBranch" required><option value="">${t('chooseBranch')}</option>${D.branches.map(b=>`<option value="${escHtml(b.branch)}"${b.branch===branch?' selected':''}>${escHtml(b.branch)}</option>`).join('')}</select></div>
-    <div class="fld"><label>${t('fieldDate')}</label><input id="bkDate" type="date" required min="${today}" value="${date}"></div>
-    <div class="fld"><label>${t('fieldDoctor')}</label><select id="bkDoctor"><option value="">${t('anyDoctor')}</option></select></div>
+    <div class="fld full"><label>${t('pickDay')}</label><div class="daychips" id="bkDays"></div><div class="other-date"><span>${t('otherDate')}</span><input id="bkDate" type="date" min="${today}" value="${bk.date||today}"></div></div>
+    <div class="fld full"><label>${t('pickDoctor')}</label><div class="doccards" id="bkDocs"></div></div>
     <div class="fld full"><label>${t('fieldSlot')}</label><div class="slots" id="bkSlots"></div></div>
     ${rs?'':`<div class="fld full"><label>${t('fieldSource')}</label><select id="bkSource">${SOURCES_BOOK.map(([v,k])=>`<option value="${escHtml(v)}"${v===srcDefault?' selected':''}>${t(k)}</option>`).join('')}</select></div>`}
   </div><div class="login-error" id="bkError" hidden></div><button type="submit" class="btn primary auth-submit" id="bkSave"><svg><use href="#i-check"/></svg><span>${rs?t('saveReschedule'):t('saveBooking')}</span></button></form>`);
-  ['bkService','bkBranch','bkDate','bkDoctor'].forEach(id=>$("#"+id).addEventListener('input',()=>{ if(id!=='bkDoctor') refreshDoctorOptions(); refreshSlots(); }));
+  ['bkService','bkBranch'].forEach(id=>$("#"+id).addEventListener('input',refreshDays));
+  $("#bkDate").addEventListener('change',()=>{ const v=$("#bkDate").value; if(!v||v<TODAY()) return; bk.date=v; bk.doctor=''; bk.slot=null; document.querySelectorAll('#bkDays .daychip').forEach(x=>x.classList.toggle('on',x.dataset.day===v)); refreshDoctors(); });
   $("#bkForm").addEventListener('submit',submitBooking);
-  refreshDoctorOptions(); if(pre.doctor&&[...$("#bkDoctor").options].some(o=>o.value===pre.doctor)) $("#bkDoctor").value=pre.doctor;
+  refreshDays();
+}
+function bkCtx(){ return {svc:$("#bkService").value,br:$("#bkBranch").value,ex:bk.resched?bk.resched.id:''}; }
+function refreshDays(){
+  bk.slot=null; bk.doctor=''; const {svc,br,ex}=bkCtx(); const box=$("#bkDays");
+  if(!svc||!br){ box.innerHTML=`<small style="color:var(--muted)">${t('pickSlotHint')}</small>`; $("#bkDocs").innerHTML=''; $("#bkSlots").innerHTML=''; return; }
+  const today=TODAY(); const days=[];
+  for(let i=0;i<21;i++){ const d=addDays(today,i); const n=computeSlots(svc,br,d,'',ex).length; if(n>0) days.push({d,n}); }
+  if(!days.length){ box.innerHTML=`<small style="color:var(--muted)">${t('noAvailAny')}</small>`; $("#bkDocs").innerHTML=''; $("#bkSlots").innerHTML=''; bk.date=''; return; }
+  if(!bk.date||!days.some(x=>x.d===bk.date)){ const manual=$("#bkDate").value; bk.date=(manual&&days.some(x=>x.d===manual))?manual:days[0].d; }
+  $("#bkDate").value=bk.date;
+  box.innerHTML=days.slice(0,12).map(x=>`<button type="button" class="daychip${x.d===bk.date?' on':''}" data-day="${x.d}">${escHtml(dayLabel(x.d))}<small>${x.n} ${t('slotsCount')}</small></button>`).join('');
+  if(!days.slice(0,12).some(x=>x.d===bk.date)) box.insertAdjacentHTML('afterbegin',`<button type="button" class="daychip on" data-day="${bk.date}">${escHtml(dayLabel(bk.date))}</button>`);
+  refreshDoctors();
+}
+function refreshDoctors(){
+  const {svc,br,ex}=bkCtx(); const box=$("#bkDocs"); const date=bk.date;
+  if(!svc||!br||!date){ box.innerHTML=''; $("#bkSlots").innerHTML=''; return; }
+  const slots=computeSlots(svc,br,date,'',ex); const groups={};
+  slots.forEach(s=>{ (groups[s.doctor]=groups[s.doctor]||[]).push(s.time); });
+  const names=Object.keys(groups);
+  if(!names.length){ box.innerHTML=`<small style="color:var(--muted)">${t('noSlots')}</small>`; $("#bkSlots").innerHTML=''; return; }
+  if(!bk.doctor&&names.length===1) bk.doctor=names[0];
+  if(!bk.doctor&&bk.pre&&bk.pre.doctor&&names.includes(bk.pre.doctor)) bk.doctor=bk.pre.doctor;
+  names.sort((a,b)=>groups[a][0]<groups[b][0]?-1:1);
+  box.innerHTML=names.map(n=>{ const d=D.doctors.find(x=>x.doctor===n)||{}; return `<button type="button" class="doccard${n===bk.doctor?' on':''}" data-pickdoc="${escHtml(n)}"><span class="doc-av sm">${avatar(n)}</span><span class="dc-t"><b>${escHtml(n)}</b><small>${escHtml(d.specialty||'')}</small><small>${groups[n].length} ${t('slotsCount')} · ${t('firstAt')} ${fmtTime(groups[n][0])}</small></span></button>`; }).join('');
   refreshSlots();
 }
-function refreshDoctorOptions(){
-  const sel=$("#bkDoctor"); const keep=sel.value; const svc=$("#bkService").value, br=$("#bkBranch").value;
-  const docs=D.doctors.filter(d=>(!svc||listSplit(d.services).includes(svc))&&(!br||listSplit(d.branches).includes(br)));
-  sel.innerHTML=`<option value="">${t('anyDoctor')}</option>`+docs.map(d=>`<option value="${escHtml(d.doctor)}">${escHtml(d.doctor)}</option>`).join('');
-  if(docs.some(d=>d.doctor===keep)) sel.value=keep;
-}
 function refreshSlots(){
-  bk.slot=null; const box=$("#bkSlots"); const svc=$("#bkService").value, br=$("#bkBranch").value, date=$("#bkDate").value, doc=$("#bkDoctor").value;
-  if(!svc||!br||!date){ box.innerHTML=`<small style="color:var(--muted)">${t('pickSlotHint')}</small>`; return; }
-  const slots=computeSlots(svc,br,date,doc,bk.resched?bk.resched.id:'');
+  bk.slot=null; const box=$("#bkSlots"); const {svc,br,ex}=bkCtx(); const date=bk.date, doc=bk.doctor;
+  if(!doc){ box.innerHTML=`<small style="color:var(--muted)">${t('pickDoctorHint')}</small>`; return; }
+  const slots=computeSlots(svc,br,date,doc,ex);
   if(!slots.length){ box.innerHTML=`<small style="color:var(--muted)">${t('noSlots')}</small>`; return; }
-  const seen=new Set(); const uniq=slots.filter(s=>{ const k=s.time+'|'+(doc?'':s.doctor); if(seen.has(k)) return false; seen.add(k); return true; });
-  box.innerHTML=uniq.map(s=>`<button type="button" class="slot" data-slot="${s.time}" data-slot-doc="${escHtml(s.doctor)}">${fmtTime(s.time)}<small>${escHtml(s.doctor)}</small></button>`).join('');
+  box.innerHTML=slots.map(s=>`<button type="button" class="slot" data-slot="${s.time}" data-slot-doc="${escHtml(s.doctor)}">${fmtTime(s.time)}</button>`).join('');
   const pre=bk.pre||{};
-  if(pre.time){ const hit=[...box.querySelectorAll('.slot')].find(x=>x.dataset.slot===pre.time&&(!pre.doctor||x.dataset.slotDoc===pre.doctor)); if(hit) hit.click(); }
+  if(pre.time){ const hit=[...box.querySelectorAll('.slot')].find(x=>x.dataset.slot===pre.time); bk.pre.time=''; if(hit) hit.click(); }
 }
 async function submitBooking(e){
   e.preventDefault(); const err=$("#bkError"); err.hidden=true; const rs=bk.resched;
@@ -2722,7 +2866,7 @@ function openLeadForm(){
     <div class="fld"><label>${t('fieldLeadName')}</label><input id="ldName" required maxlength="80"></div>
     <div class="fld"><label>${t('fieldPhone')}</label><input id="ldPhone" required dir="ltr" inputmode="tel" maxlength="20"></div>
     <div class="fld"><label>${t('optionalService')}</label><select id="ldService"><option value="">—</option>${D.services.map(s=>`<option value="${escHtml(s.service)}">${escHtml(s.service)}</option>`).join('')}</select></div>
-    <div class="fld"><label>${t('fieldSource')}</label><select id="ldSource">${LEAD_SOURCES_UI.map(v=>`<option>${escHtml(v)}</option>`).join('')}</select></div>
+    <div class="fld"><label>${t('sourceLbl')}</label><select id="ldSource">${LEAD_SOURCES_UI.map(v=>`<option>${escHtml(v)}</option>`).join('')}</select></div>
     <div class="fld"><label>${t('fieldCampaign')}</label><input id="ldCampaign" maxlength="80"></div>
     <div class="fld"><label>${t('fieldAgent')}</label><input id="ldAgent" maxlength="60" value="${escHtml((getUser()||{}).name||'')}"></div>
   </div><div class="login-error" id="ldError" hidden></div><button type="submit" class="btn primary auth-submit" id="ldSave"><svg><use href="#i-check"/></svg><span>${t('saveLead')}</span></button></form>`);
@@ -2822,6 +2966,7 @@ $("#mSyncBtn").addEventListener("click",()=>{ $("#mSyncIco").classList.add("spin
 $("#refresh").onclick=()=>{ $("#refreshIco").classList.add("spin"); loadData(true).finally(()=>$("#refreshIco").classList.remove("spin")); };
 $("#quick").onclick=()=>openBookingForm(null);
 $("#quickLead").onclick=()=>openLeadForm();
+document.querySelectorAll('[data-fin]').forEach(b=>b.addEventListener('click',()=>{ finPeriod=b.dataset.fin; renderFinance(); }));
 $("#viewList").onclick=()=>setAgenda(false); $("#viewAgenda").onclick=()=>setAgenda(true);
 $("#agPrev").onclick=()=>{ agendaDate=addDays(agendaDate||TODAY(),LANG==='ar'?-1:-1); renderAgenda(); };
 $("#agNext").onclick=()=>{ agendaDate=addDays(agendaDate||TODAY(),1); renderAgenda(); };
@@ -2847,7 +2992,7 @@ document.addEventListener("click",e=>{
   const nbtn=e.target.closest("#notifBtn"); if(nbtn){ const p=$("#notifPop"); p.hidden=!p.hidden; renderNotifications(); return; }
   if(!e.target.closest("#notifPop")) $("#notifPop").hidden=true;
   if(e.target.closest("#markNotifsRead")){ notifItems=notifItems.map(x=>({...x,read:true})); renderNotifications(); return; }
-  const ni=e.target.closest("[data-notif-id]"); if(ni){ const n=notifItems.find(x=>x.id===ni.dataset.notifId); if(n){ n.read=true; renderNotifications(); $("#notifPop").hidden=true; if(n.section) showSection(n.section); } return; }
+  const ni=e.target.closest("[data-notif-id]"); if(ni){ const n=notifItems.find(x=>x.id===ni.dataset.notifId); if(n){ n.read=true; renderNotifications(); $("#notifPop").hidden=true; if(n.section) showSection(n.section); if(n.view){ const [k,id]=n.view.split(/:(.+)/); if(k==='b') openBooking(id); else openLead(id); } } return; }
   const go=e.target.closest("[data-go]"); if(go){ showSection(go.dataset.go); return; }
   const sa=e.target.closest("[data-status-action]"); if(sa){ e.stopPropagation(); openStatusMenu(sa.dataset.statusAction,sa); return; }
   const ask=e.target.closest("[data-ask-status]"); if(ask){ const [k,id,to]=ask.dataset.askStatus.split(':'); askStatus(k,id,to); return; }
@@ -2858,6 +3003,8 @@ document.addEventListener("click",e=>{
   if(!e.target.closest(".search-box")) $("#gsearchPop").hidden=true;
   const bl=e.target.closest("[data-book-lead]"); if(bl){ const l=leadById(bl.dataset.bookLead); if(l){ closeModal(); openBookingForm(l); } return; }
   const sv=e.target.closest("[data-save-agent]"); if(sv){ saveAgent(sv.dataset.saveAgent); return; }
+  const dyc=e.target.closest("[data-day]"); if(dyc){ bk.date=dyc.dataset.day; bk.doctor=''; bk.slot=null; $("#bkDate").value=bk.date; document.querySelectorAll('#bkDays .daychip').forEach(x=>x.classList.toggle('on',x===dyc)); refreshDoctors(); return; }
+  const pdc=e.target.closest("[data-pickdoc]"); if(pdc){ bk.doctor=pdc.dataset.pickdoc; document.querySelectorAll('#bkDocs .doccard').forEach(x=>x.classList.toggle('on',x===pdc)); refreshSlots(); return; }
   const sl=e.target.closest("[data-slot]"); if(sl){ document.querySelectorAll('#bkSlots .slot').forEach(x=>x.classList.remove('on')); sl.classList.add('on'); bk.slot={time:sl.dataset.slot,doctor:sl.dataset.slotDoc}; return; }
   const pp=e.target.closest("[data-pipe]"); if(pp){ const v=pp.dataset.pipe; $("#status").value=$("#status").value===v?'all':v; renderLeads(); return; }
   const dc=e.target.closest("[data-doc]"); if(dc){ openDoctor(dc.dataset.doc); return; }
@@ -2955,7 +3102,7 @@ function boot(){
   if(booted){ loadData(false); return; }
   booted=true;
   const h=location.hash.slice(1); showSection(SECTIONS.includes(h)?h:'home');
-  loadData(false).finally(hideSplash);
+  loadData(false).then(()=>{ const hh=location.hash.slice(1); if(SECTIONS.includes(hh)&&can(hh)) showSection(hh); }).finally(hideSplash);
   setTimeout(hideSplash,4000);
 }
 applyTheme(document.documentElement.getAttribute('data-theme')||systemTheme());
