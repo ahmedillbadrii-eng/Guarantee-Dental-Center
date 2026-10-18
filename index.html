@@ -1573,6 +1573,101 @@ html .table td:last-child:has(.mini-actions) .mini-actions{margin-top:0}
 .audit-item small{color:var(--muted)}
 .confirm-extra select,.confirm-extra input{width:100%;margin:10px 0 0;padding:10px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--panel)}
 @media(max-width:860px){.pipe{grid-template-columns:repeat(2,1fr)}.fgrid,.kv{grid-template-columns:1fr}}
+
+/* ===== Light white + soft-gold theme (overrides the earlier bronze palette; dark mode untouched) ===== */
+html:not([data-theme="dark"]){
+  --ink:#33261A; --muted:#7D6C59; --muted-2:#A39481;
+  --bg:#FFFFFF; --panel:#FFFFFF; --panel-2:#FBF8F3; --line:#EEE5D8; --line-soft:#F5EFE5;
+  --navy-950:#FFFFFF; --navy-900:#FBF8F3; --navy-800:#D2B27A; --navy-700:#DDBF8C;
+  --blue:#B8904F; --blue-light:#D2B27A; --blue-soft:#F8EFDF; --blue-ink:#7F5E2C;
+  --brand-blue:#C9A56A; --brand-blue-2:#D6B67E; --brand-deep:#8F6B35; --brand-pink:#D98F78; --brand-sky:#E6CFA6;
+  --pink:#C9705A; --pink-light:#E39E89; --pink-soft:#FBEAE4;
+  --gold:#B8904F; --gold-soft:#F8EFDF; --gold-border:rgba(184,144,79,.35);
+  --hero:linear-gradient(150deg,#EBD3A6 0%,#DDBC84 52%,#CFA766 100%);
+  --sh-sm:0 1px 3px rgba(120,90,40,.06),0 4px 14px rgba(120,90,40,.05);
+  --sh-md:0 10px 28px rgba(120,90,40,.10); --sh-lg:0 26px 60px rgba(120,90,40,.16);
+  --clay-hi:rgba(255,255,255,.9); --clay-lo:rgba(184,144,79,.08);
+}
+html:not([data-theme="dark"]) body{background:#FFFFFF}
+html:not([data-theme="dark"]) .card{box-shadow:0 0 0 1px var(--line),var(--sh-sm)}
+html:not([data-theme="dark"]) .sidebar{background:#FBF8F3;color:#5C4A36;border-inline-end:1px solid var(--line);box-shadow:none}
+html:not([data-theme="dark"]) .brand-word{color:#3A2A1A}
+html:not([data-theme="dark"]) .brand-tag{color:#9A7A44}
+html:not([data-theme="dark"]) .logo-chip{box-shadow:0 0 0 1px var(--line),0 6px 16px rgba(120,90,40,.12)}
+html:not([data-theme="dark"]) .nav button{color:#7D6C59}
+html:not([data-theme="dark"]) .nav button:hover{background:#F5EBDA;color:#3A2A1A}
+html:not([data-theme="dark"]) html .nav button.active,html:not([data-theme="dark"]) .nav button.active{background:#F3E3C4;color:#5A3F18;box-shadow:inset 0 0 0 1px rgba(184,144,79,.28)}
+html:not([data-theme="dark"]) .nav button.active svg{color:#B8904F}
+html:not([data-theme="dark"]) .nav-group-label{color:#A39481}
+html:not([data-theme="dark"]) .user-chip{border-color:var(--line);background:#FFFFFF}
+html:not([data-theme="dark"]) .user-meta b{color:var(--ink)}
+html:not([data-theme="dark"]) .user-meta small,html:not([data-theme="dark"]) .user-logout{color:#A39481}
+html:not([data-theme="dark"]) .user-logout:hover{color:#5A3F18;background:#F5EBDA}
+html:not([data-theme="dark"]) .side-lang{background:#F5EFE5;border-color:var(--line)}
+html:not([data-theme="dark"]) .side-lang .lang-btn{color:#7D6C59}
+html:not([data-theme="dark"]) .side-lang .lang-btn.active{background:#fff;color:#5A3F18}
+html:not([data-theme="dark"]) html .btn.primary,html:not([data-theme="dark"]) .btn.primary,html:not([data-theme="dark"]) .auth-submit,html:not([data-theme="dark"]) .lang-btn.active,html:not([data-theme="dark"]) .auth-tab.active,html:not([data-theme="dark"]) .m-bottomnav button.active{background:var(--hero);color:#4A3315;box-shadow:0 6px 16px rgba(184,144,79,.28),inset 0 1px 0 rgba(255,255,255,.5)}
+html:not([data-theme="dark"]) .btn.primary:hover{box-shadow:0 10px 22px rgba(184,144,79,.34),inset 0 1px 0 rgba(255,255,255,.5)}
+html:not([data-theme="dark"]) .kpis .kpi:nth-child(2){color:#4A3315;box-shadow:0 14px 30px rgba(184,144,79,.28),inset 0 1px 0 rgba(255,255,255,.6)!important}
+html:not([data-theme="dark"]) .kpis .kpi:nth-child(2) *{color:#4A3315}
+html:not([data-theme="dark"]) .kpis .kpi:nth-child(2) .trend,html:not([data-theme="dark"]) .kpis .kpi:nth-child(2) .kpi-top span:first-child{color:#6B4D22}
+html:not([data-theme="dark"]) .kpis .kpi:nth-child(2) .kpi-ico{background:rgba(255,255,255,.55)!important;color:#7F5E2C}
+html:not([data-theme="dark"]) .kpis .kpi:nth-child(2)::after{border-top-color:rgba(255,255,255,.65);box-shadow:0 -4px 0 rgba(255,255,255,.35)}
+html:not([data-theme="dark"]) .kpi-ico.blue{background:linear-gradient(145deg,#E6CB98,#C9A263)!important;color:#fff}
+html:not([data-theme="dark"]) .kpi-ico.pink{background:linear-gradient(145deg,#F6D5C8,#D98F78)!important;color:#fff}
+html:not([data-theme="dark"]) .kpi-ico{box-shadow:inset 0 2px 0 rgba(255,255,255,.5),0 6px 12px rgba(184,144,79,.18)!important}
+html:not([data-theme="dark"]) .login-screen{background:#FFFFFF}
+html:not([data-theme="dark"]) .m-topbar{background:rgba(255,255,255,.92)}
+html:not([data-theme="dark"]) .bar-fill{background:linear-gradient(180deg,#E3C691,#C9A263)}
+html:not([data-theme="dark"]) .bar-col.today .bar-fill{background:linear-gradient(180deg,#EAB09E,#D98F78)}
+html:not([data-theme="dark"]) .doc-av{color:#4A3315}
+html:not([data-theme="dark"]) .slot.on{color:#4A3315}
+html:not([data-theme="dark"]) .splash{background:#FFFFFF}
+html:not([data-theme="dark"]) .nav button.active{background:#F3E3C4!important;color:#5A3F18!important;box-shadow:inset 0 0 0 1px rgba(184,144,79,.30)!important}
+html:not([data-theme="dark"]) .nav button:hover:not(.active){background:#F5EBDA!important;color:#3A2A1A!important}
+html:not([data-theme="dark"]) .splash{background:#FFFFFF!important}
+html:not([data-theme="dark"]) .splash-name,html:not([data-theme="dark"]) .splash-tag{color:#6B4D22!important}
+/* status stripe on table rows */
+tr.rs-green td:first-child,tr.rs-yellow td:first-child,tr.rs-red td:first-child,tr.rs-blue td:first-child{--stripe:var(--blue)}
+tr.rs-green td:first-child{--stripe:var(--success)}tr.rs-yellow td:first-child{--stripe:var(--warning)}tr.rs-red td:first-child{--stripe:var(--danger)}tr.rs-blue td:first-child{--stripe:var(--blue-light)}
+html[dir="rtl"] tr[class*="rs-"] td:first-child{box-shadow:inset -4px 0 0 var(--stripe)}
+html[dir="ltr"] tr[class*="rs-"] td:first-child{box-shadow:inset 4px 0 0 var(--stripe)}
+tr.rs-grey{opacity:.62}
+.clickable{cursor:pointer}.clickable:hover{background:var(--blue-soft)}
+.plink{color:var(--ink);font-weight:700;background:none;padding:0;text-align:start;cursor:pointer}.plink:hover{color:var(--blue);text-decoration:underline}
+.seg{display:inline-flex;background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:3px;gap:2px}
+.seg button{padding:7px 14px;border-radius:9px;font-size:12px;font-weight:600;color:var(--muted)}
+.seg button.on{background:var(--panel);color:var(--ink);box-shadow:0 1px 4px rgba(120,90,40,.15)}
+.card-head-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ag-nav{display:flex;align-items:center;gap:8px}
+.ag-nav input{padding:8px 10px;border-radius:10px;border:1.5px solid var(--line);background:var(--panel)}
+.agenda-wrap{overflow:auto;max-height:calc(100vh - 260px);border-top:1px solid var(--line)}
+.agenda{border-collapse:separate;border-spacing:0;min-width:100%;font-size:12px}
+.agenda th,.agenda td{border-bottom:1px solid var(--line-soft);border-inline-start:1px solid var(--line-soft);padding:0;height:34px;min-width:132px;vertical-align:top}
+.agenda thead th{position:sticky;top:0;z-index:3;background:var(--panel-2);padding:8px 6px;font-size:12px;text-align:center}
+.agenda thead th small{display:block;color:var(--muted);font-weight:500;font-size:10px}
+.agenda tbody th{position:sticky;inset-inline-start:0;z-index:2;background:var(--panel-2);min-width:64px;width:64px;font-size:11px;color:var(--muted);text-align:center;vertical-align:middle}
+.ag-off{background:repeating-linear-gradient(135deg,var(--panel-2),var(--panel-2) 6px,var(--line-soft) 6px,var(--line-soft) 7px)}
+.ag-free{color:transparent;text-align:center;vertical-align:middle;cursor:pointer;transition:background .12s}
+.ag-free:hover{background:var(--blue-soft);color:var(--blue)}
+.ag-bk{padding:6px 8px;cursor:pointer;border-inline-start:3px solid var(--stripe,var(--blue));background:var(--tint,var(--blue-soft));overflow:hidden}
+.ag-bk b{display:block;font-size:12px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ag-bk span{display:block;color:var(--muted);font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ag-bk.g{--stripe:var(--success);--tint:var(--success-bg)}.ag-bk.y{--stripe:var(--warning);--tint:var(--warning-bg)}.ag-bk.r{--stripe:var(--danger);--tint:var(--danger-bg)}.ag-bk.b{--stripe:var(--blue-light);--tint:var(--blue-soft)}
+.gsearch-pop{position:absolute;top:calc(100% + 8px);inset-inline:0;z-index:70;background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh-lg);max-height:380px;overflow:auto}
+.gs-group{padding:8px 14px;font-size:10.5px;font-weight:700;color:var(--muted);background:var(--panel-2);border-bottom:1px solid var(--line-soft)}
+.gs-item{display:flex;align-items:center;gap:10px;width:100%;padding:10px 14px;text-align:start;border-bottom:1px solid var(--line-soft);cursor:pointer}
+.gs-item:hover,.gs-item.kb{background:var(--blue-soft)}
+.gs-item b{font-size:13px}.gs-item small{display:block;color:var(--muted);font-size:11px}
+.gs-item .badge{margin-inline-start:auto}
+.pstats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 14px}
+.pstats div{background:var(--panel-2);border-radius:12px;padding:10px 8px;text-align:center}
+.pstats b{display:block;font-size:20px}.pstats small{color:var(--muted);font-size:10.5px}
+.tl{display:grid;gap:8px;margin:0 0 14px}
+.tl-item{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:var(--panel-2);border-inline-start:3px solid var(--stripe,var(--blue-light))}
+.tl-item.g{--stripe:var(--success)}.tl-item.y{--stripe:var(--warning)}.tl-item.r{--stripe:var(--danger)}
+.tl-item b{font-size:13px}.tl-item small{display:block;color:var(--muted);font-size:11px}.tl-item .badge{margin-inline-start:auto;flex:none}
+@media(max-width:860px){.pstats{grid-template-columns:repeat(2,1fr)}.agenda th,.agenda td{min-width:112px}}
 </style>
 
 </head>
@@ -1724,12 +1819,13 @@ html .table td:last-child:has(.mini-actions) .mini-actions{margin-top:0}
       <button class="btn ghost" id="exportBtn" type="button"><svg><use href="#i-download"/></svg><span class="enterprise-label" data-i18n="export">تصدير</span></button>
       <button class="btn sync-btn" id="refresh"><span class="conn-dot warn"></span><svg id="refreshIco"><use href="#i-refresh"/></svg><span data-i18n="btnSync">مزامنة الآن</span></button>
       <button class="btn primary" id="quick"><svg><use href="#i-plus"/></svg><span data-i18n="btnAddBooking">إضافة حجز</span></button>
+      <button class="btn" id="quickLead" type="button"><svg><use href="#i-funnel"/></svg><span data-i18n="btnAddLead">ليد جديد</span></button>
     </div>
   </div>
 </header>
 
 <div class="filters" id="filtersBox">
-  <div class="search-box"><svg class="search-ico"><use href="#i-search"/></svg><input id="search" type="search" autocomplete="off" enterkeyhint="search" data-i18n-ph="searchPlaceholder" placeholder="ابحث باسم المريض، الهاتف، رقم الحجز..." /><kbd class="search-kbd" id="searchKbd">⌘K</kbd><button type="button" class="search-clear" id="searchClear" hidden aria-label="clear"><svg><use href="#i-x"/></svg></button></div>
+  <div class="search-box"><svg class="search-ico"><use href="#i-search"/></svg><input id="search" type="search" autocomplete="off" enterkeyhint="search" data-i18n-ph="searchPlaceholder" placeholder="ابحث باسم المريض، الهاتف، رقم الحجز..." /><kbd class="search-kbd" id="searchKbd">⌘K</kbd><button type="button" class="search-clear" id="searchClear" hidden aria-label="clear"><svg><use href="#i-x"/></svg></button><div class="gsearch-pop" id="gsearchPop" hidden></div></div>
   <select id="branch"><option value="all" data-i18n="allBranches">كل الفروع</option></select>
   <select id="status"><option value="all" data-i18n="allStatuses">كل الحالات</option></select>
   <button class="btn ghost" id="clearFilters" data-i18n="btnClearFilters">مسح الفلاتر</button>
@@ -1771,7 +1867,10 @@ html .table td:last-child:has(.mini-actions) .mini-actions{margin-top:0}
 </section>
 
 <section id="appointments" class="section" hidden>
-<div class="card"><div class="card-head"><h2 data-i18n="apptsManageTitle">إدارة المواعيد</h2><span id="apptCount" class="badge b-blue"></span></div><div class="table-wrap"><table class="table"><thead><tr><th>#</th><th data-i18n="colTime">الموعد</th><th data-i18n="colPatient">المريض</th><th data-i18n="colService">الخدمة</th><th data-i18n="colDoctor">الدكتور</th><th data-i18n="colBranch">الفرع</th><th data-i18n="colSource">المصدر</th><th data-i18n="colStatus">الحالة</th><th data-i18n="colAction">إجراء</th></tr></thead><tbody id="apptTable"></tbody></table></div><div class="orders-pagination"><span class="pagination-info" id="apptPageInfo"></span><div class="pagination-actions"><button class="btn" id="apptPrev" type="button" data-i18n="previous">السابق</button><button class="btn" id="apptNext" type="button" data-i18n="next">التالي</button></div></div></div>
+<div class="card"><div class="card-head"><h2 data-i18n="apptsManageTitle">إدارة المواعيد</h2><div class="card-head-tools"><div class="seg" role="tablist"><button type="button" id="viewList" class="on" data-i18n="viewList">قائمة</button><button type="button" id="viewAgenda" data-i18n="viewAgenda">جدول اليوم</button></div><span id="apptCount" class="badge b-blue"></span></div></div>
+<div id="listBox"><div class="table-wrap"><table class="table"><thead><tr><th>#</th><th data-i18n="colTime">الموعد</th><th data-i18n="colPatient">المريض</th><th data-i18n="colService">الخدمة</th><th data-i18n="colDoctor">الدكتور</th><th data-i18n="colBranch">الفرع</th><th data-i18n="colSource">المصدر</th><th data-i18n="colStatus">الحالة</th><th data-i18n="colAction">إجراء</th></tr></thead><tbody id="apptTable"></tbody></table></div><div class="orders-pagination"><span class="pagination-info" id="apptPageInfo"></span><div class="pagination-actions"><button class="btn" id="apptPrev" type="button" data-i18n="previous">السابق</button><button class="btn" id="apptNext" type="button" data-i18n="next">التالي</button></div></div></div>
+<div id="agendaBox" hidden><div class="card-body" style="padding-bottom:10px"><div class="ag-nav"><button class="btn" id="agPrev" type="button">›</button><input id="agDate" type="date"><button class="btn" id="agNext" type="button">‹</button><button class="btn" id="agToday" type="button" data-i18n="todayShort">النهارده</button></div></div><div class="agenda-wrap" id="agenda"></div></div>
+</div>
 </section>
 
 <section id="leads" class="section" hidden>
@@ -1927,7 +2026,12 @@ const I18N = {
   pwTooShort:"كلمة المرور لازم تكون 8 حروف على الأقل", pwMismatch:"كلمتا المرور غير متطابقتين", signupPending:"تم إنشاء الحساب — في انتظار موافقة الإدارة قبل ما تقدر تدخل",
   accountPending:"حسابك لسه في انتظار موافقة الإدارة", signupFailed:"تعذر إنشاء الحساب", accountDisabled:"الحساب ده موقوف — كلّم الإدارة",
   emailTaken:"الإيميل ده مسجل قبل كده — سجّل دخول بدل ما تعمل حساب جديد", invalidEmail:"البريد الإلكتروني مش صحيح", invalidName:"اكتب اسمك (80 حرف كحد أقصى)",
-  greetMorning:"صباح الخير", greetEvening:"مساء الخير", noNotifs:"مفيش تنبيهات جديدة", markRead:"تعليم الكل كمقروء"
+  greetMorning:"صباح الخير", greetEvening:"مساء الخير", noNotifs:"مفيش تنبيهات جديدة", markRead:"تعليم الكل كمقروء",
+  btnAddLead:"ليد جديد", newLeadTitle:"ليد جديد", fieldLeadName:"اسم العميل", fieldCampaign:"الحملة (اختياري)", fieldAgent:"الموظف المسؤول (اختياري)", optionalService:"الخدمة المطلوبة (اختياري)", saveLead:"حفظ الليد", toastLeadSaved:"تم إضافة الليد", toastDupLead:"فيه ليد مفتوح بنفس الرقم",
+  rescheduleBtn:"إعادة جدولة", rescheduleTitle:"إعادة جدولة حجز", saveReschedule:"تأكيد الموعد الجديد", toastRescheduled:"تمت إعادة الجدولة",
+  viewList:"قائمة", viewAgenda:"جدول اليوم", agendaEmpty:"مفيش دكاترة شغالين في اليوم ده",
+  patientProfile:"ملف المريض", pVisits:"زيارات", pBookings:"حجوزات", pNoShows:"لم يحضر", pCancelled:"ملغي", pLastVisit:"آخر زيارة", pNext:"الموعد القادم", pHistory:"سجل الحجوزات", pLeads:"الليدز المرتبطة", pNew:"حجز جديد", pNone:"—",
+  gsPatients:"المرضى", gsLeads:"الليدز", gsBookings:"الحجوزات", gsNone:"مفيش نتائج"
  },
  en:{
   brandWord:"Guarantee Dental Center", brandTag:"Operations dashboard",
@@ -1983,7 +2087,12 @@ const I18N = {
   pwTooShort:"Password must be at least 8 characters", pwMismatch:"Passwords don't match", signupPending:"Account created — waiting for admin approval before you can sign in",
   accountPending:"Your account is still waiting for admin approval", signupFailed:"Couldn't create the account", accountDisabled:"This account is disabled — contact the admin",
   emailTaken:"This email is already registered — sign in instead", invalidEmail:"That email address isn't valid", invalidName:"Enter your name (80 characters max)",
-  greetMorning:"Good morning", greetEvening:"Good evening", noNotifs:"No new notifications", markRead:"Mark all as read"
+  greetMorning:"Good morning", greetEvening:"Good evening", noNotifs:"No new notifications", markRead:"Mark all as read",
+  btnAddLead:"New lead", newLeadTitle:"New lead", fieldLeadName:"Customer name", fieldCampaign:"Campaign (optional)", fieldAgent:"Responsible agent (optional)", optionalService:"Requested service (optional)", saveLead:"Save lead", toastLeadSaved:"Lead added", toastDupLead:"An open lead with this number already exists",
+  rescheduleBtn:"Reschedule", rescheduleTitle:"Reschedule booking", saveReschedule:"Confirm new time", toastRescheduled:"Booking rescheduled",
+  viewList:"List", viewAgenda:"Day schedule", agendaEmpty:"No doctors are working that day",
+  patientProfile:"Patient profile", pVisits:"Visits", pBookings:"Bookings", pNoShows:"No-shows", pCancelled:"Cancelled", pLastVisit:"Last visit", pNext:"Next appointment", pHistory:"Booking history", pLeads:"Linked leads", pNew:"New booking", pNone:"—",
+  gsPatients:"Patients", gsLeads:"Leads", gsBookings:"Bookings", gsNone:"No results"
  }
 };
 function t(key){ return (I18N[LANG]&&I18N[LANG][key]) || I18N.ar[key] || key; }
@@ -2111,7 +2220,7 @@ function applyTheme(theme){
   document.documentElement.setAttribute('data-theme',theme);
   document.querySelectorAll('.theme-use').forEach(u=>u.setAttribute('href',theme==="dark"?"#i-sun":"#i-moon"));
   document.querySelectorAll('.theme-toggle').forEach(b=>b.title=theme==="dark"?t('themeToLight'):t('themeToDark'));
-  const meta=$("#themeColorMeta"); if(meta) meta.setAttribute('content',theme==="dark"?"#17110B":"#F6EFE5");
+  const meta=$("#themeColorMeta"); if(meta) meta.setAttribute('content',theme==="dark"?"#17110B":"#FFFFFF");
 }
 document.querySelectorAll('.theme-toggle').forEach(b=>b.addEventListener("click",()=>{
   const next=document.documentElement.getAttribute('data-theme')==="dark"?"light":"dark";
@@ -2304,7 +2413,7 @@ function branchStats(name){
 function renderHome(){
   const today=TODAY();
   const list=branchScope(D.bookings).filter(b=>b.date===today&&b.status!=='ملغي').sort((a,b)=>a.time.localeCompare(b.time));
-  $("#homeAppts").innerHTML=list.slice(0,60).map((b,i)=>`<tr style="animation-delay:${i*25}ms" data-view="b:${escHtml(b.id)}"><td class="nowrap"><b>${fmtTime(b.time)}</b></td><td>${escHtml(b.patient)}</td><td>${escHtml(b.service)}</td><td>${escHtml(b.doctor)}</td><td>${escHtml(b.branch)}</td><td>${badgeStatus('b',b)}</td></tr>`).join('')||`<tr><td colspan="6" class="empty">${t('noApptsToday')}</td></tr>`;
+  $("#homeAppts").innerHTML=list.slice(0,60).map((b,i)=>`<tr class="clickable rs-${(BS[b.status]||{c:'blue'}).c}" style="animation-delay:${i*25}ms" data-view="b:${escHtml(b.id)}"><td class="nowrap"><b>${fmtTime(b.time)}</b></td><td>${escHtml(b.patient)}</td><td>${escHtml(b.service)}</td><td>${escHtml(b.doctor)}</td><td>${escHtml(b.branch)}</td><td>${badgeStatus('b',b)}</td></tr>`).join('')||`<tr><td colspan="6" class="empty">${t('noApptsToday')}</td></tr>`;
   const br=$("#branch").value; const bl=br==='all'?D.branches:D.branches.filter(b=>b.branch===br);
   $("#branchSummary").innerHTML=bl.map(b=>{ const s=branchStats(b.branch); const cls=s.pending>3?'yellow':'green';
     return `<div class="branch-tile"><div class="bt-ico"><svg><use href="#i-building"/></svg></div><div class="bt-meta"><b>${escHtml(b.branch)}</b><small>${s.today} ${t('bookingsUnit')} · ${s.arrived} ${t('arrivedWord')}</small><small>${t('colPendingShort')}: ${s.pending} · ${t('colUpcoming')}: ${s.upcoming}</small></div><span class="badge b-${cls}">${s.pending>3?t('needsFollowUp'):t('working')}</span></div>`; }).join('')||`<div class="panel-empty"><svg><use href="#i-building"/></svg>${t('waitingData')}</div>`;
@@ -2317,7 +2426,7 @@ function renderAppointments(){
   const pages=Math.max(1,Math.ceil(arr.length/PAGE_SIZE)); if(apptPage>pages) apptPage=pages;
   const start=(apptPage-1)*PAGE_SIZE; const page=arr.slice(start,start+PAGE_SIZE); const today=TODAY();
   $("#apptCount").textContent=`${arr.length} ${t('bookingsUnit')}`;
-  $("#apptTable").innerHTML=page.map((b,i)=>`<tr style="animation-delay:${Math.min(i,10)*25}ms"><td><span class="order-id">${escHtml(b.id)}</span></td><td class="nowrap">${b.date===today?`<b>${t('todayShort')}</b>`:escHtml(fmtDay(b.date))}<br><small style="color:var(--muted)">${fmtTime(b.time)}</small></td><td>${escHtml(b.patient)}<br><small style="color:var(--muted)">${escHtml(b.phone)}</small></td><td>${escHtml(b.service)}</td><td>${escHtml(b.doctor)}</td><td>${escHtml(b.branch)}</td><td><span class="badge b-blue">${escHtml(b.source)}</span></td><td>${badgeStatus('b',b)}</td><td><button class="mini" data-view="b:${escHtml(b.id)}">${t('details')}</button></td></tr>`).join('')||`<tr><td colspan="9" class="empty">${t('noMatching')}</td></tr>`;
+  $("#apptTable").innerHTML=page.map((b,i)=>`<tr class="rs-${b.status==='ملغي'?'grey':(BS[b.status]||{c:'blue'}).c}" style="animation-delay:${Math.min(i,10)*25}ms"><td><span class="order-id">${escHtml(b.id)}</span></td><td class="nowrap">${b.date===today?`<b>${t('todayShort')}</b>`:escHtml(fmtDay(b.date))}<br><small style="color:var(--muted)">${fmtTime(b.time)}</small></td><td><button type="button" class="plink" data-patient="${escHtml(b.phone||b.patient)}">${escHtml(b.patient)}</button><br><small style="color:var(--muted)">${escHtml(b.phone)}</small></td><td>${escHtml(b.service)}</td><td>${escHtml(b.doctor)}</td><td>${escHtml(b.branch)}</td><td><span class="badge b-blue">${escHtml(b.source)}</span></td><td>${badgeStatus('b',b)}</td><td><button class="mini" data-view="b:${escHtml(b.id)}">${t('details')}</button></td></tr>`).join('')||`<tr><td colspan="9" class="empty">${t('noMatching')}</td></tr>`;
   $("#apptPageInfo").textContent=`${arr.length?start+1:0}–${Math.min(start+page.length,arr.length)} / ${arr.length}`;
   $("#apptPrev").disabled=apptPage<=1; $("#apptNext").disabled=apptPage>=pages;
   const pend=D.bookings.filter(b=>b.status==='بانتظار الرد'&&b.date>=today).length;
@@ -2332,7 +2441,7 @@ function renderLeads(){
   const arr=filteredLeads();
   $("#leadCount").textContent=`${arr.length} ${t('leadsWord')}`;
   $("#leadTable").innerHTML=arr.map((l,i)=>{ const age=ageMin(l.entry); const stale=l.status==='جديد'&&(age||0)>120;
-    return `<tr style="animation-delay:${Math.min(i,10)*25}ms"><td><span class="order-id">${escHtml(l.id)}</span></td><td>${escHtml(l.name)}<br><small style="color:var(--muted)">${escHtml(l.phone)}</small></td><td>${escHtml(l.source)}<br><small style="color:var(--muted)">${escHtml(l.campaign&&l.campaign!=='—'?l.campaign:'')}</small></td><td>${escHtml(l.service||'—')}</td><td>${badgeStatus('l',l)}</td><td>${escHtml(l.agent||'—')}</td><td class="nowrap${stale?' age-bad':''}">${escHtml(ageText(age))}</td><td><button class="mini" data-view="l:${escHtml(l.id)}">${t('details')}</button> ${l.status!=='تم الحجز'&&l.status!=='ضايع'?`<button class="mini green" data-book-lead="${escHtml(l.id)}">${t('bookNow')}</button>`:''}</td></tr>`; }).join('')||`<tr><td colspan="8" class="empty">${t('noMatching')}</td></tr>`;
+    return `<tr class="rs-${l.status==='ضايع'?'grey':(LS[l.status]||{c:'blue'}).c}" style="animation-delay:${Math.min(i,10)*25}ms"><td><span class="order-id">${escHtml(l.id)}</span></td><td>${escHtml(l.name)}<br><small style="color:var(--muted)">${escHtml(l.phone)}</small></td><td>${escHtml(l.source)}<br><small style="color:var(--muted)">${escHtml(l.campaign&&l.campaign!=='—'?l.campaign:'')}</small></td><td>${escHtml(l.service||'—')}</td><td>${badgeStatus('l',l)}</td><td>${escHtml(l.agent||'—')}</td><td class="nowrap${stale?' age-bad':''}">${escHtml(ageText(age))}</td><td><button class="mini" data-view="l:${escHtml(l.id)}">${t('details')}</button> ${l.status!=='تم الحجز'&&l.status!=='ضايع'?`<button class="mini green" data-book-lead="${escHtml(l.id)}">${t('bookNow')}</button>`:''}</td></tr>`; }).join('')||`<tr><td colspan="8" class="empty">${t('noMatching')}</td></tr>`;
   const nl=D.leads.filter(l=>l.status==='جديد').length; const nc=$("#navLeadCount"); nc.hidden=!nl; nc.textContent=nl;
 }
 
@@ -2376,15 +2485,18 @@ function renderBranches(){
   $("#branchesTable").innerHTML=list.map(b=>{ const s=branchStats(b.branch); return `<tr><td><b>${escHtml(b.branch)}</b><br><small style="color:var(--muted)">${escHtml(b.area)}</small></td><td>${s.today}</td><td>${s.pending}</td><td>${s.arrived}</td><td>${s.noshow}</td><td><span class="badge b-${s.hasPast?(s.rate>=80?'green':s.rate>=60?'yellow':'red'):'blue'}">${s.hasPast?s.rate+'%':'—'}</span></td><td>${s.upcoming}</td></tr>`; }).join('')||`<tr><td colspan="7" class="empty">${t('noData')}</td></tr>`;
   $("#branchCards").innerHTML=list.map(b=>`<div class="card"><div class="card-head"><h2>${escHtml(b.branch)}</h2><span class="badge b-blue">${escHtml(b.area)}</span></div><div class="card-body"><div class="status-list"><div class="status-row"><span class="who">${t('addressLbl')}</span><b style="font-size:12px;text-align:end">${escHtml(b.address)}</b></div><div class="status-row"><span class="who">${t('branchPhone')}</span><a class="phone-link" dir="ltr" href="tel:${escHtml(b.phone)}">${escHtml(b.phone)}</a></div></div></div></div>`).join('');
 }
+function buildPatients(bookings){
+  const map={}; const today=TODAY();
+  bookings.forEach(b=>{ const k=b.phone||b.patient; if(!k) return; const p=map[k]||(map[k]={key:k,name:b.patient,phone:b.phone,bookings:0,visits:0,noshow:0,last:'',next:''}); p.bookings++; if(b.status==='حضر'){ p.visits++; if(b.date>p.last) p.last=b.date; } if(b.status==='لم يحضر') p.noshow++; if(b.date>=today&&b.status!=='ملغي'&&(!p.next||b.date<p.next)) p.next=b.date; });
+  return Object.values(map);
+}
 function patientsList(){
-  const q=filt().q; const map={}; const today=TODAY();
-  branchScope(D.bookings).forEach(b=>{ const k=b.phone||b.patient; if(!k) return; const p=map[k]||(map[k]={name:b.patient,phone:b.phone,bookings:0,visits:0,noshow:0,last:'',next:''}); p.bookings++; if(b.status==='حضر'){ p.visits++; if(b.date>p.last) p.last=b.date; } if(b.status==='لم يحضر') p.noshow++; if(b.date>=today&&b.status!=='ملغي'&&(!p.next||b.date<p.next)) p.next=b.date; });
-  let list=Object.values(map); if(q) list=list.filter(p=>normAr(p.name+' '+p.phone).includes(q));
+  const q=filt().q; let list=buildPatients(branchScope(D.bookings)); if(q) list=list.filter(p=>normAr(p.name+' '+p.phone).includes(q));
   return list.sort((a,b)=>b.bookings-a.bookings||a.name.localeCompare(b.name));
 }
 function renderPatients(){
   const list=patientsList(); $("#patientCount").textContent=list.length;
-  $("#patientsTable").innerHTML=list.slice(0,300).map(p=>`<tr><td><b>${escHtml(p.name)}</b></td><td dir="ltr" style="text-align:start">${escHtml(p.phone)}</td><td>${p.visits}</td><td>${p.bookings}</td><td>${p.noshow?`<span class="badge b-red">${p.noshow}</span>`:'0'}</td><td>${p.last?escHtml(fmtDate(p.last)):'—'}</td><td>${p.next?escHtml(fmtDay(p.next)):'—'}</td></tr>`).join('')||`<tr><td colspan="7" class="empty">${t('noMatching')}</td></tr>`;
+  $("#patientsTable").innerHTML=list.slice(0,300).map(p=>`<tr class="clickable" data-patient="${escHtml(p.key)}"><td><b>${escHtml(p.name)}</b></td><td dir="ltr" style="text-align:start">${escHtml(p.phone)}</td><td>${p.visits}</td><td>${p.bookings}</td><td>${p.noshow?`<span class="badge b-red">${p.noshow}</span>`:'0'}</td><td>${p.last?escHtml(fmtDate(p.last)):'—'}</td><td>${p.next?escHtml(fmtDay(p.next)):'—'}</td></tr>`).join('')||`<tr><td colspan="7" class="empty">${t('noMatching')}</td></tr>`;
 }
 
 /* ========================= render: reports ========================= */
@@ -2429,7 +2541,7 @@ function renderNotifications(){
 /* ========================= section handling ========================= */
 const SECTIONS=['home','appointments','leads','doctors','branches','patients','reports','activity'];
 const CAPS={ // which filter controls make sense per section
-  home:{branch:1}, appointments:{search:1,branch:1,status:1,adv:1,date:1,doctor:1,source:1}, leads:{search:1,status:1,adv:1,source:1},
+  home:{search:1,branch:1}, appointments:{search:1,branch:1,status:1,adv:1,date:1,doctor:1,source:1}, leads:{search:1,status:1,adv:1,source:1},
   doctors:{search:1,branch:1}, branches:{branch:1}, patients:{search:1,branch:1}, reports:{branch:1}, activity:{}
 };
 function sectionTitle(id){ const k=id[0].toUpperCase()+id.slice(1); return {title:t('title'+k),sub:t('sub'+k)}; }
@@ -2452,7 +2564,7 @@ function showSection(id){
   if(location.hash!=='#'+id) history.replaceState(null,'','#'+id);
 }
 function renderAll(){
-  renderKpis(); renderHome(); renderAppointments(); renderLeads(); renderDoctors(); renderBranches(); renderPatients(); renderReports(); renderActivity(); renderNotifications();
+  renderKpis(); renderHome(); renderAppointments(); renderLeads(); renderDoctors(); renderBranches(); renderPatients(); renderReports(); renderActivity(); renderNotifications(); renderAgenda();
   const u=getUser(); if($("#roleChip")&&u) $("#roleChip").textContent=u.role||'—';
 }
 function openDrawer(){ $(".sidebar").classList.add("open"); $("#drawerBackdrop").classList.add("show"); }
@@ -2499,7 +2611,7 @@ async function runStatus(c){
     if(d.ok){ toast(t('toastUpdated')); await loadData(false); } else toast(errText(d),true);
   }catch(e){ if(e.message!=='unauthorized') toast(t('toastActionFailed'),true); }
 }
-function errText(d){ if(d&&d.error==='slot_taken') return t('toastSlotTaken'); if(d&&d.error==='duplicate_booking') return t('toastDuplicate'); return t('toastActionFailed'); }
+function errText(d){ if(d&&d.error==='duplicate_lead') return t('toastDupLead'); if(d&&d.error==='slot_taken') return t('toastSlotTaken'); if(d&&d.error==='duplicate_booking') return t('toastDuplicate'); return t('toastActionFailed'); }
 
 /* ========================= details modals ========================= */
 function contactLinks(phone){
@@ -2508,9 +2620,9 @@ function contactLinks(phone){
 }
 function openBooking(id){
   const b=bookingById(id); if(!b) return;
-  const trans=bsTransitions(b);
+  const trans=bsTransitions(b); const canResched=(b.status==='بانتظار الرد'||b.status==='مؤكد');
   const btn=(s)=>{ const cls=s==='ملغي'||s==='لم يحضر'?'danger':(s==='حضر'||s==='مؤكد'?'good':''); return `<button type="button" class="btn ${cls}" data-ask-status="b:${escHtml(b.id)}:${escHtml(s)}">${escHtml(bsLabel(s))}</button>`; };
-  openModal(`${t('bookingN')} #${b.id}`,`<div class="kv"><div><small>${t('patientLbl')}</small><b>${escHtml(b.patient)}</b></div><div><small>${t('phoneLbl')}</small><b dir="ltr">${escHtml(b.phone)}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(b.service)}</b></div><div><small>${t('doctorLbl')}</small><b>${escHtml(b.doctor)}</b></div><div><small>${t('branchLbl')}</small><b>${escHtml(b.branch)}</b></div><div><small>${t('dateLbl')}</small><b>${escHtml(fmtDay(b.date))} · ${fmtTime(b.time)}</b></div><div><small>${t('sourceLbl')}</small><b>${escHtml(b.source)}</b></div><div><small>${t('statusLbl')}</small><span class="badge b-${(BS[b.status]||{c:'blue'}).c}">${escHtml(bsLabel(b.status))}</span></div><div class="full"><small>${t('createdLbl')}</small><b>${escHtml(b.created_at)}</b></div></div>${trans.length?`<div class="m-actions">${trans.map(btn).join('')}</div>`:''}${contactLinks(b.phone)}`);
+  openModal(`${t('bookingN')} #${b.id}`,`<div class="kv"><div><small>${t('patientLbl')}</small><button type="button" class="plink" data-patient="${escHtml(b.phone||b.patient)}">${escHtml(b.patient)}</button></div><div><small>${t('phoneLbl')}</small><b dir="ltr">${escHtml(b.phone)}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(b.service)}</b></div><div><small>${t('doctorLbl')}</small><b>${escHtml(b.doctor)}</b></div><div><small>${t('branchLbl')}</small><b>${escHtml(b.branch)}</b></div><div><small>${t('dateLbl')}</small><b>${escHtml(fmtDay(b.date))} · ${fmtTime(b.time)}</b></div><div><small>${t('sourceLbl')}</small><b>${escHtml(b.source)}</b></div><div><small>${t('statusLbl')}</small><span class="badge b-${(BS[b.status]||{c:'blue'}).c}">${escHtml(bsLabel(b.status))}</span></div><div class="full"><small>${t('createdLbl')}</small><b>${escHtml(b.created_at)}</b></div></div>${(trans.length||canResched)?`<div class="m-actions">${trans.map(btn).join('')}${canResched?`<button type="button" class="btn" data-reschedule="${escHtml(b.id)}"><svg><use href="#i-calendar"/></svg>${t('rescheduleBtn')}</button>`:''}</div>`:''}${contactLinks(b.phone)}`);
 }
 function openLead(id){
   const l=leadById(id); if(!l) return;
@@ -2522,15 +2634,15 @@ function openLead(id){
 }
 
 /* ========================= booking modal ========================= */
-function computeSlots(service,branch,date,onlyDoctor){
+function computeSlots(service,branch,date,onlyDoctor,excludeId){
   const svc=D.services.find(s=>s.service===service); if(!svc||!branch||!date) return [];
   const dur=Number(svc.minutes)||30; const wd=pyWd(date); const now=nowStr(); const today=now.slice(0,10); const nowMin=toMin(now.slice(11,16));
   if(date<today) return [];
-  const docs=D.doctors.filter(d=>listSplit(d.services).includes(service)&&(!onlyDoctor||d.doctor===onlyDoctor));
+  const docs=D.doctors.filter(d=>listSplit(d.services).includes(service)&&listSplit(d.branches).includes(branch)&&(!onlyDoctor||d.doctor===onlyDoctor));
   const out=[];
   docs.forEach(d=>{
     D.schedule.filter(s=>s.doctor===d.doctor&&s.branch===branch&&Number(s.weekday)===wd).forEach(s=>{
-      const busy=D.bookings.filter(b=>b.doctor===d.doctor&&b.date===date&&b.status!=='ملغي').map(b=>{ const st=toMin(b.time); return [st,st+svcMinutes(b.service)]; });
+      const busy=D.bookings.filter(b=>b.doctor===d.doctor&&b.date===date&&b.status!=='ملغي'&&String(b.id)!==String(excludeId||'')).map(b=>{ const st=toMin(b.time); return [st,st+svcMinutes(b.service)]; });
       for(let m=toMin(s.from); m+dur<=toMin(s.to); m+=30){
         if(date===today&&m<=nowMin) continue;
         if(busy.every(r=>m+dur<=r[0]||m>=r[1])) out.push({time:fmtMin(m),doctor:d.doctor});
@@ -2539,25 +2651,32 @@ function computeSlots(service,branch,date,onlyDoctor){
   });
   return out.sort((a,b)=>a.time<b.time?-1:a.time>b.time?1:0);
 }
-let bk={slot:null,leadId:''};
-function openBookingForm(lead){
-  bk={slot:null,leadId:lead?String(lead.id):''};
-  const today=TODAY(); const br=$("#branch").value!=='all'?$("#branch").value:'';
-  const svcMatch=lead&&D.services.find(s=>s.service===lead.service)?lead.service:'';
+let bk={slot:null,leadId:'',resched:null,pre:null};
+function openBookingForm(lead,opts){
+  opts=opts||{}; const rs=opts.resched||null; const pre=opts.pre||{};
+  bk={slot:null,leadId:lead?String(lead.id):'',resched:rs,pre:pre};
+  const today=TODAY(); const brSel=$("#branch").value!=='all'?$("#branch").value:'';
+  const svcMatch=rs?rs.service:(lead&&D.services.find(s=>s.service===lead.service)?lead.service:'');
   const srcDefault=lead?(/واتساب/.test(lead.source)?'واتساب':'إعلان'):'كول سنتر';
-  openModal(t('newBookingTitle'),`<form id="bkForm"><div class="fgrid">
-    <div class="fld"><label>${t('fieldPatient')}</label><input id="bkPatient" required maxlength="80" value="${escHtml(lead?lead.name:'')}"></div>
-    <div class="fld"><label>${t('fieldPhone')}</label><input id="bkPhone" required dir="ltr" inputmode="tel" maxlength="20" value="${escHtml(lead&&phoneDigits(lead.phone)?lead.phone:'')}"></div>
-    <div class="fld"><label>${t('fieldService')}</label><select id="bkService" required><option value="">${t('chooseService')}</option>${D.services.map(s=>`<option value="${escHtml(s.service)}"${s.service===svcMatch?' selected':''}>${escHtml(s.service)} (${escHtml(s.minutes)} د)</option>`).join('')}</select></div>
-    <div class="fld"><label>${t('fieldBranch')}</label><select id="bkBranch" required><option value="">${t('chooseBranch')}</option>${D.branches.map(b=>`<option value="${escHtml(b.branch)}"${b.branch===br?' selected':''}>${escHtml(b.branch)}</option>`).join('')}</select></div>
-    <div class="fld"><label>${t('fieldDate')}</label><input id="bkDate" type="date" required min="${today}" value="${today}"></div>
+  const patient=rs?rs.patient:(pre.patient||(lead?lead.name:''));
+  const phone=rs?rs.phone:(pre.phone||(lead&&phoneDigits(lead.phone)?lead.phone:''));
+  const branch=rs?rs.branch:(pre.branch||brSel);
+  const date=rs?(rs.date<today?today:rs.date):(pre.date||today);
+  const lock=rs?' disabled':'';
+  openModal(rs?`${t('rescheduleTitle')} #${rs.id}`:t('newBookingTitle'),`<form id="bkForm"><div class="fgrid">
+    <div class="fld"><label>${t('fieldPatient')}</label><input id="bkPatient" required maxlength="80" value="${escHtml(patient)}"${lock}></div>
+    <div class="fld"><label>${t('fieldPhone')}</label><input id="bkPhone" required dir="ltr" inputmode="tel" maxlength="20" value="${escHtml(phone)}"${lock}></div>
+    <div class="fld"><label>${t('fieldService')}</label><select id="bkService" required${lock}><option value="">${t('chooseService')}</option>${D.services.map(s=>`<option value="${escHtml(s.service)}"${s.service===svcMatch?' selected':''}>${escHtml(s.service)} (${escHtml(s.minutes)} د)</option>`).join('')}</select></div>
+    <div class="fld"><label>${t('fieldBranch')}</label><select id="bkBranch" required><option value="">${t('chooseBranch')}</option>${D.branches.map(b=>`<option value="${escHtml(b.branch)}"${b.branch===branch?' selected':''}>${escHtml(b.branch)}</option>`).join('')}</select></div>
+    <div class="fld"><label>${t('fieldDate')}</label><input id="bkDate" type="date" required min="${today}" value="${date}"></div>
     <div class="fld"><label>${t('fieldDoctor')}</label><select id="bkDoctor"><option value="">${t('anyDoctor')}</option></select></div>
     <div class="fld full"><label>${t('fieldSlot')}</label><div class="slots" id="bkSlots"></div></div>
-    <div class="fld full"><label>${t('fieldSource')}</label><select id="bkSource">${SOURCES_BOOK.map(([v,k])=>`<option value="${escHtml(v)}"${v===srcDefault?' selected':''}>${t(k)}</option>`).join('')}</select></div>
-  </div><div class="login-error" id="bkError" hidden></div><button type="submit" class="btn primary auth-submit" id="bkSave"><svg><use href="#i-check"/></svg><span>${t('saveBooking')}</span></button></form>`);
+    ${rs?'':`<div class="fld full"><label>${t('fieldSource')}</label><select id="bkSource">${SOURCES_BOOK.map(([v,k])=>`<option value="${escHtml(v)}"${v===srcDefault?' selected':''}>${t(k)}</option>`).join('')}</select></div>`}
+  </div><div class="login-error" id="bkError" hidden></div><button type="submit" class="btn primary auth-submit" id="bkSave"><svg><use href="#i-check"/></svg><span>${rs?t('saveReschedule'):t('saveBooking')}</span></button></form>`);
   ['bkService','bkBranch','bkDate','bkDoctor'].forEach(id=>$("#"+id).addEventListener('input',()=>{ if(id!=='bkDoctor') refreshDoctorOptions(); refreshSlots(); }));
   $("#bkForm").addEventListener('submit',submitBooking);
-  refreshDoctorOptions(); refreshSlots();
+  refreshDoctorOptions(); if(pre.doctor&&[...$("#bkDoctor").options].some(o=>o.value===pre.doctor)) $("#bkDoctor").value=pre.doctor;
+  refreshSlots();
 }
 function refreshDoctorOptions(){
   const sel=$("#bkDoctor"); const keep=sel.value; const svc=$("#bkService").value, br=$("#bkBranch").value;
@@ -2568,22 +2687,121 @@ function refreshDoctorOptions(){
 function refreshSlots(){
   bk.slot=null; const box=$("#bkSlots"); const svc=$("#bkService").value, br=$("#bkBranch").value, date=$("#bkDate").value, doc=$("#bkDoctor").value;
   if(!svc||!br||!date){ box.innerHTML=`<small style="color:var(--muted)">${t('pickSlotHint')}</small>`; return; }
-  const slots=computeSlots(svc,br,date,doc);
+  const slots=computeSlots(svc,br,date,doc,bk.resched?bk.resched.id:'');
   if(!slots.length){ box.innerHTML=`<small style="color:var(--muted)">${t('noSlots')}</small>`; return; }
   const seen=new Set(); const uniq=slots.filter(s=>{ const k=s.time+'|'+(doc?'':s.doctor); if(seen.has(k)) return false; seen.add(k); return true; });
   box.innerHTML=uniq.map(s=>`<button type="button" class="slot" data-slot="${s.time}" data-slot-doc="${escHtml(s.doctor)}">${fmtTime(s.time)}<small>${escHtml(s.doctor)}</small></button>`).join('');
+  const pre=bk.pre||{};
+  if(pre.time){ const hit=[...box.querySelectorAll('.slot')].find(x=>x.dataset.slot===pre.time&&(!pre.doctor||x.dataset.slotDoc===pre.doctor)); if(hit) hit.click(); }
 }
 async function submitBooking(e){
-  e.preventDefault(); const err=$("#bkError"); err.hidden=true;
-  const v={patient:$("#bkPatient").value.trim(),phone:$("#bkPhone").value.trim(),service:$("#bkService").value,branch:$("#bkBranch").value,date:$("#bkDate").value,doctor:bk.slot?bk.slot.doctor:'',time:bk.slot?bk.slot.time:'',source:$("#bkSource").value,lead_id:bk.leadId};
-  if(!v.patient||!v.phone||!v.service||!v.branch||!v.date||!v.time){ err.hidden=false; err.textContent=t('fillAll'); return; }
+  e.preventDefault(); const err=$("#bkError"); err.hidden=true; const rs=bk.resched;
+  if(!bk.slot){ err.hidden=false; err.textContent=t('fillAll'); return; }
+  const common={branch:$("#bkBranch").value,date:$("#bkDate").value,doctor:bk.slot.doctor,time:bk.slot.time};
+  if(!common.branch||!common.date){ err.hidden=false; err.textContent=t('fillAll'); return; }
+  let action,params;
+  if(rs){ action='booking_reschedule'; params={id:rs.id,...common}; }
+  else{
+    const v={patient:$("#bkPatient").value.trim(),phone:$("#bkPhone").value.trim(),service:$("#bkService").value,source:$("#bkSource").value,lead_id:bk.leadId,...common};
+    if(!v.patient||!v.phone||!v.service){ err.hidden=false; err.textContent=t('fillAll'); return; }
+    action='booking_create'; params=v;
+  }
   $("#bkSave").disabled=true;
   try{
-    const d=await act('booking_create',v);
-    if(d.ok){ closeModal(); toast(t('toastBookingSaved')+' #'+d.booking_id); await loadData(false); showSection('appointments'); }
+    const d=await act(action,params);
+    if(d.ok){ closeModal(); toast(rs?t('toastRescheduled'):t('toastBookingSaved')+' #'+d.booking_id); await loadData(false); if(!rs&&currentSection!=='appointments') showSection('appointments'); }
     else{ err.hidden=false; err.textContent=errText(d); if(d.error==='slot_taken'){ await loadData(false); refreshSlots(); } }
   }catch(ex){ if(ex.message!=='unauthorized'){ err.hidden=false; err.textContent=t('toastActionFailed'); } }
   $("#bkSave").disabled=false;
+}
+
+/* ========================= new lead modal ========================= */
+const LEAD_SOURCES_UI=['اتصال','واتساب','فورم الموقع','إعلان فيسبوك','إعلان إنستجرام','تعليق إنستجرام','زيارة'];
+function openLeadForm(){
+  openModal(t('newLeadTitle'),`<form id="ldForm"><div class="fgrid">
+    <div class="fld"><label>${t('fieldLeadName')}</label><input id="ldName" required maxlength="80"></div>
+    <div class="fld"><label>${t('fieldPhone')}</label><input id="ldPhone" required dir="ltr" inputmode="tel" maxlength="20"></div>
+    <div class="fld"><label>${t('optionalService')}</label><select id="ldService"><option value="">—</option>${D.services.map(s=>`<option value="${escHtml(s.service)}">${escHtml(s.service)}</option>`).join('')}</select></div>
+    <div class="fld"><label>${t('fieldSource')}</label><select id="ldSource">${LEAD_SOURCES_UI.map(v=>`<option>${escHtml(v)}</option>`).join('')}</select></div>
+    <div class="fld"><label>${t('fieldCampaign')}</label><input id="ldCampaign" maxlength="80"></div>
+    <div class="fld"><label>${t('fieldAgent')}</label><input id="ldAgent" maxlength="60" value="${escHtml((getUser()||{}).name||'')}"></div>
+  </div><div class="login-error" id="ldError" hidden></div><button type="submit" class="btn primary auth-submit" id="ldSave"><svg><use href="#i-check"/></svg><span>${t('saveLead')}</span></button></form>`);
+  $("#ldForm").addEventListener('submit',async e=>{
+    e.preventDefault(); const err=$("#ldError"); err.hidden=true; $("#ldSave").disabled=true;
+    try{
+      const d=await act('lead_create',{name:$("#ldName").value.trim(),phone:$("#ldPhone").value.trim(),service:$("#ldService").value,source:$("#ldSource").value,campaign:$("#ldCampaign").value.trim(),agent:$("#ldAgent").value.trim()});
+      if(d.ok){ closeModal(); toast(t('toastLeadSaved')+' #'+d.lead_id); await loadData(false); showSection('leads'); }
+      else{ err.hidden=false; err.textContent=d.error==='invalid_fields'?t('fillAll'):errText(d); }
+    }catch(ex){ if(ex.message!=='unauthorized'){ err.hidden=false; err.textContent=t('toastActionFailed'); } }
+    $("#ldSave").disabled=false;
+  });
+}
+
+/* ========================= patient profile ========================= */
+function openPatient(key){
+  const bks=D.bookings.filter(b=>(b.phone||b.patient)===key).sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time));
+  if(!bks.length) return;
+  const today=TODAY(); const name=bks[0].patient, phone=bks[0].phone;
+  const visits=bks.filter(b=>b.status==='حضر'), noshow=bks.filter(b=>b.status==='لم يحضر'), canc=bks.filter(b=>b.status==='ملغي');
+  const next=bks.filter(b=>b.date>=today&&b.status!=='ملغي').sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time))[0];
+  const last=visits[0];
+  const leads=D.leads.filter(l=>l.phone&&l.phone===phone);
+  const cmap={green:'g',yellow:'y',red:'r',blue:'b'};
+  openModal(`${t('patientProfile')} — ${name}`,`<div class="kv"><div><small>${t('patientLbl')}</small><b>${escHtml(name)}</b></div><div><small>${t('phoneLbl')}</small><b dir="ltr">${escHtml(phone||'—')}</b></div><div><small>${t('pLastVisit')}</small><b>${last?escHtml(fmtDay(last.date))+' · '+escHtml(last.service):t('pNone')}</b></div><div><small>${t('pNext')}</small><b>${next?escHtml(fmtDay(next.date))+' · '+fmtTime(next.time):t('pNone')}</b></div></div>
+  <div class="pstats"><div><b>${visits.length}</b><small>${t('pVisits')}</small></div><div><b>${bks.length}</b><small>${t('pBookings')}</small></div><div><b>${noshow.length}</b><small>${t('pNoShows')}</small></div><div><b>${canc.length}</b><small>${t('pCancelled')}</small></div></div>
+  <h3 style="margin:6px 0 8px">${t('pHistory')}</h3><div class="tl">${bks.map(b=>{ const m=BS[b.status]||{c:'blue'}; return `<div class="tl-item ${cmap[m.c]||''} clickable" data-view="b:${escHtml(b.id)}"><div><b>${escHtml(b.service)}</b><small>${escHtml(fmtDay(b.date))} · ${fmtTime(b.time)} · ${escHtml(b.doctor)} · ${escHtml(b.branch)}</small></div><span class="badge b-${m.c}">${escHtml(bsLabel(b.status))}</span></div>`; }).join('')}</div>
+  ${leads.length?`<h3 style="margin:6px 0 8px">${t('pLeads')}</h3><div class="tl">${leads.map(l=>{ const m=LS[l.status]||{c:'blue'}; return `<div class="tl-item ${cmap[m.c]||''} clickable" data-view="l:${escHtml(l.id)}"><div><b>${escHtml(l.source)}${l.campaign&&l.campaign!=='—'?' · '+escHtml(l.campaign):''}</b><small>${escHtml(fmtDT(l.entry))} · ${escHtml(l.service||'—')}</small></div><span class="badge b-${m.c}">${escHtml(lsLabel(l.status))}</span></div>`; }).join('')}</div>`:''}
+  <div class="m-actions"><button type="button" class="btn primary" data-book-patient="${escHtml(key)}"><svg><use href="#i-plus"/></svg>${t('pNew')}</button></div>${contactLinks(phone)}`);
+}
+
+/* ========================= day agenda ========================= */
+let agendaOn=false, agendaDate='';
+function renderAgenda(){
+  const box=$("#agenda"); if(!box||!agendaOn) return;
+  const date=agendaDate||TODAY(); $("#agDate").value=date;
+  const wd=pyWd(date), br=$("#branch").value; const today=TODAY(); const nowMin=toMin(nowStr().slice(11,16));
+  const entries=D.schedule.filter(s=>Number(s.weekday)===wd&&(br==='all'||s.branch===br));
+  if(!entries.length){ box.innerHTML=`<div class="panel-empty" style="padding:24px"><svg><use href="#i-calendar"/></svg>${t('agendaEmpty')}</div>`; return; }
+  const docs=[...new Set(entries.map(s=>s.doctor))];
+  const start=Math.min(...entries.map(s=>toMin(s.from))), end=Math.max(...entries.map(s=>toMin(s.to))); const rows=Math.ceil((end-start)/30);
+  const grid={};
+  docs.forEach(d=>{ grid[d]=Array.from({length:rows},()=>({t:'off'})); entries.filter(s=>s.doctor===d).forEach(s=>{ for(let m=toMin(s.from);m<toMin(s.to);m+=30){ const r=(m-start)/30; const past=date<today||(date===today&&m<=nowMin); if(grid[d][r]) grid[d][r]=past?{t:'off'}:{t:'free',branch:s.branch}; } }); });
+  D.bookings.filter(b=>b.date===date&&b.status!=='ملغي'&&grid[b.doctor]&&(br==='all'||b.branch===br)).forEach(b=>{
+    const r0=Math.floor((toMin(b.time)-start)/30); const span=Math.max(1,Math.ceil(svcMinutes(b.service)/30)); if(r0<0||r0>=rows) return;
+    grid[b.doctor][r0]={t:'bk',b,span}; for(let k=1;k<span;k++){ if(grid[b.doctor][r0+k]) grid[b.doctor][r0+k]={t:'skip'}; }
+  });
+  const cmap={green:'g',yellow:'y',red:'r',blue:'b'};
+  const head=`<thead><tr><th></th>${docs.map(d=>`<th>${escHtml(d)}<small>${escHtml([...new Set(entries.filter(s=>s.doctor===d).map(s=>s.branch))].join(' · '))}</small></th>`).join('')}</tr></thead>`;
+  let body='';
+  for(let r=0;r<rows;r++){
+    body+=`<tr><th>${fmtTime(fmtMin(start+r*30))}</th>`;
+    docs.forEach(d=>{ const c=grid[d][r];
+      if(c.t==='skip') return;
+      if(c.t==='bk'){ const m=BS[c.b.status]||{c:'blue'}; body+=`<td class="ag-bk ${cmap[m.c]||'b'}" rowspan="${c.span}" data-view="b:${escHtml(c.b.id)}"><b>${escHtml(c.b.patient)}</b><span>${escHtml(c.b.service)}</span></td>`; }
+      else if(c.t==='free') body+=`<td class="ag-free" data-ag="${date}|${fmtMin(start+r*30)}|${escHtml(d)}|${escHtml(c.branch)}">+</td>`;
+      else body+=`<td class="ag-off"></td>`;
+    });
+    body+='</tr>';
+  }
+  box.innerHTML=`<table class="agenda">${head}<tbody>${body}</tbody></table>`;
+}
+function setAgenda(on){
+  agendaOn=on; $("#viewList").classList.toggle('on',!on); $("#viewAgenda").classList.toggle('on',on);
+  $("#listBox").hidden=on; $("#agendaBox").hidden=!on; if(on) renderAgenda();
+}
+
+/* ========================= global search popup ========================= */
+function renderGSearch(){
+  const pop=$("#gsearchPop"); if(!pop) return; const raw=$("#search").value.trim(); const q=normAr(raw);
+  if(q.length<2||$(".search-box").hidden){ pop.hidden=true; return; }
+  const pts=buildPatients(D.bookings).filter(p=>normAr(p.name+' '+p.phone).includes(q)).slice(0,5);
+  const lds=D.leads.filter(l=>normAr([l.name,l.phone,l.campaign].join(' ')).includes(q)).slice(0,4);
+  const bks=/^\d+$/.test(raw)?D.bookings.filter(b=>String(b.id)===raw).slice(0,1):[];
+  let html='';
+  if(pts.length) html+=`<div class="gs-group">${t('gsPatients')}</div>`+pts.map(p=>`<button type="button" class="gs-item" data-patient="${escHtml(p.key)}"><div><b>${escHtml(p.name)}</b><small>${escHtml(p.phone||'')} · ${p.visits} ${t('pVisits')} · ${p.bookings} ${t('pBookings')}</small></div></button>`).join('');
+  if(bks.length) html+=`<div class="gs-group">${t('gsBookings')}</div>`+bks.map(b=>`<button type="button" class="gs-item" data-view="b:${escHtml(b.id)}"><div><b>#${escHtml(b.id)} ${escHtml(b.patient)}</b><small>${escHtml(fmtDay(b.date))} · ${fmtTime(b.time)} · ${escHtml(b.service)}</small></div><span class="badge b-${(BS[b.status]||{c:'blue'}).c}">${escHtml(bsLabel(b.status))}</span></button>`).join('');
+  if(lds.length) html+=`<div class="gs-group">${t('gsLeads')}</div>`+lds.map(l=>`<button type="button" class="gs-item" data-view="l:${escHtml(l.id)}"><div><b>${escHtml(l.name)}</b><small>${escHtml(l.phone)} · ${escHtml(l.source)}</small></div><span class="badge b-${(LS[l.status]||{c:'blue'}).c}">${escHtml(lsLabel(l.status))}</span></button>`).join('');
+  pop.innerHTML=html||`<div class="gs-group">${t('gsNone')}</div>`; pop.hidden=false;
 }
 
 /* ========================= export ========================= */
@@ -2603,6 +2821,14 @@ $("#mMoreBtn").addEventListener("click",openDrawer); $("#mMenuBtn").addEventList
 $("#mSyncBtn").addEventListener("click",()=>{ $("#mSyncIco").classList.add("spin"); loadData(true).finally(()=>$("#mSyncIco").classList.remove("spin")); });
 $("#refresh").onclick=()=>{ $("#refreshIco").classList.add("spin"); loadData(true).finally(()=>$("#refreshIco").classList.remove("spin")); };
 $("#quick").onclick=()=>openBookingForm(null);
+$("#quickLead").onclick=()=>openLeadForm();
+$("#viewList").onclick=()=>setAgenda(false); $("#viewAgenda").onclick=()=>setAgenda(true);
+$("#agPrev").onclick=()=>{ agendaDate=addDays(agendaDate||TODAY(),LANG==='ar'?-1:-1); renderAgenda(); };
+$("#agNext").onclick=()=>{ agendaDate=addDays(agendaDate||TODAY(),1); renderAgenda(); };
+$("#agToday").onclick=()=>{ agendaDate=''; renderAgenda(); };
+$("#agDate").addEventListener('change',()=>{ agendaDate=$("#agDate").value||''; renderAgenda(); });
+$("#search").addEventListener("input",renderGSearch);
+$("#search").addEventListener("focus",renderGSearch);
 $("#exportBtn").onclick=exportCsv;
 $("#close").onclick=closeModal;
 $("#modal").addEventListener("click",e=>{ if(e.target.id==="modal") closeModal(); });
@@ -2614,7 +2840,7 @@ $("#confirmOk").onclick=async()=>{
   confirmPending=null; $("#confirmModal").classList.remove("open"); await runStatus(c);
 };
 document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){ closeStatusMenu(); closeModal(); $("#confirmModal").classList.remove("open"); confirmPending=null; closeIosSheet(); $("#notifPop").hidden=true; closeDrawer(); }
+  if(e.key==="Escape"){ closeStatusMenu(); closeModal(); $("#confirmModal").classList.remove("open"); confirmPending=null; closeIosSheet(); $("#notifPop").hidden=true; $("#gsearchPop").hidden=true; closeDrawer(); }
   if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"&&!$(".search-box").hidden){ e.preventDefault(); $("#search").focus(); $("#search").select(); }
 });
 document.addEventListener("click",e=>{
@@ -2625,6 +2851,11 @@ document.addEventListener("click",e=>{
   const go=e.target.closest("[data-go]"); if(go){ showSection(go.dataset.go); return; }
   const sa=e.target.closest("[data-status-action]"); if(sa){ e.stopPropagation(); openStatusMenu(sa.dataset.statusAction,sa); return; }
   const ask=e.target.closest("[data-ask-status]"); if(ask){ const [k,id,to]=ask.dataset.askStatus.split(':'); askStatus(k,id,to); return; }
+  const pa=e.target.closest("[data-patient]"); if(pa){ e.stopPropagation(); $("#gsearchPop").hidden=true; openPatient(pa.dataset.patient); return; }
+  const bp=e.target.closest("[data-book-patient]"); if(bp){ const key=bp.dataset.bookPatient; const x=D.bookings.find(b=>(b.phone||b.patient)===key); closeModal(); openBookingForm(null,{pre:{patient:x?x.patient:'',phone:x&&phoneDigits(x.phone)?x.phone:''}}); return; }
+  const rsb=e.target.closest("[data-reschedule]"); if(rsb){ const b=bookingById(rsb.dataset.reschedule); if(b){ closeModal(); openBookingForm(null,{resched:b}); } return; }
+  const agc=e.target.closest("[data-ag]"); if(agc){ const [date,time,doctor,branch]=agc.dataset.ag.split('|'); openBookingForm(null,{pre:{date,time,doctor,branch}}); return; }
+  if(!e.target.closest(".search-box")) $("#gsearchPop").hidden=true;
   const bl=e.target.closest("[data-book-lead]"); if(bl){ const l=leadById(bl.dataset.bookLead); if(l){ closeModal(); openBookingForm(l); } return; }
   const sv=e.target.closest("[data-save-agent]"); if(sv){ saveAgent(sv.dataset.saveAgent); return; }
   const sl=e.target.closest("[data-slot]"); if(sl){ document.querySelectorAll('#bkSlots .slot').forEach(x=>x.classList.remove('on')); sl.classList.add('on'); bk.slot={time:sl.dataset.slot,doctor:sl.dataset.slotDoc}; return; }
