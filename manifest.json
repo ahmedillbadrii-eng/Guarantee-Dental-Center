@@ -1,0 +1,27 @@
+{
+  "name": "جارانتي لطب الأسنان — لوحة التشغيل",
+  "short_name": "جارانتي",
+  "description": "لوحة تشغيل مواعيد وليدز جارانتي لطب الأسنان",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F6EFE5",
+  "theme_color": "#3E2713",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    {
+      "src": "assets/logo-192.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/logo-512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
