@@ -1716,6 +1716,23 @@ tr.total-row td{font-weight:700;background:var(--panel-2);border-top:2px solid v
 .doccard.on{border-color:var(--blue);background:var(--blue-soft)}
 .doccard .dc-t b{display:block;font-size:13px}.doccard .dc-t small{display:block;color:var(--muted);font-size:11px;line-height:1.35}
 .doc-av.sm{width:38px;height:38px;font-size:15px}
+
+.mh-actions{display:flex;align-items:center;gap:8px}
+.modal-back{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:var(--blue-soft);color:var(--blue-ink);font-size:12.5px;font-weight:700}
+.modal-back:hover{filter:brightness(.96)}
+.mb-arrow{font-size:18px;line-height:1}
+html[dir="ltr"] .mb-arrow{transform:scaleX(-1)}
+
+/* quick filters */
+.qf{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 12px;scrollbar-width:thin}
+.qf-chip{flex:none;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--panel);border:1.5px solid var(--line);font-size:12.5px;font-weight:600;color:var(--muted);transition:transform .12s,border-color .12s}
+.qf-chip:hover{transform:translateY(-1px)}
+.qf-chip b{min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--panel-2);color:var(--ink);font-size:11.5px;display:inline-flex;align-items:center;justify-content:center}
+.qf-chip.on{background:var(--blue-soft);border-color:var(--blue);color:var(--blue-ink)}
+.qf-chip.on b{background:var(--panel)}
+.qf-chip.warn:not(.zero) b{background:var(--warning-bg);color:var(--warning-ink)}
+.qf-chip.danger:not(.zero) b{background:var(--danger-bg);color:var(--danger-ink)}
+.qf-chip.zero{opacity:.55}
 </style>
 
 </head>
@@ -1916,6 +1933,7 @@ tr.total-row td{font-weight:700;background:var(--panel-2);border-top:2px solid v
 </section>
 
 <section id="appointments" class="section" hidden>
+<div class="qf" id="qfAppt"></div>
 <div class="card"><div class="card-head"><h2 data-i18n="apptsManageTitle">إدارة المواعيد</h2><div class="card-head-tools"><div class="seg" role="tablist"><button type="button" id="viewList" class="on" data-i18n="viewList">قائمة</button><button type="button" id="viewAgenda" data-i18n="viewAgenda">جدول اليوم</button></div><span id="apptCount" class="badge b-blue"></span></div></div>
 <div id="listBox"><div class="table-wrap"><table class="table"><thead><tr><th>#</th><th data-i18n="colTime">الموعد</th><th data-i18n="colPatient">المريض</th><th data-i18n="colService">الخدمة</th><th data-i18n="colDoctor">الدكتور</th><th data-i18n="colBranch">الفرع</th><th data-i18n="colSource">المصدر</th><th data-i18n="colStatus">الحالة</th><th data-i18n="colAction">إجراء</th></tr></thead><tbody id="apptTable"></tbody></table></div><div class="orders-pagination"><span class="pagination-info" id="apptPageInfo"></span><div class="pagination-actions"><button class="btn" id="apptPrev" type="button" data-i18n="previous">السابق</button><button class="btn" id="apptNext" type="button" data-i18n="next">التالي</button></div></div></div>
 <div id="agendaBox" hidden><div class="card-body" style="padding-bottom:10px"><div class="ag-nav"><button class="btn" id="agPrev" type="button">›</button><input id="agDate" type="date"><button class="btn" id="agNext" type="button">‹</button><button class="btn" id="agToday" type="button" data-i18n="todayShort">النهارده</button></div></div><div class="agenda-wrap" id="agenda"></div></div>
@@ -1924,6 +1942,7 @@ tr.total-row td{font-weight:700;background:var(--panel-2);border-top:2px solid v
 
 <section id="leads" class="section" hidden>
 <div class="pipe" id="pipe"></div>
+<div class="qf" id="qfLead"></div>
 <div class="card"><div class="card-head"><h2 data-i18n="leadsManageTitle">متابعة الليدز</h2><span id="leadCount" class="badge b-blue"></span></div><div class="table-wrap"><table class="table"><thead><tr><th>#</th><th data-i18n="colLead">الاسم</th><th data-i18n="colSourceCampaign">المصدر / الحملة</th><th data-i18n="colService">الخدمة</th><th data-i18n="colStatus">الحالة</th><th data-i18n="colAgent">الموظف</th><th data-i18n="colEntry">دخل من</th><th data-i18n="colAction">إجراء</th></tr></thead><tbody id="leadTable"></tbody></table></div></div>
 </section>
 
@@ -1991,7 +2010,7 @@ tr.total-row td{font-weight:700;background:var(--panel-2);border-top:2px solid v
 <div class="drawer-backdrop" id="drawerBackdrop"></div>
 </div>
 
-<div class="modal" id="modal"><div class="modal-box"><div class="modal-head"><b id="modalTitle"></b><button class="close" id="close"><svg><use href="#i-x"/></svg></button></div><div class="modal-content" id="modalContent"></div></div></div>
+<div class="modal" id="modal"><div class="modal-box"><div class="modal-head"><b id="modalTitle"></b><div class="mh-actions"><button type="button" class="modal-back" id="modalBack" hidden><span class="mb-arrow">›</span><span data-i18n="back">رجوع</span></button><button class="close" id="close"><svg><use href="#i-x"/></svg></button></div></div><div class="modal-content" id="modalContent"></div></div></div>
 
 <div class="modal" id="confirmModal"><div class="confirm-box">
   <div class="confirm-icon"><svg><use href="#i-alert"/></svg></div>
@@ -2081,7 +2100,7 @@ const I18N = {
   pwTooShort:"كلمة المرور لازم تكون 8 حروف على الأقل", pwMismatch:"كلمتا المرور غير متطابقتين", signupPending:"تم إنشاء الحساب — في انتظار موافقة الإدارة قبل ما تقدر تدخل",
   accountPending:"حسابك لسه في انتظار موافقة الإدارة", signupFailed:"تعذر إنشاء الحساب", accountDisabled:"الحساب ده موقوف — كلّم الإدارة",
   emailTaken:"الإيميل ده مسجل قبل كده — سجّل دخول بدل ما تعمل حساب جديد", invalidEmail:"البريد الإلكتروني مش صحيح", invalidName:"اكتب اسمك (80 حرف كحد أقصى)",
-  greetMorning:"صباح الخير", greetEvening:"مساء الخير", noNotifs:"مفيش تنبيهات جديدة", markRead:"تعليم الكل كمقروء", currency:"ج", pickDay:"اختار اليوم", pickDoctor:"اختار الدكتور", tomorrowWord:"بكرة", slotsCount:"مواعيد", firstAt:"أول ميعاد", otherDate:"تاريخ تاني:", noAvailAny:"مفيش مواعيد متاحة في الـ 3 أسابيع الجاية للخدمة والفرع دول — جرّب فرع تاني", pickDoctorHint:"اختار الدكتور عشان تظهر مواعيده", toastForbidden:"مفيش عندك صلاحية للعملية دي", upcomingGroup:"القادمة", doneGroup:"خلصت", lateGroup:"فاتت وتحتاج تحديث الحالة",
+  greetMorning:"صباح الخير", greetEvening:"مساء الخير", noNotifs:"مفيش تنبيهات جديدة", markRead:"تعليم الكل كمقروء", currency:"ج", qfAll:"الكل", qfToday:"النهارده", qfPending:"بانتظار التأكيد", qfLate:"فاتت ومحتاجة تحديث", qfUpcoming:"مؤكدة قادمة", qfNoShow:"لم يحضروا", qfCancelled:"ملغية", qfNew:"جديدة", qfStale:"متأخرة +ساعتين", qfNoAgent:"بدون موظف", qfFollow:"تحتاج متابعة (+يوم)", qfLost:"ضايعة", back:"رجوع", phAppointments:"ابحث باسم المريض أو الهاتف أو رقم الحجز...", phLeads:"ابحث باسم العميل أو الهاتف أو الحملة...", phDoctors:"ابحث باسم الدكتور أو التخصص أو الخدمة...", phPatients:"ابحث باسم المريض أو رقم الهاتف...", pickDay:"اختار اليوم", pickDoctor:"اختار الدكتور", tomorrowWord:"بكرة", slotsCount:"مواعيد", firstAt:"أول ميعاد", otherDate:"تاريخ تاني:", noAvailAny:"مفيش مواعيد متاحة في الـ 3 أسابيع الجاية للخدمة والفرع دول — جرّب فرع تاني", pickDoctorHint:"اختار الدكتور عشان تظهر مواعيده", toastForbidden:"مفيش عندك صلاحية للعملية دي", upcomingGroup:"القادمة", doneGroup:"خلصت", lateGroup:"فاتت وتحتاج تحديث الحالة",
   navFinance:"الحسابات", titleFinance:"الحسابات", subFinance:"الدخل ونسبة الإشغال لكل فرع",
   finTitle:"ملخص الحسابات", finToday:"اليوم", finWeek:"الأسبوع", finMonth:"الشهر", finAll:"الكل", finBranchTitle:"الدخل والإشغال لكل فرع", revByService:"الدخل حسب الخدمة", revByDoctor:"الدخل حسب الدكتور",
   finCollected:"المحصّل (حضروا)", finExpected:"المتوقع (مؤكد وبانتظار)", finAvg:"متوسط قيمة الزيارة", finOccupancy:"نسبة الإشغال", finOccSub:"ساعات محجوزة من ساعات العمل", finVisits:"زيارة", finRange:"الفترة", finNote:"الأسعار من عمود price في تاب Services، ولو فيه مبلغ مختلف اكتبه في عمود amount في تاب Bookings.", finTotal:"الإجمالي",
@@ -2146,7 +2165,7 @@ const I18N = {
   pwTooShort:"Password must be at least 8 characters", pwMismatch:"Passwords don't match", signupPending:"Account created — waiting for admin approval before you can sign in",
   accountPending:"Your account is still waiting for admin approval", signupFailed:"Couldn't create the account", accountDisabled:"This account is disabled — contact the admin",
   emailTaken:"This email is already registered — sign in instead", invalidEmail:"That email address isn't valid", invalidName:"Enter your name (80 characters max)",
-  greetMorning:"Good morning", greetEvening:"Good evening", noNotifs:"No new notifications", markRead:"Mark all as read", currency:"EGP", pickDay:"Pick a day", pickDoctor:"Pick a doctor", tomorrowWord:"Tomorrow", slotsCount:"slots", firstAt:"first at", otherDate:"Other date:", noAvailAny:"No availability in the next 3 weeks for this service and branch — try another branch", pickDoctorHint:"Pick a doctor to see their times", toastForbidden:"You do not have permission for this action", upcomingGroup:"Upcoming", doneGroup:"Finished", lateGroup:"Past time — update status",
+  greetMorning:"Good morning", greetEvening:"Good evening", noNotifs:"No new notifications", markRead:"Mark all as read", currency:"EGP", qfAll:"All", qfToday:"Today", qfPending:"Awaiting confirmation", qfLate:"Past time — update", qfUpcoming:"Confirmed upcoming", qfNoShow:"No-shows", qfCancelled:"Cancelled", qfNew:"New", qfStale:"Overdue 2h+", qfNoAgent:"No agent", qfFollow:"Needs follow-up (1d+)", qfLost:"Lost", back:"Back", phAppointments:"Search patient, phone or booking ID...", phLeads:"Search customer, phone or campaign...", phDoctors:"Search doctor, specialty or service...", phPatients:"Search patient name or phone...", pickDay:"Pick a day", pickDoctor:"Pick a doctor", tomorrowWord:"Tomorrow", slotsCount:"slots", firstAt:"first at", otherDate:"Other date:", noAvailAny:"No availability in the next 3 weeks for this service and branch — try another branch", pickDoctorHint:"Pick a doctor to see their times", toastForbidden:"You do not have permission for this action", upcomingGroup:"Upcoming", doneGroup:"Finished", lateGroup:"Past time — update status",
   navFinance:"Accounts", titleFinance:"Accounts", subFinance:"Revenue and occupancy per branch",
   finTitle:"Accounts summary", finToday:"Today", finWeek:"Week", finMonth:"Month", finAll:"All", finBranchTitle:"Revenue and occupancy per branch", revByService:"Revenue by service", revByDoctor:"Revenue by doctor",
   finCollected:"Collected (attended)", finExpected:"Expected (confirmed & pending)", finAvg:"Average visit value", finOccupancy:"Occupancy", finOccSub:"booked hours of working hours", finVisits:"visits", finRange:"Period", finNote:"Prices come from the price column in the Services tab; to override a booking's amount, write it in the amount column of the Bookings tab.", finTotal:"Total",
@@ -2244,6 +2263,18 @@ function badgeStatus(kind,rec){
 function bookingById(id){ return D.bookings.find(b=>String(b.id)===String(id)); }
 function leadById(id){ return D.leads.find(l=>String(l.id)===String(id)); }
 
+/* ========================= quick filters ========================= */
+const qf={appointments:'all',leads:'all'};
+function nowMinutes(){ return toMin(nowStr().slice(11,16)); }
+const QF_APPT=[['all','qfAll',()=>true,''],['today','qfToday',b=>b.date===TODAY()&&b.status!=='ملغي',''],['pending','qfPending',b=>b.status==='بانتظار الرد'&&b.date>=TODAY(),'warn'],['late','qfLate',b=>(b.status==='مؤكد'||b.status==='بانتظار الرد')&&(b.date<TODAY()||(b.date===TODAY()&&toMin(b.time)<nowMinutes())),'danger'],['upcoming','qfUpcoming',b=>b.status==='مؤكد'&&b.date>=TODAY(),''],['noshow','qfNoShow',b=>b.status==='لم يحضر',''],['cancelled','qfCancelled',b=>b.status==='ملغي','']];
+const QF_LEAD=[['all','qfAll',()=>true,''],['new','qfNew',l=>l.status==='جديد','warn'],['stale','qfStale',l=>l.status==='جديد'&&(ageMin(l.entry)||0)>120,'danger'],['noagent','qfNoAgent',l=>(l.status==='جديد'||l.status==='تم الاتصال')&&!l.agent,'warn'],['follow','qfFollow',l=>l.status==='تم الاتصال'&&(ageMin(l.updated)||0)>1440,'warn'],['lost','qfLost',l=>l.status==='ضايع','']];
+function renderQf(){
+  const mk=(list,key,data)=>list.map(([k,lab,fn,cls])=>{ const n=k==='all'?data.length:data.filter(fn).length; return `<button type="button" class="qf-chip ${cls}${qf[key]===k?' on':''}${n===0&&k!=='all'?' zero':''}" data-qf="${key}:${k}">${t(lab)}<b>${n}</b></button>`; }).join('');
+  const a=$("#qfAppt"), l=$("#qfLead");
+  if(a) a.innerHTML=mk(QF_APPT,'appointments',branchScope(D.bookings));
+  if(l) l.innerHTML=mk(QF_LEAD,'leads',D.leads);
+}
+
 /* ========================= filters ========================= */
 function filt(){
   return { q:normAr($("#search").value.trim()), branch:$("#branch").value, status:$("#status").value, from:$("#dateFrom").value, to:$("#dateTo").value, doctor:$("#doctorFilter").value, source:$("#sourceFilter").value };
@@ -2254,6 +2285,7 @@ function filteredBookings(){
   let arr=D.bookings.slice();
   if(f.branch!=='all') arr=arr.filter(b=>b.branch===f.branch);
   if(f.status!=='all' && currentSection==='appointments') arr=arr.filter(b=>b.status===f.status);
+  if(currentSection==='appointments'&&qf.appointments!=='all'){ const fn=(QF_APPT.find(x=>x[0]===qf.appointments)||[])[2]; if(fn) arr=arr.filter(fn); }
   if(f.from) arr=arr.filter(b=>b.date>=f.from);
   if(f.to) arr=arr.filter(b=>b.date<=f.to);
   if(f.doctor!=='all') arr=arr.filter(b=>b.doctor===f.doctor);
@@ -2271,6 +2303,7 @@ function filteredLeads(){
   let arr=D.leads.slice();
   if(f.status!=='all' && currentSection==='leads') arr=arr.filter(l=>l.status===f.status);
   if(f.source!=='all' && currentSection==='leads') arr=arr.filter(l=>l.source===f.source);
+  if(currentSection==='leads'&&qf.leads!=='all'){ const fn=(QF_LEAD.find(x=>x[0]===qf.leads)||[])[2]; if(fn) arr=arr.filter(fn); }
   if(f.q) arr=arr.filter(l=>normAr([l.id,l.name,l.phone,l.campaign,l.service,l.source,l.agent].join(' ')).includes(f.q));
   return arr.sort((a,b)=>String(b.entry).localeCompare(String(a.entry)));
 }
@@ -2414,8 +2447,17 @@ function toast(msg,isError){
   const el=$("#toast"); $("#toastText").textContent=msg; el.classList.toggle('error',!!isError); el.classList.add('show');
   clearTimeout(toast._t); toast._t=setTimeout(()=>el.classList.remove('show'),3200);
 }
-function openModal(title,html){ $("#modalTitle").textContent=title; $("#modalContent").innerHTML=html; $("#modal").classList.add('open'); }
-function closeModal(){ $("#modal").classList.remove('open'); }
+let modalStack=[], modalRe=null, nextRe=null, pushNext=false, backing=false;
+function openModal(title,html){
+  const isOpen=$("#modal").classList.contains('open');
+  if(backing){ backing=false; }
+  else if(pushNext&&isOpen&&modalRe){ modalStack.push(modalRe); }
+  else { modalStack=[]; }
+  pushNext=false; modalRe=nextRe; nextRe=null;
+  $("#modalTitle").textContent=title; $("#modalContent").innerHTML=html; $("#modal").classList.add('open'); $("#modalBack").hidden=!modalStack.length;
+  const mc=$("#modalContent"); if(mc) mc.scrollTop=0;
+}
+function closeModal(){ modalStack=[]; modalRe=null; nextRe=null; pushNext=false; $("#modal").classList.remove('open'); }
 function animateNumber(el,value,suffix=""){
   const prev=Number(el.dataset.val||0);
   if(reduced||prev===value){ el.textContent=value.toLocaleString("en-US")+suffix; el.dataset.val=value; return; }
@@ -2550,7 +2592,7 @@ function renderDoctors(){
   requestAnimationFrame(()=>document.querySelectorAll("#docGrid .progress b").forEach(b=>b.style.width=b.dataset.w+"%"));
 }
 function openDoctor(name){
-  const d=D.doctors.find(x=>x.doctor===name); if(!d) return;
+  const d=D.doctors.find(x=>x.doctor===name); if(!d) return; nextRe=()=>openDoctor(name);
   const sc=doctorSchedule(name); const today=TODAY();
   const rows=[0,1,2,3,4,5,6].map(wd=>{ const e=sc.filter(s=>Number(s.weekday)===wd); return `<tr><th>${t('days')[wd]}</th><td>${e.length?e.map(s=>`${escHtml(s.branch)}: ${fmtTime(s.from)} – ${fmtTime(s.to)}`).join('<br>'):`<span style="color:var(--muted)">${t('dayOff')}</span>`}</td></tr>`; }).join('');
   const up=D.bookings.filter(b=>b.doctor===name&&b.status!=='ملغي'&&b.date>=today).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)).slice(0,8);
@@ -2664,20 +2706,21 @@ function renderNotifications(){
 }
 
 /* ========================= section handling ========================= */
+const secSearch={}; const PH={appointments:'phAppointments',leads:'phLeads',doctors:'phDoctors',patients:'phPatients'};
 const SECTIONS=['home','appointments','leads','doctors','branches','patients','finance','reports','activity'];
 const CAPS={ // which filter controls make sense per section
   home:{search:1,branch:1}, appointments:{search:1,branch:1,status:1,adv:1,date:1,doctor:1,source:1}, leads:{search:1,status:1,adv:1,source:1},
   doctors:{search:1,branch:1}, branches:{branch:1}, patients:{search:1,branch:1}, finance:{branch:1}, reports:{branch:1}, activity:{}
 };
 function sectionTitle(id){ const k=id[0].toUpperCase()+id.slice(1); return {title:t('title'+k),sub:t('sub'+k)}; }
-function refreshSectionTitle(){ const s=sectionTitle(currentSection); $("#pageTitle").textContent=s.title; $("#pageSub").textContent=s.sub; renderGreeting(); }
+function refreshSectionTitle(){ $("#search").placeholder=t(PH[currentSection]||'searchPlaceholder'); const s=sectionTitle(currentSection); $("#pageTitle").textContent=s.title; $("#pageSub").textContent=s.sub; renderGreeting(); }
 function renderGreeting(){
   const el=$("#greet"); if(!el) return; const u=getUser(); const h=Number(nowStr().slice(11,13));
   el.textContent=currentSection==='home'?`${h<12?t('greetMorning'):t('greetEvening')}${u&&u.name?'، '+u.name.split(' ')[0]:''}`:'';
 }
 function showSection(id){
   if(!SECTIONS.includes(id)||!can(id)) id='home';
-  currentSection=id;
+  secSearch[currentSection]=$("#search").value; currentSection=id; $("#search").value=secSearch[id]||''; $("#searchClear").hidden=!$("#search").value; $("#gsearchPop").hidden=true; apptPage=1;
   SECTIONS.forEach(s=>{ const el=$("#"+s); if(el) el.hidden=s!==id; });
   document.querySelectorAll('#nav button[data-section],#mBottomNav button[data-section]').forEach(b=>b.classList.toggle('active',b.dataset.section===id));
   const caps=CAPS[id]||{};
@@ -2689,7 +2732,7 @@ function showSection(id){
   if(location.hash!=='#'+id) history.replaceState(null,'','#'+id);
 }
 function renderAll(){
-  renderKpis(); renderHome(); renderAppointments(); renderLeads(); renderDoctors(); renderBranches(); renderPatients(); renderFinance(); renderReports(); renderActivity(); renderNotifications(); renderAgenda();
+  renderKpis(); renderHome(); renderAppointments(); renderLeads(); renderDoctors(); renderBranches(); renderPatients(); renderFinance(); renderReports(); renderActivity(); renderNotifications(); renderAgenda(); renderQf();
   const u=D.user||getUser(); if($("#roleChip")&&u) $("#roleChip").textContent=u.role||'—';
 }
 function openDrawer(){ $(".sidebar").classList.add("open"); $("#drawerBackdrop").classList.add("show"); }
@@ -2744,13 +2787,13 @@ function contactLinks(phone){
   return `<div class="m-actions"><a class="btn" href="tel:${escHtml(d)}"><svg><use href="#i-phone"/></svg>${t('call')}</a><a class="btn" target="_blank" rel="noopener" href="https://wa.me/${escHtml(waNumber(phone))}"><svg><use href="#b-chat"/></svg>${t('whatsapp')}</a></div>`;
 }
 function openBooking(id){
-  const b=bookingById(id); if(!b) return;
+  const b=bookingById(id); if(!b) return; nextRe=()=>openBooking(id);
   const trans=bsTransitions(b); const canResched=(b.status==='بانتظار الرد'||b.status==='مؤكد');
   const btn=(s)=>{ const cls=s==='ملغي'||s==='لم يحضر'?'danger':(s==='حضر'||s==='مؤكد'?'good':''); return `<button type="button" class="btn ${cls}" data-ask-status="b:${escHtml(b.id)}:${escHtml(s)}">${escHtml(bsLabel(s))}</button>`; };
   openModal(`${t('bookingN')} #${b.id}`,`<div class="kv"><div><small>${t('patientLbl')}</small><button type="button" class="plink" data-patient="${escHtml(b.phone||b.patient)}">${escHtml(b.patient)}</button></div><div><small>${t('phoneLbl')}</small><b dir="ltr">${escHtml(b.phone)}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(b.service)}</b></div><div><small>${t('doctorLbl')}</small><b>${escHtml(b.doctor)}</b></div><div><small>${t('branchLbl')}</small><b>${escHtml(b.branch)}</b></div><div><small>${t('dateLbl')}</small><b>${escHtml(fmtDay(b.date))} · ${fmtTime(b.time)}</b></div><div><small>${t('sourceLbl')}</small><b>${escHtml(b.source)}</b></div>${P().finance?`<div><small>${t('amountLbl')}</small><b>${money(priceOf(b))}</b><small>${Number(String(b.amount||'').replace(/[^0-9.]/g,''))>0?t('recordedAmount'):t('defaultPrice')}</small></div>`:''}<div><small>${t('statusLbl')}</small><span class="badge b-${(BS[b.status]||{c:'blue'}).c}">${escHtml(bsLabel(b.status))}</span></div><div class="full"><small>${t('createdLbl')}</small><b>${escHtml(b.created_at)}</b></div></div>${(trans.length||canResched)?`<div class="m-actions">${trans.map(btn).join('')}${canResched?`<button type="button" class="btn" data-reschedule="${escHtml(b.id)}"><svg><use href="#i-calendar"/></svg>${t('rescheduleBtn')}</button>`:''}</div>`:''}${contactLinks(b.phone)}`);
 }
 function openLead(id){
-  const l=leadById(id); if(!l) return;
+  const l=leadById(id); if(!l) return; nextRe=()=>openLead(id);
   const trans=lsTransitions(l); const bk=l.booking_id&&bookingById(l.booking_id);
   const btn=(s)=>`<button type="button" class="btn ${s==='ضايع'?'danger':'good'}" data-ask-status="l:${escHtml(l.id)}:${escHtml(s)}">${escHtml(lsLabel(s))}</button>`;
   openModal(`${t('leadN')} #${l.id}`,`<div class="kv"><div><small>${t('colLead')}</small><b>${escHtml(l.name)}</b></div><div><small>${t('phoneLbl')}</small><b dir="ltr">${escHtml(l.phone)}</b></div><div><small>${t('sourceLbl')}</small><b>${escHtml(l.source)}</b></div><div><small>${t('campaignLbl')}</small><b>${escHtml(l.campaign||'—')}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(l.service||'—')}</b></div><div><small>${t('statusLbl')}</small><span class="badge b-${(LS[l.status]||{c:'blue'}).c}">${escHtml(lsLabel(l.status))}</span></div><div><small>${t('entryLbl')}</small><b>${escHtml(fmtDT(l.entry))}</b></div><div><small>${t('updatedLbl')}</small><b>${escHtml(fmtDT(l.updated))}</b></div>${l.loss?`<div class="full"><small>${t('lossLbl')}</small><b>${escHtml(l.loss)}</b></div>`:''}${bk?`<div class="full"><small>${t('linkedBooking')}</small><b>#${escHtml(bk.id)} — ${escHtml(fmtDay(bk.date))} ${fmtTime(bk.time)} — ${escHtml(bk.service)}</b></div>`:''}</div>
@@ -2882,7 +2925,7 @@ function openLeadForm(){
 }
 
 /* ========================= patient profile ========================= */
-function openPatient(key){
+function openPatient(key){ nextRe=()=>openPatient(key);
   const bks=D.bookings.filter(b=>(b.phone||b.patient)===key).sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time));
   if(!bks.length) return;
   const today=TODAY(); const name=bks[0].patient, phone=bks[0].phone;
@@ -2937,10 +2980,11 @@ function setAgenda(on){
 /* ========================= global search popup ========================= */
 function renderGSearch(){
   const pop=$("#gsearchPop"); if(!pop) return; const raw=$("#search").value.trim(); const q=normAr(raw);
-  if(q.length<2||$(".search-box").hidden){ pop.hidden=true; return; }
-  const pts=buildPatients(D.bookings).filter(p=>normAr(p.name+' '+p.phone).includes(q)).slice(0,5);
-  const lds=D.leads.filter(l=>normAr([l.name,l.phone,l.campaign].join(' ')).includes(q)).slice(0,4);
-  const bks=/^\d+$/.test(raw)?D.bookings.filter(b=>String(b.id)===raw).slice(0,1):[];
+  if(q.length<2||$(".search-box").hidden||!['home','appointments','patients','leads'].includes(currentSection)){ pop.hidden=true; return; }
+  const sec=currentSection;
+  const pts=(sec==='leads')?[]:buildPatients(D.bookings).filter(p=>normAr(p.name+' '+p.phone).includes(q)).slice(0,5);
+  const lds=(sec==='home'||sec==='leads')?D.leads.filter(l=>normAr([l.name,l.phone,l.campaign].join(' ')).includes(q)).slice(0,4):[];
+  const bks=(sec==='home'||sec==='appointments')&&/^\d+$/.test(raw)?D.bookings.filter(b=>String(b.id)===raw).slice(0,1):[];
   let html='';
   if(pts.length) html+=`<div class="gs-group">${t('gsPatients')}</div>`+pts.map(p=>`<button type="button" class="gs-item" data-patient="${escHtml(p.key)}"><div><b>${escHtml(p.name)}</b><small>${escHtml(p.phone||'')} · ${p.visits} ${t('pVisits')} · ${p.bookings} ${t('pBookings')}</small></div></button>`).join('');
   if(bks.length) html+=`<div class="gs-group">${t('gsBookings')}</div>`+bks.map(b=>`<button type="button" class="gs-item" data-view="b:${escHtml(b.id)}"><div><b>#${escHtml(b.id)} ${escHtml(b.patient)}</b><small>${escHtml(fmtDay(b.date))} · ${fmtTime(b.time)} · ${escHtml(b.service)}</small></div><span class="badge b-${(BS[b.status]||{c:'blue'}).c}">${escHtml(bsLabel(b.status))}</span></button>`).join('');
@@ -2976,6 +3020,7 @@ $("#search").addEventListener("input",renderGSearch);
 $("#search").addEventListener("focus",renderGSearch);
 $("#exportBtn").onclick=exportCsv;
 $("#close").onclick=closeModal;
+$("#modalBack").onclick=()=>{ const prev=modalStack.pop(); if(prev){ backing=true; prev(); } };
 $("#modal").addEventListener("click",e=>{ if(e.target.id==="modal") closeModal(); });
 $("#confirmModal").addEventListener("click",e=>{ if(e.target.id==="confirmModal"){ confirmPending=null; $("#confirmModal").classList.remove("open"); } });
 $("#confirmCancel").onclick=()=>{ confirmPending=null; $("#confirmModal").classList.remove("open"); };
@@ -2993,10 +3038,11 @@ document.addEventListener("click",e=>{
   if(!e.target.closest("#notifPop")) $("#notifPop").hidden=true;
   if(e.target.closest("#markNotifsRead")){ notifItems=notifItems.map(x=>({...x,read:true})); renderNotifications(); return; }
   const ni=e.target.closest("[data-notif-id]"); if(ni){ const n=notifItems.find(x=>x.id===ni.dataset.notifId); if(n){ n.read=true; renderNotifications(); $("#notifPop").hidden=true; if(n.section) showSection(n.section); if(n.view){ const [k,id]=n.view.split(/:(.+)/); if(k==='b') openBooking(id); else openLead(id); } } return; }
+  const qfb=e.target.closest("[data-qf]"); if(qfb){ const [sec,k]=qfb.dataset.qf.split(':'); qf[sec]=k; apptPage=1; renderAll(); return; }
   const go=e.target.closest("[data-go]"); if(go){ showSection(go.dataset.go); return; }
   const sa=e.target.closest("[data-status-action]"); if(sa){ e.stopPropagation(); openStatusMenu(sa.dataset.statusAction,sa); return; }
   const ask=e.target.closest("[data-ask-status]"); if(ask){ const [k,id,to]=ask.dataset.askStatus.split(':'); askStatus(k,id,to); return; }
-  const pa=e.target.closest("[data-patient]"); if(pa){ e.stopPropagation(); $("#gsearchPop").hidden=true; openPatient(pa.dataset.patient); return; }
+  const pa=e.target.closest("[data-patient]"); if(pa){ e.stopPropagation(); $("#gsearchPop").hidden=true; if(pa.closest('#modal')) pushNext=true; openPatient(pa.dataset.patient); return; }
   const bp=e.target.closest("[data-book-patient]"); if(bp){ const key=bp.dataset.bookPatient; const x=D.bookings.find(b=>(b.phone||b.patient)===key); closeModal(); openBookingForm(null,{pre:{patient:x?x.patient:'',phone:x&&phoneDigits(x.phone)?x.phone:''}}); return; }
   const rsb=e.target.closest("[data-reschedule]"); if(rsb){ const b=bookingById(rsb.dataset.reschedule); if(b){ closeModal(); openBookingForm(null,{resched:b}); } return; }
   const agc=e.target.closest("[data-ag]"); if(agc){ const [date,time,doctor,branch]=agc.dataset.ag.split('|'); openBookingForm(null,{pre:{date,time,doctor,branch}}); return; }
@@ -3008,7 +3054,7 @@ document.addEventListener("click",e=>{
   const sl=e.target.closest("[data-slot]"); if(sl){ document.querySelectorAll('#bkSlots .slot').forEach(x=>x.classList.remove('on')); sl.classList.add('on'); bk.slot={time:sl.dataset.slot,doctor:sl.dataset.slotDoc}; return; }
   const pp=e.target.closest("[data-pipe]"); if(pp){ const v=pp.dataset.pipe; $("#status").value=$("#status").value===v?'all':v; renderLeads(); return; }
   const dc=e.target.closest("[data-doc]"); if(dc){ openDoctor(dc.dataset.doc); return; }
-  const vw=e.target.closest("[data-view]"); if(vw){ const [k,id]=vw.dataset.view.split(/:(.+)/); if(k==='b') openBooking(id); else openLead(id); return; }
+  const vw=e.target.closest("[data-view]"); if(vw){ if(vw.closest('#modal')) pushNext=true; const [k,id]=vw.dataset.view.split(/:(.+)/); if(k==='b') openBooking(id); else openLead(id); return; }
   if(!e.target.closest("#statusActionMenu")) closeStatusMenu();
 });
 window.addEventListener("resize",()=>{ const m=document.getElementById("statusActionMenu"); const a=document.querySelector("[data-status-action][aria-expanded='true']"); if(m&&a) positionStatusMenu(m,a); });
@@ -3021,7 +3067,7 @@ async function saveAgent(id){
 ["search","branch","status","dateFrom","dateTo","doctorFilter","sourceFilter"].forEach(id=>$("#"+id).addEventListener("input",()=>{ apptPage=1; $("#searchClear").hidden=!$("#search").value; renderAll(); }));
 $("#searchClear").addEventListener("click",()=>{ $("#search").value=""; $("#searchClear").hidden=true; apptPage=1; renderAll(); $("#search").focus(); });
 $("#advancedToggle").onclick=()=>$("#advancedFilters").classList.toggle("open");
-$("#clearFilters").onclick=()=>{ $("#search").value="";$("#branch").value="all";$("#status").value="all";$("#dateFrom").value="";$("#dateTo").value="";$("#doctorFilter").value="all";$("#sourceFilter").value="all";$("#searchClear").hidden=true;apptPage=1;renderAll();toast(t('toastFiltersCleared')); };
+$("#clearFilters").onclick=()=>{ qf.appointments='all'; qf.leads='all'; $("#search").value="";$("#branch").value="all";$("#status").value="all";$("#dateFrom").value="";$("#dateTo").value="";$("#doctorFilter").value="all";$("#sourceFilter").value="all";$("#searchClear").hidden=true;apptPage=1;renderAll();toast(t('toastFiltersCleared')); };
 $("#apptPrev").onclick=()=>{ if(apptPage>1){ apptPage--; renderAppointments(); } };
 $("#apptNext").onclick=()=>{ const pages=Math.max(1,Math.ceil(filteredBookings().length/PAGE_SIZE)); if(apptPage<pages){ apptPage++; renderAppointments(); } };
 if(!reduced&&matchMedia('(hover:hover) and (pointer:fine)').matches){
