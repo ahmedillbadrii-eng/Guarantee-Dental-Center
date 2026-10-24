@@ -1,7 +1,7 @@
 {
-  "name": "جارانتي لطب الأسنان — لوحة التشغيل",
-  "short_name": "جارانتي",
-  "description": "لوحة تشغيل مواعيد وليدز جارانتي لطب الأسنان",
+  "name": "Guarantee Dental Center — لوحة التشغيل",
+  "short_name": "Guarantee",
+  "description": "لوحة تشغيل مواعيد وليدز Guarantee Dental Center",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

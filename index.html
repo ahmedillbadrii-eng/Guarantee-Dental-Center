@@ -2362,7 +2362,7 @@ function filteredLeads(){
 /* ========== English display of sheet data (names stay Arabic in the sheet) ========== */
 const EN_NAMES={
  'زراعة أسنان':'Dental Implants','هوليوود سمايل':'Hollywood Smile','تبييض أسنان':'Teeth Whitening','تقويم أسنان':'Orthodontics','حشو تجميلي':'Cosmetic Filling','علاج لثة':'Gum Treatment','فينير':'Veneers','أسنان أطفال':'Pediatric Dentistry','تيجان وتركيبات':'Crowns & Prosthetics','علاج عصب':'Root Canal Treatment','تنظيف أسنان':'Teeth Cleaning','كشف واستشارة':'Checkup & Consultation',
- 'مدينة نصر':'Nasr City','القاهرة الجديدة':'New Cairo','الشيخ زايد':'Sheikh Zayed','نصر':'Nasr','التجمع':'Tagamoa','زايد':'Zayed',
+ 'التجمع الخامس':'Fifth Settlement','مدينة نصر':'Nasr City','القاهرة الجديدة':'New Cairo','الشيخ زايد':'Sheikh Zayed','نصر':'Nasr','التجمع':'Tagamoa','زايد':'Zayed',
  'د. أحمد علوان':'Dr. Ahmed Alwan','د. عمرو علي':'Dr. Amr Ali','د. علاء الشافعي':'Dr. Alaa El-Shafei','د. أحمد حاتم':'Dr. Ahmed Hatem','د. نورهان نبيل':'Dr. Nourhan Nabil','د. محمد شرف':'Dr. Mohamed Sharaf','د. بسنت':'Dr. Basant','د. أسامة عليوة':'Dr. Osama Elewa','د. عمار عبد الرحمن':'Dr. Ammar Abdelrahman','د. ميادة حمدي':'Dr. Mayada Hamdy',
  'استشاري زراعة وتركيبات':'Implant & Prosthodontics Consultant','أخصائي تقويم':'Orthodontist','أخصائي علاج جذور':'Endodontist','أخصائية أسنان أطفال':'Pediatric Dentist','جراحة الفم وزراعة الأسنان':'Oral Surgery & Implants','طبيب أسنان عام':'General Dentist','طبيب أسنان':'Dentist','طبيبة أسنان':'Dentist',
  'السعر عالي':'Price too high','مش بيرد':'Not responding','بعيد عن الفروع':'Too far from branches','حجز عند مركز تاني':'Booked elsewhere','مش مهتم':'Not interested','رقم غلط':'Wrong number','أخرى':'Other',
@@ -2469,7 +2469,8 @@ function renderSyncAgo(){
 setInterval(renderSyncAgo,15000);
 
 function normalizeData(d){
-  const arr=x=>Array.isArray(x)?x:[];
+  const clean=v=>typeof v==='string'?v.replace(/\s+/g,' ').trim().replace(/\s*([،,])\s*/g,'$1'):v;
+  const arr=x=>Array.isArray(x)?x.map(o=>{ if(!o||typeof o!=='object') return o; const c={}; for(const k in o) c[k]=clean(o[k]); return c; }):[];
   return {
     now:String(d.now||''), user:d.user||null, bookings:arr(d.bookings), leads:arr(d.leads), branches:arr(d.branches), services:arr(d.services),
     doctors:arr(d.doctors), schedule:arr(d.schedule), activity:arr(d.activity)
@@ -2909,7 +2910,7 @@ function openBookingForm(lead,opts){
   const lock=rs?' disabled':'';
   openModal(rs?`${t('rescheduleTitle')} #${rs.id}`:t('newBookingTitle'),`<form id="bkForm"><div class="fgrid">
     <div class="fld"><label>${t('fieldPatient')}</label><input id="bkPatient" required maxlength="80" value="${escHtml(patient)}"${lock}></div>
-    <div class="fld"><label>${t('fieldPhone')}</label><input id="bkPhone" required dir="ltr" inputmode="tel" maxlength="20" value="${escHtml(phone)}"${lock}></div>
+    <div class="fld"><label>${t('fieldPhone')}</label><input id="bkPhone" required dir="ltr" inputmode="tel" maxlength="20" pattern="\\+?[0-9 ]{8,20}" title="01xxxxxxxxx" value="${escHtml(phone)}"${lock}></div>
     <div class="fld"><label>${t('fieldService')}</label><select id="bkService" required${lock}><option value="">${t('chooseService')}</option>${D.services.map(s=>`<option value="${escHtml(s.service)}"${s.service===svcMatch?' selected':''}>${escHtml(s.service)}</option>`).join('')}</select></div>
     <div class="fld"><label>${t('fieldBranch')}</label><select id="bkBranch" required><option value="">${t('chooseBranch')}</option>${D.branches.map(b=>`<option value="${escHtml(b.branch)}"${b.branch===branch?' selected':''}>${escHtml(b.branch)}</option>`).join('')}</select></div>
     <div class="fld full"><label>${t('pickDay')}</label><div class="daychips" id="bkDays"></div><div class="other-date"><span>${t('otherDate')}</span><input id="bkDate" type="date" min="${today}" value="${bk.date||today}"></div></div>
@@ -3006,7 +3007,7 @@ const LEAD_SOURCES_UI=['اتصال','واتساب','فورم الموقع','إع
 function openLeadForm(){
   openModal(t('newLeadTitle'),`<form id="ldForm"><div class="fgrid">
     <div class="fld"><label>${t('fieldLeadName')}</label><input id="ldName" required maxlength="80"></div>
-    <div class="fld"><label>${t('fieldPhone')}</label><input id="ldPhone" required dir="ltr" inputmode="tel" maxlength="20"></div>
+    <div class="fld"><label>${t('fieldPhone')}</label><input id="ldPhone" required dir="ltr" inputmode="tel" maxlength="20" pattern="\\+?[0-9 ]{8,20}" title="01xxxxxxxxx"></div>
     <div class="fld"><label>${t('optionalService')}</label><select id="ldService"><option value="">—</option>${D.services.map(s=>`<option value="${escHtml(s.service)}">${escHtml(s.service)}</option>`).join('')}</select></div>
     <div class="fld"><label>${t('sourceLbl')}</label><select id="ldSource">${LEAD_SOURCES_UI.map(v=>`<option>${escHtml(v)}</option>`).join('')}</select></div>
     <div class="fld"><label>${t('fieldCampaign')}</label><input id="ldCampaign" maxlength="80"></div>
