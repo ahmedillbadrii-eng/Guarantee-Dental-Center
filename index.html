@@ -2308,6 +2308,8 @@ function fmtMin(m){ const h=Math.floor(m/60), mm=m%60; return String(h).padStart
 function pyWd(d){ const p=d.split('-'); const dt=new Date(Date.UTC(+p[0],+p[1]-1,+p[2])); return (dt.getUTCDay()+6)%7; }
 function fmtTime(tm){ const m=toMin(tm); let h=Math.floor(m/60); const mm=String(m%60).padStart(2,'0'); const ap=h>=12?(LANG==='ar'?'م':'PM'):(LANG==='ar'?'ص':'AM'); h=h%12||12; return h+':'+mm+' '+ap; }
 function fmtDate(d,opts){ const t0=pdt(d); if(t0==null) return d||'—'; return new Date(t0).toLocaleDateString(LANG==='ar'?'ar-EG-u-nu-latn':'en-GB',Object.assign({day:'numeric',month:'short',timeZone:'UTC'},opts||{})); }
+// Egyptian mobile numbers are stored as 01xxxxxxxxx so the bot, dashboard and reports match the same patient.
+function egPhone(v){ let d=String(v||'').replace(/[٠-٩]/g,c=>String(c.charCodeAt(0)-0x0660)).replace(/\D/g,''); if(d.indexOf('0020')===0) d=d.slice(4); if(d.length===12&&d.indexOf('20')===0) d=d.slice(2); if(d.length===10&&d[0]==='1') d='0'+d; return d||String(v||'').trim(); }
 function fmtDay(d){ const t0=pdt(d); if(t0==null) return d||'—'; const dt=new Date(t0), loc=LANG==='ar'?'ar-EG-u-nu-latn':'en-GB', nf=function(n){ return n.toLocaleString(loc,{useGrouping:false}); }; return dt.toLocaleDateString(loc,{weekday:'short',timeZone:'UTC'})+' \u2066'+nf(dt.getUTCDate())+'/'+nf(dt.getUTCMonth()+1)+'\u2069'; }
 function fmtDT(s){ const d=String(s||'').slice(0,10), tm=String(s||'').slice(11,16); return tm?fmtDate(d)+' · '+fmtTime(tm):fmtDate(d); }
 function ageMin(s){ const a=pdt(s), n=pdt(nowStr()); return (a==null||n==null)?null:Math.max(0,Math.round((n-a)/60000)); }
@@ -3040,7 +3042,7 @@ async function submitBooking(e){
   let action,params;
   if(rs){ action='booking_reschedule'; params={id:rs.id,...common}; }
   else{
-    const v={patient:$("#bkPatient").value.trim(),phone:$("#bkPhone").value.trim(),service:$("#bkService").value,source:$("#bkSource").value,lead_id:bk.leadId,...common};
+    const v={patient:$("#bkPatient").value.trim(),phone:egPhone($("#bkPhone").value),service:$("#bkService").value,source:$("#bkSource").value,lead_id:bk.leadId,...common};
     if(!v.patient||!v.phone||!v.service){ err.hidden=false; err.textContent=t('fillAll'); return; }
     action='booking_create'; params=v;
   }
@@ -3109,7 +3111,7 @@ function openLeadForm(){
   $("#ldForm").addEventListener('submit',async e=>{
     e.preventDefault(); const err=$("#ldError"); err.hidden=true; $("#ldSave").disabled=true;
     try{
-      const d=await act('lead_create',{name:$("#ldName").value.trim(),phone:$("#ldPhone").value.trim(),service:$("#ldService").value,source:$("#ldSource").value,campaign:$("#ldCampaign").value.trim(),agent:$("#ldAgent").value.trim()});
+      const d=await act('lead_create',{name:$("#ldName").value.trim(),phone:egPhone($("#ldPhone").value),service:$("#ldService").value,source:$("#ldSource").value,campaign:$("#ldCampaign").value.trim(),agent:$("#ldAgent").value.trim()});
       if(d.ok){ closeModal(); toast(t('toastLeadSaved')+' #'+d.lead_id); await loadData(false); showSection('leads'); }
       else{ err.hidden=false; err.textContent=d.error==='invalid_fields'?t('fillAll'):errText(d); }
     }catch(ex){ if(ex.message!=='unauthorized'){ err.hidden=false; err.textContent=t('toastActionFailed'); } }
