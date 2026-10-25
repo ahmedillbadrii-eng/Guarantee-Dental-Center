@@ -1827,6 +1827,9 @@ html .qf-chip.on,html .daychip.on,html .paychip.on,html .doccard.on{box-shadow:0
 @media (prefers-reduced-transparency:reduce){
   html .card::after{display:none}
 }
+
+.search-kbd{direction:ltr;unicode-bidi:isolate}
+.integ-meta small{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.45}
 </style>
 
 </head>
@@ -1995,7 +1998,7 @@ html .qf-chip.on,html .daychip.on,html .paychip.on,html .doccard.on{box-shadow:0
 </header>
 
 <div class="filters" id="filtersBox">
-  <div class="search-box"><svg class="search-ico"><use href="#i-search"/></svg><input id="search" type="search" autocomplete="off" enterkeyhint="search" data-i18n-ph="searchPlaceholder" placeholder="ابحث باسم المريض، الهاتف، رقم الحجز..." /><kbd class="search-kbd" id="searchKbd">⌘K</kbd><button type="button" class="search-clear" id="searchClear" hidden aria-label="clear"><svg><use href="#i-x"/></svg></button><div class="gsearch-pop" id="gsearchPop" hidden></div></div>
+  <div class="search-box"><svg class="search-ico"><use href="#i-search"/></svg><input id="search" type="search" autocomplete="off" enterkeyhint="search" data-i18n-ph="searchPlaceholder" placeholder="ابحث باسم المريض، الهاتف، رقم الحجز..." /><kbd class="search-kbd" id="searchKbd" dir="ltr">⌘K</kbd><button type="button" class="search-clear" id="searchClear" hidden aria-label="clear"><svg><use href="#i-x"/></svg></button><div class="gsearch-pop" id="gsearchPop" hidden></div></div>
   <select id="branch"><option value="all" data-i18n="allBranches">كل الفروع</option></select>
   <select id="status"><option value="all" data-i18n="allStatuses">كل الحالات</option></select>
   <button class="btn ghost" id="clearFilters" data-i18n="btnClearFilters">مسح الفلاتر</button>
@@ -2079,7 +2082,7 @@ html .qf-chip.on,html .daychip.on,html .paychip.on,html .doccard.on{box-shadow:0
   <div class="card"><div class="card-head"><h2 data-i18n="byServiceTitle">الحجوزات حسب الخدمة</h2></div><div class="card-body" id="repServices"></div></div>
   <div class="card"><div class="card-head"><h2 data-i18n="byChannelTitle">الحجوزات حسب القناة</h2></div><div class="card-body" id="repChannels"></div></div>
 </div>
-<div class="grid" style="margin-top:16px">
+<div class="grid one" style="margin-top:16px">
   <div class="card"><div class="card-head"><h2 data-i18n="leadSourcesTitle">أداء مصادر الليدز</h2></div><div class="table-wrap"><table class="table"><thead><tr><th data-i18n="colSource">المصدر</th><th data-i18n="colLeads">ليدز</th><th data-i18n="colBooked">حجزوا</th><th data-i18n="colLost">ضايعة</th><th data-i18n="colConvRate">التحويل</th></tr></thead><tbody id="repSources"></tbody></table></div></div>
   <div class="card"><div class="card-head"><h2 data-i18n="campaignsTitle">أداء الحملات</h2></div><div class="table-wrap"><table class="table"><thead><tr><th data-i18n="colCampaign">الحملة</th><th data-i18n="colLeads">ليدز</th><th data-i18n="colBooked">حجزوا</th><th data-i18n="colConvRate">التحويل</th></tr></thead><tbody id="repCampaigns"></tbody></table></div></div>
 </div>
@@ -2304,8 +2307,8 @@ function toMin(tm){ const p=String(tm).split(':'); return Number(p[0])*60+Number
 function fmtMin(m){ const h=Math.floor(m/60), mm=m%60; return String(h).padStart(2,'0')+':'+String(mm).padStart(2,'0'); }
 function pyWd(d){ const p=d.split('-'); const dt=new Date(Date.UTC(+p[0],+p[1]-1,+p[2])); return (dt.getUTCDay()+6)%7; }
 function fmtTime(tm){ const m=toMin(tm); let h=Math.floor(m/60); const mm=String(m%60).padStart(2,'0'); const ap=h>=12?(LANG==='ar'?'م':'PM'):(LANG==='ar'?'ص':'AM'); h=h%12||12; return h+':'+mm+' '+ap; }
-function fmtDate(d,opts){ const t0=pdt(d); if(t0==null) return d||'—'; return new Date(t0).toLocaleDateString(LANG==='ar'?'ar-EG':'en-GB',Object.assign({day:'numeric',month:'short',timeZone:'UTC'},opts||{})); }
-function fmtDay(d){ return fmtDate(d,{weekday:'short',day:'numeric',month:'numeric'}); }
+function fmtDate(d,opts){ const t0=pdt(d); if(t0==null) return d||'—'; return new Date(t0).toLocaleDateString(LANG==='ar'?'ar-EG-u-nu-latn':'en-GB',Object.assign({day:'numeric',month:'short',timeZone:'UTC'},opts||{})); }
+function fmtDay(d){ const t0=pdt(d); if(t0==null) return d||'—'; const dt=new Date(t0), loc=LANG==='ar'?'ar-EG-u-nu-latn':'en-GB', nf=function(n){ return n.toLocaleString(loc,{useGrouping:false}); }; return dt.toLocaleDateString(loc,{weekday:'short',timeZone:'UTC'})+' \u2066'+nf(dt.getUTCDate())+'/'+nf(dt.getUTCMonth()+1)+'\u2069'; }
 function fmtDT(s){ const d=String(s||'').slice(0,10), tm=String(s||'').slice(11,16); return tm?fmtDate(d)+' · '+fmtTime(tm):fmtDate(d); }
 function ageMin(s){ const a=pdt(s), n=pdt(nowStr()); return (a==null||n==null)?null:Math.max(0,Math.round((n-a)/60000)); }
 function ageText(min){
@@ -2433,7 +2436,9 @@ const EN_NAMES={
  'استشاري زراعة وتركيبات':'Implant & Prosthodontics Consultant','أخصائي تقويم':'Orthodontist','أخصائي علاج جذور':'Endodontist','أخصائية أسنان أطفال':'Pediatric Dentist','جراحة الفم وزراعة الأسنان':'Oral Surgery & Implants','طبيب أسنان عام':'General Dentist','طبيب أسنان':'Dentist','طبيبة أسنان':'Dentist',
  'السعر عالي':'Price too high','مش بيرد':'Not responding','بعيد عن الفروع':'Too far from branches','حجز عند مركز تاني':'Booked elsewhere','مش مهتم':'Not interested','رقم غلط':'Wrong number','أخرى':'Other',
  'فورم الموقع':'Website form','إعلان فيسبوك':'Facebook ad','إعلان إنستجرام':'Instagram ad','تعليق إنستجرام':'Instagram comment','كول سنتر':'Call center','واتساب':'WhatsApp','إعلان':'Ad','الموقع':'Website','اتصال':'Call','زيارة':'Walk-in',
- 'كاش':'Cash','فيزا':'Visa','إنستاباي':'InstaPay','تقسيط':'Installments','غير محدد':'Not specified'
+ 'كاش':'Cash','فيزا':'Visa','إنستاباي':'InstaPay','تقسيط':'Installments','غير محدد':'Not specified',
+ 'تغيير حالة ليد':'Lead status changed','إعادة جدولة حجز':'Booking rescheduled','تأكيد حضور ودفع':'Attendance & payment confirmed','تحديث الملف الشخصي':'Profile updated','تحديث ليد':'Lead updated','تحويل ليد لحجز':'Lead converted to booking','تعديل مبلغ':'Amount edited','تغيير حالة حجز':'Booking status changed','حجز جديد':'New booking','ليد جديد':'New lead','متابعة اتحجزت':'Follow-up booked','المريض لغى الموعد':'Patient cancelled the appointment','المريض عدّل موعده':'Patient rescheduled','المريض أكّد الموعد':'Patient confirmed the appointment','طلب التحدث مع موظف':'Asked for a staff member','حالة عاجلة من واتساب':'Urgent case from WhatsApp','تقييم زيارة':'Visit rating','ملاحظة تقييم':'Rating note',
+ 'لم يحضر':'No-show','حضر':'Attended','مؤكد':'Confirmed','ملغي':'Cancelled','بانتظار الرد':'Awaiting reply','تم الاتصال':'Contacted','تم الحجز':'Booked','ضايع':'Lost','جديد':'New','خامات':'materials','ج':'EGP'
 };
 const EN_RE=new RegExp('(?<![\\u0600-\\u06FF])('+Object.keys(EN_NAMES).sort((a,b)=>b.length-a.length).map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?![\\u0600-\\u06FF])','g');
 function enifyNode(root){
@@ -2532,7 +2537,7 @@ function renderSyncAgo(){
   const el=$("#syncTime"); if(!el) return;
   if(!lastSync){ el.textContent='—'; return; }
   const s=Math.round((Date.now()-lastSync)/1000);
-  el.textContent=s<5?(LANG==='ar'?'الآن':'just now'):s<60?(LANG==='ar'?`منذ ${s} ث`:`${s}s ago`):new Date(lastSync).toLocaleTimeString(LANG==='ar'?'ar-EG':'en-GB',{hour:'2-digit',minute:'2-digit'});
+  el.textContent=s<5?(LANG==='ar'?'الآن':'just now'):s<60?(LANG==='ar'?`منذ ${s} ث`:`${s}s ago`):new Date(lastSync).toLocaleTimeString(LANG==='ar'?'ar-EG-u-nu-latn':'en-GB',{hour:'2-digit',minute:'2-digit'});
 }
 setInterval(renderSyncAgo,15000);
 
@@ -2744,7 +2749,7 @@ function openDoctor(name){
 function renderBranches(){
   const br=$("#branch").value; const list=br==='all'?D.branches:D.branches.filter(b=>b.branch===br);
   $("#branchesTable").innerHTML=list.map(b=>{ const s=branchStats(b.branch); return `<tr><td><b>${escHtml(b.branch)}</b><br><small style="color:var(--muted)">${escHtml(b.area)}</small></td><td>${s.today}</td><td>${s.pending}</td><td>${s.arrived}</td><td>${s.noshow}</td><td><span class="badge b-${s.hasPast?(s.rate>=80?'green':s.rate>=60?'yellow':'red'):'blue'}">${s.hasPast?s.rate+'%':'—'}</span></td><td>${s.upcoming}</td></tr>`; }).join('')||`<tr><td colspan="7" class="empty">${t('noData')}</td></tr>`;
-  $("#branchCards").innerHTML=list.map(b=>`<div class="card"><div class="card-head"><h2>${escHtml(b.branch)}</h2><span class="badge b-blue">${escHtml(b.area)}</span></div><div class="card-body"><div class="status-list"><div class="status-row"><span class="who">${t('addressLbl')}</span><b style="font-size:12px;text-align:end">${escHtml(b.address)}</b></div><div class="status-row"><span class="who">${t('branchPhone')}</span><a class="phone-link" dir="ltr" href="tel:${escHtml(b.phone)}">${escHtml(b.phone)}</a></div></div></div></div>`).join('');
+  $("#branchCards").innerHTML=list.map(b=>`<div class="card"><div class="card-head"><h2>${escHtml(b.branch)}</h2><span class="badge b-blue">${escHtml(b.area)}</span></div><div class="card-body"><div class="status-list"><div class="status-row"><span class="who">${t('addressLbl')}</span><b style="font-size:12px;text-align:end">${escHtml(String(b.address||'').replace(/\u060c(?=\S)/g,'\u060c '))}</b></div><div class="status-row"><span class="who">${t('branchPhone')}</span><a class="phone-link" dir="ltr" href="tel:${escHtml(b.phone)}">${escHtml(b.phone)}</a></div></div></div></div>`).join('');
 }
 function buildPatients(bookings){
   const map={}; const today=TODAY();
@@ -2855,7 +2860,7 @@ const CAPS={ // which filter controls make sense per section
   home:{search:1,branch:1}, appointments:{search:1,branch:1,status:1,adv:1,date:1,doctor:1,source:1}, leads:{search:1,status:1,adv:1,source:1},
   doctors:{search:1,branch:1}, branches:{branch:1}, patients:{search:1,branch:1}, finance:{branch:1}, reports:{branch:1}, activity:{}, opstatus:{}
 };
-function sectionTitle(id){ const k=id[0].toUpperCase()+id.slice(1); const sub=id==='home'?new Date().toLocaleDateString(LANG==='ar'?'ar-EG':'en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}):t('sub'+k); return {title:t('title'+k),sub:sub}; }
+function sectionTitle(id){ const k=id[0].toUpperCase()+id.slice(1); const sub=id==='home'?new Date().toLocaleDateString(LANG==='ar'?'ar-EG-u-nu-latn':'en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}):t('sub'+k); return {title:t('title'+k),sub:sub}; }
 function refreshSectionTitle(){ $("#search").placeholder=t(PH[currentSection]||'searchPlaceholder'); const s=sectionTitle(currentSection); $("#pageTitle").textContent=s.title; $("#pageSub").textContent=s.sub; renderGreeting(); }
 function renderGreeting(){
   const el=$("#greet"); if(!el) return; const u=getUser(); const h=Number(nowStr().slice(11,13));
@@ -2966,7 +2971,7 @@ function computeSlots(service,branch,date,onlyDoctor,excludeId){
   return out.sort((a,b)=>a.time<b.time?-1:a.time>b.time?1:0);
 }
 let bk={slot:null,leadId:'',resched:null,pre:null,doctor:'',date:''};
-function dayLabel(d){ const today=TODAY(); if(d===today) return t('todayShort'); if(d===addDays(today,1)) return t('tomorrowWord'); return fmtDate(d,{weekday:'short',day:'numeric',month:'numeric'}); }
+function dayLabel(d){ const today=TODAY(); if(d===today) return t('todayShort'); if(d===addDays(today,1)) return t('tomorrowWord'); return fmtDay(d); }
 function openBookingForm(lead,opts){
   opts=opts||{}; const rs=opts.resched||null; const pre=opts.pre||{};
   bk={slot:null,leadId:lead?String(lead.id):'',resched:rs,pre:{...pre},doctor:'',date:rs?(rs.date<TODAY()?'':rs.date):(pre.date||'')};
