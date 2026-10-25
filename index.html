@@ -1737,6 +1737,7 @@ html[dir="ltr"] .mb-arrow{transform:scaleX(-1)}
 .paychips{display:flex;flex-wrap:wrap;gap:8px}
 .paychip{padding:10px 18px;border-radius:12px;background:var(--panel-2);border:1.5px solid var(--line);font-size:13.5px;font-weight:700}
 .paychip.on{background:var(--blue-soft);border-color:var(--blue);color:var(--blue-ink)}
+.att-net{font-weight:800;font-size:15px;margin:2px 0 10px}.fu-box{margin-top:6px;padding-top:12px;border-top:1px dashed var(--line)}
 .att-note{color:var(--muted);font-size:11.5px;margin:-4px 0 12px}
 
 /* mobile FAB + drawer fit */
@@ -2005,7 +2006,7 @@ html[dir="ltr"] .mb-arrow{transform:scaleX(-1)}
 
 <section id="finance" class="section" hidden>
 <div class="card" style="margin-bottom:16px"><div class="card-head"><h2 data-i18n="finTitle">ملخص الحسابات</h2><div class="seg" role="tablist"><button type="button" data-fin="today" data-i18n="finToday">اليوم</button><button type="button" data-fin="week" class="on" data-i18n="finWeek">الأسبوع</button><button type="button" data-fin="month" data-i18n="finMonth">الشهر</button><button type="button" data-fin="all" data-i18n="finAll">الكل</button></div></div><div class="card-body"><div class="fin-kpis" id="finKpis"></div><div class="fin-note" id="finRange"></div></div></div>
-<div class="card" style="margin-bottom:16px"><div class="card-head"><h2 data-i18n="finBranchTitle">الدخل والإشغال لكل فرع</h2></div><div class="table-wrap"><table class="table"><thead><tr><th data-i18n="navBranches">الفرع</th><th data-i18n="colBookings">الحجوزات</th><th data-i18n="colArrivedShort">حضروا</th><th data-i18n="colCollected">المحصّل</th><th data-i18n="colExpected">المتوقع</th><th data-i18n="colOccupancy">الإشغال</th></tr></thead><tbody id="finBranches"></tbody></table></div></div>
+<div class="card" style="margin-bottom:16px"><div class="card-head"><h2 data-i18n="finBranchTitle">الدخل والإشغال لكل فرع</h2></div><div class="table-wrap"><table class="table"><thead><tr><th data-i18n="navBranches">الفرع</th><th data-i18n="colBookings">الحجوزات</th><th data-i18n="colArrivedShort">حضروا</th><th data-i18n="colCollected">المحصّل</th><th data-i18n="colNet">الصافي</th><th data-i18n="colExpected">المتوقع</th><th data-i18n="colOccupancy">الإشغال</th></tr></thead><tbody id="finBranches"></tbody></table></div></div>
 <div class="bottom-grid"><div class="card"><div class="card-head"><h2 data-i18n="revByService">الدخل حسب الخدمة</h2></div><div class="card-body" id="finServices"></div></div><div class="card"><div class="card-head"><h2 data-i18n="revByDoctor">الدخل حسب الدكتور</h2></div><div class="card-body" id="finDoctors"></div></div><div class="card"><div class="card-head"><h2 data-i18n="finByPayment">الدخل حسب طريقة الدفع</h2></div><div class="card-body" id="finPay"></div></div></div>
 </section>
 
@@ -2149,7 +2150,8 @@ const I18N = {
   navFinance:"الحسابات", titleFinance:"الحسابات", subFinance:"الدخل ونسبة الإشغال لكل فرع",
   finTitle:"ملخص الحسابات", finToday:"اليوم", finWeek:"الأسبوع", finMonth:"الشهر", finAll:"الكل", finBranchTitle:"الدخل والإشغال لكل فرع", revByService:"الدخل حسب الخدمة", revByDoctor:"الدخل حسب الدكتور",
   finCollected:"المحصّل (حضروا)", finExpected:"المتوقع (مؤكد وبانتظار)", finAvg:"متوسط قيمة الزيارة", finOccupancy:"نسبة الإشغال", finOccSub:"ساعات محجوزة من ساعات العمل", finVisits:"زيارة", finRange:"الفترة", finNote:"الأسعار الافتراضية من قائمة الخدمات، والمبلغ الفعلي هو اللي بيتسجّل عند تأكيد الحضور.", finTotal:"الإجمالي",
-  colCollected:"المحصّل", colExpected:"المتوقع", colOccupancy:"الإشغال", amountLbl:"المبلغ", defaultPrice:"سعر الخدمة الافتراضي", recordedAmount:"مبلغ مسجّل", nextUp:"الجاي", noFinData:"مفيش حجوزات في الفترة دي",
+  fuNone:"مفيش متابعة", fuDays:"بعد {n} أيام", fuWeek:"بعد أسبوع", fuTwoWeeks:"بعد أسبوعين", fuMonth:"بعد شهر", fuPickDate:"تاريخ محدد", fuNeeded:"محتاج متابعة؟", fuDateLbl:"تاريخ المتابعة", fuNoteLbl:"سبب المتابعة", fuNotePh:"مثلًا: حشو مؤقت — تركيب الحشو النهائي", fuDateMissing:"اختار تاريخ المتابعة", materialsCost:"تكلفة الخامات", netLbl:"الصافي", toastAttendedFu:"تم تأكيد الحضور — المتابعة {d}", followupLbl:"المتابعة", fuPending:"مستنية", fuDone:"تمت", fuCancelled:"اتلغت", fuBooked:"اتحجزت", fuMarkDone:"تمت المتابعة", fuCancel:"إلغاء المتابعة", qfFollowup:"متابعات مستحقة", invalidFollowup:"تاريخ المتابعة لازم يكون بعد النهارده",
+  colNet:"الصافي", finMaterials:"خامات", finNet:"الصافي بعد الخامات", finNetSub:"المحصّل ناقص تكلفة الخامات", colCollected:"المحصّل", colExpected:"المتوقع", colOccupancy:"الإشغال", amountLbl:"المبلغ", defaultPrice:"سعر الخدمة الافتراضي", recordedAmount:"مبلغ مسجّل", nextUp:"الجاي", noFinData:"مفيش حجوزات في الفترة دي",
   btnAddLead:"ليد جديد", newLeadTitle:"ليد جديد", fieldLeadName:"اسم العميل", fieldCampaign:"الحملة (اختياري)", fieldAgent:"الموظف المسؤول (اختياري)", optionalService:"الخدمة المطلوبة (اختياري)", saveLead:"حفظ الليد", toastLeadSaved:"تم إضافة الليد", toastDupLead:"فيه ليد مفتوح بنفس الرقم",
   rescheduleBtn:"إعادة جدولة", rescheduleTitle:"إعادة جدولة حجز", saveReschedule:"تأكيد الموعد الجديد", toastRescheduled:"تمت إعادة الجدولة",
   viewList:"قائمة", viewAgenda:"جدول اليوم", agendaEmpty:"مفيش دكاترة شغالين في اليوم ده",
@@ -2215,7 +2217,8 @@ const I18N = {
   navFinance:"Accounts", titleFinance:"Accounts", subFinance:"Revenue and occupancy per branch",
   finTitle:"Accounts summary", finToday:"Today", finWeek:"Week", finMonth:"Month", finAll:"All", finBranchTitle:"Revenue and occupancy per branch", revByService:"Revenue by service", revByDoctor:"Revenue by doctor",
   finCollected:"Collected (attended)", finExpected:"Expected (confirmed & pending)", finAvg:"Average visit value", finOccupancy:"Occupancy", finOccSub:"booked hours of working hours", finVisits:"visits", finRange:"Period", finNote:"Default prices come from the service list; the actual amount is the one recorded when attendance is confirmed.", finTotal:"Total",
-  colCollected:"Collected", colExpected:"Expected", colOccupancy:"Occupancy", amountLbl:"Amount", defaultPrice:"Default service price", recordedAmount:"Recorded amount", nextUp:"Next", noFinData:"No bookings in this period",
+  fuNone:"No follow-up", fuDays:"In {n} days", fuWeek:"In a week", fuTwoWeeks:"In two weeks", fuMonth:"In a month", fuPickDate:"Pick a date", fuNeeded:"Follow-up needed?", fuDateLbl:"Follow-up date", fuNoteLbl:"Follow-up reason", fuNotePh:"e.g. temporary filling — place the final filling", fuDateMissing:"Pick the follow-up date", materialsCost:"Material cost", netLbl:"Net", toastAttendedFu:"Attendance confirmed — follow-up {d}", followupLbl:"Follow-up", fuPending:"Pending", fuDone:"Done", fuCancelled:"Cancelled", fuBooked:"Booked", fuMarkDone:"Follow-up done", fuCancel:"Cancel follow-up", qfFollowup:"Follow-ups due", invalidFollowup:"The follow-up date must be after today",
+  colNet:"Net", finMaterials:"materials", finNet:"Net after materials", finNetSub:"Collected minus material costs", colCollected:"Collected", colExpected:"Expected", colOccupancy:"Occupancy", amountLbl:"Amount", defaultPrice:"Default service price", recordedAmount:"Recorded amount", nextUp:"Next", noFinData:"No bookings in this period",
   btnAddLead:"New lead", newLeadTitle:"New lead", fieldLeadName:"Customer name", fieldCampaign:"Campaign (optional)", fieldAgent:"Responsible agent (optional)", optionalService:"Requested service (optional)", saveLead:"Save lead", toastLeadSaved:"Lead added", toastDupLead:"An open lead with this number already exists",
   rescheduleBtn:"Reschedule", rescheduleTitle:"Reschedule booking", saveReschedule:"Confirm new time", toastRescheduled:"Booking rescheduled",
   viewList:"List", viewAgenda:"Day schedule", agendaEmpty:"No doctors are working that day",
@@ -2315,7 +2318,7 @@ function leadById(id){ return D.leads.find(l=>String(l.id)===String(id)); }
 /* ========================= quick filters ========================= */
 const qf={appointments:'all',leads:'all'};
 function nowMinutes(){ return toMin(nowStr().slice(11,16)); }
-const QF_APPT=[['all','qfAll',()=>true,''],['today','qfToday',b=>b.date===TODAY()&&b.status!=='ملغي',''],['pending','qfPending',b=>b.status==='بانتظار الرد'&&b.date>=TODAY(),'warn'],['late','qfLate',b=>(b.status==='مؤكد'||b.status==='بانتظار الرد')&&(b.date<TODAY()||(b.date===TODAY()&&toMin(b.time)<nowMinutes())),'danger'],['upcoming','qfUpcoming',b=>b.status==='مؤكد'&&b.date>=TODAY(),''],['noshow','qfNoShow',b=>b.status==='لم يحضر',''],['cancelled','qfCancelled',b=>b.status==='ملغي','']];
+const QF_APPT=[['all','qfAll',()=>true,''],['today','qfToday',b=>b.date===TODAY()&&b.status!=='ملغي',''],['pending','qfPending',b=>b.status==='بانتظار الرد'&&b.date>=TODAY(),'warn'],['late','qfLate',b=>(b.status==='مؤكد'||b.status==='بانتظار الرد')&&(b.date<TODAY()||(b.date===TODAY()&&toMin(b.time)<nowMinutes())),'danger'],['upcoming','qfUpcoming',b=>b.status==='مؤكد'&&b.date>=TODAY(),''],['noshow','qfNoShow',b=>b.status==='لم يحضر',''],['cancelled','qfCancelled',b=>b.status==='ملغي',''],['followup','qfFollowup',b=>b.followup_status==='pending'&&b.followup_date&&b.followup_date<=addDays(TODAY(),1),'warn']];
 const QF_LEAD=[['all','qfAll',()=>true,''],['new','qfNew',l=>l.status==='جديد','warn'],['stale','qfStale',l=>l.status==='جديد'&&(ageMin(l.entry)||0)>120,'danger'],['noagent','qfNoAgent',l=>(l.status==='جديد'||l.status==='تم الاتصال')&&!l.agent,'warn'],['follow','qfFollow',l=>l.status==='تم الاتصال'&&(ageMin(l.updated)||0)>1440,'warn'],['booked','qfBookedPending',l=>l.status==='تم الحجز'&&!!l.booking_status&&l.booking_status!=='حضر'&&l.booking_status!=='ملغي','warn'],['attended','qfAttended',l=>l.booking_status==='حضر',''],['lost','qfLost',l=>l.status==='ضايع','']];
 function renderQf(){
   const mk=(list,key,data)=>list.map(([k,lab,fn,cls])=>{ const n=k==='all'?data.length:data.filter(fn).length; return `<button type="button" class="qf-chip ${cls}${qf[key]===k?' on':''}${n===0&&k!=='all'?' zero':''}" data-qf="${key}:${k}">${t(lab)}<b>${n}</b></button>`; }).join('');
@@ -2694,6 +2697,7 @@ function renderPatients(){
 
 /* ========================= finance ========================= */
 let finPeriod='week';
+function matOf(b){ if(b.materials!==undefined&&String(b.materials).trim()!=='') return Number(String(b.materials).replace(/[^0-9.]/g,''))||0; const sv=D.services.find(x=>x.service===b.service); return Number(String(sv&&sv.materials||'').replace(/[^0-9.]/g,''))||0; }
 function priceOf(b){ const a=Number(String(b.amount||'').replace(/[^0-9.]/g,'')); if(a>0) return a; const sv=D.services.find(x=>x.service===b.service); return Number(String(sv&&sv.price||'').replace(/[^0-9.]/g,''))||0; }
 function weekStartSat(dateStr){ const d=new Date(pdt(dateStr)); const sinceSat=(d.getUTCDay()+1)%7; return addDays(dateStr,-sinceSat); }
 function finDates(){
@@ -2720,16 +2724,16 @@ function renderFinance(){
   const brs=D.branches.filter(x=>br==='all'||x.branch===br);
   const sched=sum(brs,x=>scheduledMinutes(x.branch,from,to)); const booked=sum(live,b=>svcMinutes(b.service));
   const occ=pct(booked,sched);
-  box.innerHTML=`<div class="fin-kpi hl"><small>${t('finCollected')}</small><b>${money(sumP(done))}</b><span>${done.length} ${t('finVisits')}</span></div>
+  box.innerHTML=`<div class="fin-kpi hl"><small>${t('finCollected')}</small><b>${money(sumP(done))}</b><span>${done.length} ${t('finVisits')} · ${t('finMaterials')} ${money(sum(done,matOf))}</span></div>
   <div class="fin-kpi"><small>${t('finExpected')}</small><b>${money(sumP(exp))}</b><span>${exp.length} ${t('bookingsUnit')}</span></div>
-  <div class="fin-kpi"><small>${t('finAvg')}</small><b>${money(done.length?Math.round(sumP(done)/done.length):0)}</b><span>${t('finCollected')}</span></div>
+  <div class="fin-kpi"><small>${t('finNet')}</small><b>${money(sumP(done)-sum(done,matOf))}</b><span>${t('finNetSub')}</span></div>
   <div class="fin-kpi"><small>${t('finOccupancy')}</small><b>${occ}%</b><span>${(booked/60).toFixed(1)} / ${(sched/60).toFixed(0)} ${LANG==='ar'?'ساعة':'h'}</span></div>`;
   $("#finRange").textContent=`${t('finRange')}: ${fmtDate(from)} → ${fmtDate(to)} · ${t('finNote')}`;
   const occCls=v=>v>=85?'danger':v>=60?'':'warn';
-  const row=(name,sub,bks)=>{ const lv=bks.filter(b=>b.status!=='ملغي'); const sc=scheduledMinutes(name,from,to); const o=pct(sum(lv,b=>svcMinutes(b.service)),sc); return {name,sub,n:lv.length,att:bks.filter(b=>b.status==='حضر').length,col:sumP(bks.filter(b=>b.status==='حضر')),exp:sumP(bks.filter(b=>b.status==='مؤكد'||b.status==='بانتظار الرد')),o,sc}; };
+  const row=(name,sub,bks)=>{ const lv=bks.filter(b=>b.status!=='ملغي'); const sc=scheduledMinutes(name,from,to); const o=pct(sum(lv,b=>svcMinutes(b.service)),sc); return {name,sub,n:lv.length,att:bks.filter(b=>b.status==='حضر').length,col:sumP(bks.filter(b=>b.status==='حضر')),net:sumP(bks.filter(b=>b.status==='حضر'))-sum(bks.filter(b=>b.status==='حضر'),matOf),exp:sumP(bks.filter(b=>b.status==='مؤكد'||b.status==='بانتظار الرد')),o,sc}; };
   const rows=brs.map(x=>row(x.branch,x.area,inRange.filter(b=>b.branch===x.branch)));
-  const tot={n:sum(rows,r=>r.n),att:sum(rows,r=>r.att),col:sum(rows,r=>r.col),exp:sum(rows,r=>r.exp),o:occ};
-  $("#finBranches").innerHTML=rows.map(r=>`<tr><td><b>${escHtml(r.name)}</b><br><small style="color:var(--muted)">${escHtml(r.sub)}</small></td><td>${r.n}</td><td>${r.att}</td><td><b>${money(r.col)}</b></td><td>${money(r.exp)}</td><td><div class="occ"><div class="progress"><b class="${r.o>=85?'danger':''}" data-w="${r.o>0?Math.max(r.o,3):0}"></b></div><b>${r.o}%</b></div></td></tr>`).join('')+(rows.length>1?`<tr class="total-row"><td>${t('finTotal')}</td><td>${tot.n}</td><td>${tot.att}</td><td>${money(tot.col)}</td><td>${money(tot.exp)}</td><td>${tot.o}%</td></tr>`:'')||`<tr><td colspan="6" class="empty">${t('noFinData')}</td></tr>`;
+  const tot={n:sum(rows,r=>r.n),att:sum(rows,r=>r.att),col:sum(rows,r=>r.col),net:sum(rows,r=>r.net),exp:sum(rows,r=>r.exp),o:occ};
+  $("#finBranches").innerHTML=rows.map(r=>`<tr><td><b>${escHtml(r.name)}</b><br><small style="color:var(--muted)">${escHtml(r.sub)}</small></td><td>${r.n}</td><td>${r.att}</td><td><b>${money(r.col)}</b></td><td>${money(r.net)}</td><td>${money(r.exp)}</td><td><div class="occ"><div class="progress"><b class="${r.o>=85?'danger':''}" data-w="${r.o>0?Math.max(r.o,3):0}"></b></div><b>${r.o}%</b></div></td></tr>`).join('')+(rows.length>1?`<tr class="total-row"><td>${t('finTotal')}</td><td>${tot.n}</td><td>${tot.att}</td><td>${money(tot.col)}</td><td>${money(tot.net)}</td><td>${money(tot.exp)}</td><td>${tot.o}%</td></tr>`:'')||`<tr><td colspan="7" class="empty">${t('noFinData')}</td></tr>`;
   const byKey=(key)=>{ const m={}; rev.forEach(b=>{ const k=b[key]; if(!k) return; m[k]=(m[k]||0)+priceOf(b); }); return Object.keys(m).map(k=>({name:k,count:m[k]})).sort((a,b)=>b.count-a.count); };
   const bars=(items,color)=>{ const tot=sum(items,x=>x.count); const mx=Math.max(...items.map(x=>x.count),1); return items.length?items.slice(0,8).map(it=>`<div class="channel-row"><div class="lbl"><span>${escHtml(it.name)}</span><b>${money(it.count)} · ${pct(it.count,tot)}%</b></div><div class="channel-bar"><b style="background:${color}" data-w="${Math.round(it.count/mx*100)}"></b></div></div>`).join(''):`<div class="panel-empty"><svg><use href="#i-wallet"/></svg>${t('noFinData')}</div>`; };
   const payMap={}; done.forEach(b=>{ const k=b.payment||t('noPayment'); payMap[k]=(payMap[k]||0)+priceOf(b); });
@@ -2856,7 +2860,7 @@ async function runStatus(c){
     if(d.ok){ toast(t('toastUpdated')); await loadData(false); } else toast(errText(d),true);
   }catch(e){ if(e.message!=='unauthorized') toast(t('toastActionFailed'),true); }
 }
-function errText(d){ if(d&&d.error==='use_attend') return t('needAttendPerm'); if(d&&d.error==='forbidden') return t('toastForbidden'); if(d&&d.error==='duplicate_lead') return t('toastDupLead'); if(d&&d.error==='slot_taken') return t('toastSlotTaken'); if(d&&d.error==='duplicate_booking') return t('toastDuplicate'); return t('toastActionFailed'); }
+function errText(d){ if(d&&d.error==='invalid_followup') return t('invalidFollowup'); if(d&&d.error==='use_attend') return t('needAttendPerm'); if(d&&d.error==='forbidden') return t('toastForbidden'); if(d&&d.error==='duplicate_lead') return t('toastDupLead'); if(d&&d.error==='slot_taken') return t('toastSlotTaken'); if(d&&d.error==='duplicate_booking') return t('toastDuplicate'); return t('toastActionFailed'); }
 
 /* ========================= details modals ========================= */
 function contactLinks(phone){
@@ -2867,7 +2871,7 @@ function openBooking(id){
   const b=bookingById(id); if(!b) return; nextRe=()=>openBooking(id);
   const trans=bsTransitions(b); const canResched=(b.status==='بانتظار الرد'||b.status==='مؤكد');
   const btn=(s)=>{ if((s==='حضر'||s==='لم يحضر')&&!P().attendance) return ''; const cls=s==='ملغي'||s==='لم يحضر'?'danger':(s==='حضر'||s==='مؤكد'?'good':''); return s==='حضر'?`<button type="button" class="btn good" data-attend="${escHtml(b.id)}"><svg><use href="#i-check"/></svg>${t('confirmAttend')}</button>`:`<button type="button" class="btn ${cls}" data-ask-status="b:${escHtml(b.id)}:${escHtml(s)}">${escHtml(bsLabel(s))}</button>`; };
-  openModal(`${t('bookingN')} #${b.id}`,`<div class="kv"><div><small>${t('patientLbl')}</small><button type="button" class="plink" data-patient="${escHtml(b.phone||b.patient)}">${escHtml(b.patient)}</button></div><div><small>${t('phoneLbl')}</small><b dir="ltr">${escHtml(b.phone)}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(b.service)}</b></div><div><small>${t('doctorLbl')}</small><b>${escHtml(b.doctor)}</b></div><div><small>${t('branchLbl')}</small><b>${escHtml(b.branch)}</b></div><div><small>${t('dateLbl')}</small><b>${escHtml(fmtDay(b.date))} · ${fmtTime(b.time)}</b></div><div><small>${t('sourceLbl')}</small><b>${escHtml(b.source)}</b></div>${P().finance?`<div><small>${t('amountLbl')}</small><b>${money(priceOf(b))}</b><small>${Number(String(b.amount||'').replace(/[^0-9.]/g,''))>0?t('recordedAmount'):t('defaultPrice')}</small></div>`:''}<div><small>${t('statusLbl')}</small><span class="badge b-${(BS[b.status]||{c:'blue'}).c}">${escHtml(bsLabel(b.status))}</span></div>${(b.status==='حضر'&&(P().finance||P().attendance)&&(b.payment||b.confirmed_by))?`<div><small>${t('paymentMethod')}</small><b>${escHtml(b.payment||t('noPayment'))}</b></div><div><small>${t('confirmedByLbl')}</small><b>${escHtml(b.confirmed_by||'—')}</b><small>${escHtml(b.confirmed_at||'')}</small></div>`:''}<div class="full"><small>${t('createdLbl')}</small><b>${escHtml(b.created_at)}</b></div></div>${(trans.length||canResched||(b.status==='حضر'&&P().attendance))?`<div class="m-actions">${trans.map(btn).join('')}${canResched?`<button type="button" class="btn" data-reschedule="${escHtml(b.id)}"><svg><use href="#i-calendar"/></svg>${t('rescheduleBtn')}</button>`:''}${(b.status==='حضر'&&P().attendance)?`<button type="button" class="btn" data-attend-edit="${escHtml(b.id)}"><svg><use href="#i-wallet"/></svg>${t('editAmount')}</button>`:''}</div>`:''}${contactLinks(b.phone)}`);
+  openModal(`${t('bookingN')} #${b.id}`,`<div class="kv"><div><small>${t('patientLbl')}</small><button type="button" class="plink" data-patient="${escHtml(b.phone||b.patient)}">${escHtml(b.patient)}</button></div><div><small>${t('phoneLbl')}</small><b dir="ltr">${escHtml(b.phone)}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(b.service)}</b></div><div><small>${t('doctorLbl')}</small><b>${escHtml(b.doctor)}</b></div><div><small>${t('branchLbl')}</small><b>${escHtml(b.branch)}</b></div><div><small>${t('dateLbl')}</small><b>${escHtml(fmtDay(b.date))} · ${fmtTime(b.time)}</b></div><div><small>${t('sourceLbl')}</small><b>${escHtml(b.source)}</b></div>${P().finance?`<div><small>${t('amountLbl')}</small><b>${money(priceOf(b))}</b><small>${Number(String(b.amount||'').replace(/[^0-9.]/g,''))>0?t('recordedAmount'):t('defaultPrice')}</small></div>${b.status==='حضر'?`<div><small>${t('materialsCost')}</small><b>${money(matOf(b))}</b><small>${t('netLbl')}: ${money(priceOf(b)-matOf(b))}</small></div>`:''}`:''}${b.followup_date?`<div class="full"><small>${t('followupLbl')}</small><b>${escHtml(fmtDay(b.followup_date))}${b.followup_note?' — '+escHtml(b.followup_note):''}</b><small>${escHtml(t({pending:'fuPending',done:'fuDone',cancelled:'fuCancelled',booked:'fuBooked'}[b.followup_status]||'fuPending'))}</small>${b.followup_status==='pending'&&(P().appointments||P().attendance)?`<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><button type="button" class="btn good" data-fu-done="${escHtml(b.id)}">${t('fuMarkDone')}</button><button type="button" class="btn" data-book-patient="${escHtml(b.phone||b.patient)}">${t('pNew')}</button><button type="button" class="btn danger" data-fu-cancel="${escHtml(b.id)}">${t('fuCancel')}</button></div>`:''}</div>`:''}<div><small>${t('statusLbl')}</small><span class="badge b-${(BS[b.status]||{c:'blue'}).c}">${escHtml(bsLabel(b.status))}</span></div>${(b.status==='حضر'&&(P().finance||P().attendance)&&(b.payment||b.confirmed_by))?`<div><small>${t('paymentMethod')}</small><b>${escHtml(b.payment||t('noPayment'))}</b></div><div><small>${t('confirmedByLbl')}</small><b>${escHtml(b.confirmed_by||'—')}</b><small>${escHtml(b.confirmed_at||'')}</small></div>`:''}<div class="full"><small>${t('createdLbl')}</small><b>${escHtml(b.created_at)}</b></div></div>${(trans.length||canResched||(b.status==='حضر'&&P().attendance))?`<div class="m-actions">${trans.map(btn).join('')}${canResched?`<button type="button" class="btn" data-reschedule="${escHtml(b.id)}"><svg><use href="#i-calendar"/></svg>${t('rescheduleBtn')}</button>`:''}${(b.status==='حضر'&&P().attendance)?`<button type="button" class="btn" data-attend-edit="${escHtml(b.id)}"><svg><use href="#i-wallet"/></svg>${t('editAmount')}</button>`:''}</div>`:''}${contactLinks(b.phone)}`);
 }
 function openLead(id){
   const l=leadById(id); if(!l) return; nextRe=()=>openLead(id);
@@ -2982,24 +2986,43 @@ async function submitBooking(e){
 /* ========================= attendance + payment ========================= */
 function openAttend(id,edit){
   const b=bookingById(id); if(!b) return; nextRe=()=>openAttend(id,edit);
-  const price=priceOf(b); const recorded=Number(String(b.amount||'').replace(/[^0-9.]/g,''))||0; const cur=edit?(recorded||price):price;
+  const price=priceOf(b); const recorded=Number(String(b.amount||'').replace(/[^0-9.]/g,''))||0; const cur=edit?(recorded||price):price; const mat=matOf(b);
+  const FU=[['',t('fuNone')],['3',t('fuDays').replace('{n}',3)],['7',t('fuWeek')],['14',t('fuTwoWeeks')],['30',t('fuMonth')],['date',t('fuPickDate')]];
   openModal(edit?t('editAmount'):t('attendTitle'),`<div class="kv"><div><small>${t('patientLbl')}</small><b>${escHtml(b.patient)}</b></div><div><small>${t('serviceLbl')}</small><b>${escHtml(b.service)}</b></div><div><small>${t('doctorLbl')}</small><b>${escHtml(b.doctor)}</b></div><div><small>${t('branchLbl')}</small><b>${escHtml(b.branch)}</b></div></div>
   <form id="attForm"><div class="fgrid"><div class="fld"><label>${t('amountPaid')} (${t('currency')})</label><input id="attAmount" type="number" min="0" step="1" inputmode="decimal" required value="${cur||''}"></div>
+  <div class="fld"><label>${t('materialsCost')} (${t('currency')})</label><input id="attMat" type="number" min="0" step="1" inputmode="decimal" value="${mat}"></div>
   <div class="fld"><label>${t('paymentMethod')}</label><div class="paychips" id="attPay" data-sel="${edit?escHtml(b.payment||''):''}">${PAYS.map(p=>`<button type="button" class="paychip${edit&&b.payment===p?' on':''}" data-pay="${p}">${p}</button>`).join('')}</div></div></div>
+  <div class="att-net" id="attNet"></div>
   ${price&&!edit?`<div class="att-note">${t('defaultAmountNote')}</div>`:''}
+  ${edit?'':`<div class="fgrid fu-box"><div class="fld"><label>${t('fuNeeded')}</label><div class="paychips" id="attFu" data-sel="">${FU.map(f=>`<button type="button" class="paychip${f[0]===''?' on':''}" data-fu="${f[0]}">${escHtml(f[1])}</button>`).join('')}</div></div>
+  <div class="fld" id="attFuDateWrap" hidden><label>${t('fuDateLbl')}</label><input id="attFuDate" type="date" min="${addDays(TODAY(),1)}"></div>
+  <div class="fld" id="attFuNoteWrap" hidden><label>${t('fuNoteLbl')}</label><input id="attFuNote" maxlength="120" placeholder="${escHtml(t('fuNotePh'))}"></div></div>`}
   <div class="login-error" id="attErr" hidden></div><button type="submit" class="btn primary auth-submit" id="attSave"><svg><use href="#i-check"/></svg><span>${edit?t('saveAmount'):t('confirmAttend')}</span></button></form>`);
+  const net=()=>{ const a=Number($("#attAmount").value||0), m=Number($("#attMat").value||0); $("#attNet").textContent=`${t('netLbl')}: ${money(a-m)}`; };
+  $("#attAmount").addEventListener('input',net); $("#attMat").addEventListener('input',net); net();
+  const fuBox=$("#attFu");
+  if(fuBox) fuBox.addEventListener('click',e=>{ const x=e.target.closest('[data-fu]'); if(!x) return; fuBox.dataset.sel=x.dataset.fu; fuBox.querySelectorAll('.paychip').forEach(c=>c.classList.toggle('on',c===x)); $("#attFuDateWrap").hidden=x.dataset.fu!=='date'; $("#attFuNoteWrap").hidden=x.dataset.fu===''; });
   $("#attForm").addEventListener('submit',async e=>{
-    e.preventDefault(); const err=$("#attErr"); err.hidden=true; const pay=$("#attPay").dataset.sel; const amount=$("#attAmount").value;
+    e.preventDefault(); const err=$("#attErr"); err.hidden=true; const pay=$("#attPay").dataset.sel; const amount=$("#attAmount").value; const materials=$("#attMat").value;
     if(!pay){ err.hidden=false; err.textContent=t('payPickHint'); return; }
-    if(amount===''||Number(amount)<0){ err.hidden=false; err.textContent=t('fillAll'); return; }
+    if(amount===''||Number(amount)<0||(materials!==''&&Number(materials)<0)){ err.hidden=false; err.textContent=t('fillAll'); return; }
+    const params={id,amount,payment:pay,materials};
+    if(fuBox){ const fu=fuBox.dataset.sel;
+      if(fu==='date'){ const d=$("#attFuDate").value; if(!d){ err.hidden=false; err.textContent=t('fuDateMissing'); return; } params.followup_date=d; }
+      else if(fu) params.followup_days=fu;
+      if(fu) params.followup_note=$("#attFuNote").value.trim(); }
     $("#attSave").disabled=true;
     try{
-      const d=await act(edit?'booking_amount':'booking_attend',{id,amount,payment:pay});
-      if(d.ok){ closeModal(); toast(edit?t('toastAmountSaved'):t('toastAttended')); await loadData(false); }
+      const d=await act(edit?'booking_amount':'booking_attend',params);
+      if(d.ok){ closeModal(); toast(edit?t('toastAmountSaved'):(d.followup_date?t('toastAttendedFu').replace('{d}',fmtDay(d.followup_date)):t('toastAttended'))); await loadData(false); }
       else{ err.hidden=false; err.textContent=errText(d); }
     }catch(ex){ if(ex.message!=='unauthorized'){ err.hidden=false; err.textContent=t('toastActionFailed'); } }
     $("#attSave").disabled=false;
   });
+}
+async function followupAction(id,status){
+  try{ const d=await act('followup_update',{id,status}); if(d.ok){ closeModal(); toast(t('toastUpdated')); await loadData(false); } else toast(errText(d),true); }
+  catch(ex){ if(ex.message!=='unauthorized') toast(t('toastActionFailed'),true); }
 }
 
 /* ========================= new lead modal ========================= */
@@ -3194,6 +3217,8 @@ document.addEventListener("click",e=>{
   const sa=e.target.closest("[data-status-action]"); if(sa){ e.stopPropagation(); openStatusMenu(sa.dataset.statusAction,sa); return; }
   const ask=e.target.closest("[data-ask-status]"); if(ask){ const [k,id,to]=ask.dataset.askStatus.split(':'); askStatus(k,id,to); return; }
   const pa=e.target.closest("[data-patient]"); if(pa){ e.stopPropagation(); $("#gsearchPop").hidden=true; if(pa.closest('#modal')) pushNext=true; openPatient(pa.dataset.patient); return; }
+  const fd=e.target.closest("[data-fu-done]"); if(fd){ followupAction(fd.dataset.fuDone,'done'); return; }
+  const fc=e.target.closest("[data-fu-cancel]"); if(fc){ followupAction(fc.dataset.fuCancel,'cancelled'); return; }
   const bp=e.target.closest("[data-book-patient]"); if(bp){ const key=bp.dataset.bookPatient; const x=D.bookings.find(b=>(b.phone||b.patient)===key); closeModal(); openBookingForm(null,{pre:{patient:x?x.patient:'',phone:x&&phoneDigits(x.phone)?x.phone:''}}); return; }
   const rsb=e.target.closest("[data-reschedule]"); if(rsb){ const b=bookingById(rsb.dataset.reschedule); if(b){ closeModal(); openBookingForm(null,{resched:b}); } return; }
   const agc=e.target.closest("[data-ag]"); if(agc){ const [date,time,doctor,branch]=agc.dataset.ag.split('|'); openBookingForm(null,{pre:{date,time,doctor,branch}}); return; }
