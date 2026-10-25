@@ -1,10 +1,12 @@
-const CACHE_NAME = "gdc-dashboard-v6";
+const CACHE_NAME = "gdc-dashboard-v7";
 const SHELL_ASSETS = [
   "./",
   "./index.html",
   "./manifest.json",
   "./assets/logo-192.jpg",
-  "./assets/logo-512.jpg"
+  "./assets/logo-512.jpg",
+  "./assets/wy-horizontal.png",
+  "./assets/wy-horizontal-white.png"
 ];
 
 self.addEventListener("install", (event) => {

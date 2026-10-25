@@ -1071,6 +1071,18 @@ html[data-theme="dark"] .auth-tab.active{background:#636366;color:#fff}
   .pager button,.pagination button{min-height:42px}
   .main{padding-bottom:calc(120px + env(safe-area-inset-bottom))}
 }
+
+.wy-credit{display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;color:#0B3D3A;opacity:.92;transition:opacity .2s,transform .2s}
+.wy-credit:hover{opacity:1;transform:translateY(-1px)}
+.wy-credit img{height:26px;width:auto;display:block}
+.wy-credit .wy-dark{display:none}
+.wy-by{font:600 11px/1.2 Montserrat,Cairo,Arial,sans-serif;letter-spacing:.04em;white-space:nowrap}
+.wy-side{margin:6px 12px 10px;padding:9px 10px;border-radius:14px;border:1px solid var(--line-soft,#E6DCCD);background:rgba(11,61,58,.04)}
+.wy-login{margin-top:18px;padding-top:14px;border-top:1px solid var(--line-soft,#E6DCCD)}
+html[data-theme="dark"] .wy-credit{color:#CFEFE7}
+html[data-theme="dark"] .wy-credit .wy-light{display:none}
+html[data-theme="dark"] .wy-credit .wy-dark{display:block}
+html[data-theme="dark"] .wy-side{background:rgba(207,239,231,.06)}
 </style>
 <style id="brand-clay">
 /* =====================================================================
@@ -1875,6 +1887,7 @@ html[dir="ltr"] .mb-arrow{transform:scaleX(-1)}
       <div id="signupMsg" class="login-error" hidden></div>
       <button type="submit" class="btn primary auth-submit" id="signupSubmit"><svg><use href="#i-plus"/></svg><span data-i18n="createAccount">إنشاء الحساب</span></button>
     </form>
+    <a class="wy-credit wy-login" href="https://www.wiyak.com" target="_blank" rel="noopener" aria-label="By Wayak Team"><img class="wy-light" src="assets/wy-horizontal.png" alt="ويّاك — Wayak"><img class="wy-dark" src="assets/wy-horizontal-white.png" alt="ويّاك — Wayak"><span class="wy-by">By Wayak Team</span></a>
   </div>
 </div>
 
@@ -1909,6 +1922,7 @@ html[dir="ltr"] .mb-arrow{transform:scaleX(-1)}
     <button data-section="opstatus"><svg><use href="#i-check"/></svg><span data-i18n="navStatus">حالة التشغيل</span><span class="nav-dot warn" id="navStatusDot"></span></button>
   </nav>
   <div class="side-spacer"></div>
+  <a class="wy-credit wy-side" href="https://www.wiyak.com" target="_blank" rel="noopener" aria-label="By Wayak Team"><img class="wy-light" src="assets/wy-horizontal.png" alt="ويّاك — Wayak"><img class="wy-dark" src="assets/wy-horizontal-white.png" alt="ويّاك — Wayak"><span class="wy-by">By Wayak Team</span></a>
   <div class="side-lang lang-switch"><button class="lang-btn" data-lang="ar">AR</button><button class="lang-btn" data-lang="en">EN</button></div>
   <div class="user-chip" id="userChip" hidden><span class="user-avatar" id="userAvatar"></span><div class="user-meta"><b id="userName"></b><small id="userEmail"></small></div><button class="user-logout" id="logoutBtn"><svg><use href="#i-logout"/></svg></button></div>
 </aside>
