@@ -2452,12 +2452,8 @@ function filteredBookings(){
   if(f.doctor!=='all') arr=arr.filter(b=>b.doctor===f.doctor);
   if(f.source!=='all' && currentSection==='appointments') arr=arr.filter(b=>b.source===f.source);
   if(f.q) arr=arr.filter(b=>normAr([b.id,b.patient,b.phone,b.service,b.doctor,b.branch].join(' ')).includes(f.q));
-  const today=TODAY();
-  return arr.sort((a,b)=>{
-    const ap=a.date<today?1:0, bp=b.date<today?1:0; if(ap!==bp) return ap-bp;
-    const ka=a.date+' '+a.time, kb=b.date+' '+b.time;
-    return ap? (ka<kb?1:-1) : (ka<kb?-1:1);
-  });
+  // Newest booking number first, so the # column reads in order.
+  return arr.sort((a,b)=>(Number(b.id)||0)-(Number(a.id)||0));
 }
 function filteredLeads(){
   const f=filt();
