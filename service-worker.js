@@ -1,4 +1,4 @@
-const CACHE_NAME = "gdc-dashboard-v12";
+const CACHE_NAME = "gdc-dashboard-v13";
 const SHELL_ASSETS = [
   "./",
   "./index.html",
