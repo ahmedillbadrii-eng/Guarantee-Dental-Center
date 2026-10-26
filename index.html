@@ -1845,6 +1845,11 @@ html[dir="rtl"] .u-main small[dir="ltr"],html[dir="rtl"] .u-email{text-align:rig
 .u-perm input{width:18px;height:18px;accent-color:#A8743A}
 .u-note{display:block;color:var(--muted);font-size:11.5px;margin-top:6px}.u-email{color:var(--muted);margin:0 0 12px;text-align:start}
 @media(max-width:560px){.u-row{flex-wrap:wrap}.u-row>.btn{width:100%;justify-content:center}.u-perm-grid{grid-template-columns:1fr}}
+.links-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.link-tile{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:16px;background:var(--panel-2);border:1px solid var(--line-soft);color:var(--ink);text-decoration:none;transition:transform .2s,box-shadow .2s}
+.link-tile:hover{transform:translateY(-2px);box-shadow:var(--sh-sm)}.link-tile b{font-size:14px}.link-tile small{color:var(--muted);font-size:11.5px;overflow-wrap:anywhere}
+html[dir="rtl"] .link-tile small{text-align:right}
+@media(max-width:860px){.links-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 
 </head>
@@ -2062,6 +2067,15 @@ html[dir="rtl"] .u-main small[dir="ltr"],html[dir="rtl"] .u-email{text-align:rig
     </div>
     <div class="integ-foot"><svg><use href="#i-clock"/></svg><span data-i18n="lastSyncLabel">آخر مزامنة</span><b id="syncTime">—</b></div>
   </div></div>
+  <div class="card links-card" style="margin-top:16px"><div class="card-head"><h2 data-i18n="linksTitle">روابط المركز</h2></div><div class="card-body">
+    <p class="users-hint" data-i18n="linksHint">نفس الروابط اللي البوت بيبعتها للعميل لما يسأل عن صفحاتنا.</p>
+    <div class="links-grid">
+      <a class="link-tile" href="https://guarantee-dental.net" target="_blank" rel="noopener"><b data-i18n="linkWeb">الموقع</b><small dir="ltr">guarantee-dental.net</small></a>
+      <a class="link-tile" href="https://www.instagram.com/GuaranteeDental" target="_blank" rel="noopener"><b>Instagram</b><small dir="ltr">@GuaranteeDental</small></a>
+      <a class="link-tile" href="https://www.facebook.com/guaranteecenters/" target="_blank" rel="noopener"><b>Facebook</b><small dir="ltr">/guaranteecenters</small></a>
+      <a class="link-tile" href="https://www.tiktok.com/@guaranteedentalcenters" target="_blank" rel="noopener"><b>TikTok</b><small dir="ltr">@guaranteedentalcenters</small></a>
+    </div>
+  </div></div>
 </section>
 
 <section id="appointments" class="section" hidden>
@@ -2179,6 +2193,7 @@ let LANG = localStorage.getItem('gdc-lang') || 'ar';
 const I18N = {
  ar:{
   brandWord:"Guarantee Dental Center", brandTag:"لوحة التشغيل",
+  linksTitle:"روابط المركز", linksHint:"نفس الروابط اللي البوت بيبعتها للعميل لما يسأل عن صفحاتنا.", linkWeb:"الموقع",
   navUsers:"المستخدمين", titleUsers:"المستخدمين", subUsers:"مين يدخل اللوحة وبيشوف إيه", usersTitle:"المستخدمين والصلاحيات", usersHint:"أي حد بيعمل حساب من شاشة الدخول بيظهر هنا «مستني الموافقة». اضغط «تعديل» عشان تفعّله وتحدد صلاحياته وفرعه.", uPending:"مستني الموافقة", uApproved:"مفعّل", uDisabled:"موقوف", uAdmin:"أدمن (كل الصلاحيات)", uStaff:"موظف", uAllBranches:"كل الفروع", uEdit:"تعديل", uSave:"حفظ", uSaved:"اتحفظ ✅", uSelfLock:"مينفعش توقف أو تشيل الأدمن من حسابك انت", uNoUsers:"مفيش مستخدمين لسه", uStatusLbl:"الحالة", uRoleLbl:"النوع", uBranchLbl:"الفرع", uPermsLbl:"الصلاحيات", uNoPerms:"بدون صلاحيات", uLastLogin:"آخر دخول", uNever:"لسه", uYou:"انت", uAdminNote:"الأدمن بيشوف كل حاجة في كل الفروع، وبيدير المستخدمين.", uBranchNote:"لو سبت الفرع «كل الفروع» الموظف هيشوف كل الفروع.", permAttendance:"تأكيد الحضور والدفع", uSaveErr:"ما اتحفظش، جرّب تاني",
   navHome:"الرئيسية", navAppointments:"المواعيد", navLeads:"الليدز", navDoctors:"الدكاترة", navBranches:"الفروع", navPatients:"المرضى", navReports:"التقارير", navActivity:"سجل النشاط", navStatus:"حالة التشغيل", integAiTitle:"المساعد الذكي", integAiSub:"فهم رسائل واتساب بالذكاء الاصطناعي", titleOpstatus:"حالة التشغيل", subOpstatus:"اتصال الأنظمة اللي بتشغّل العيادة", navMore:"المزيد",
   kickerOperations:"العمليات", kickerInsights:"التحليلات", notifications:"التنبيهات", export:"تصدير",
@@ -2248,6 +2263,7 @@ const I18N = {
  },
  en:{
   brandWord:"Guarantee Dental Center", brandTag:"Operations dashboard",
+  linksTitle:"Clinic links", linksHint:"The same links the bot sends when a patient asks for our pages.", linkWeb:"Website",
   navUsers:"Users", titleUsers:"Users", subUsers:"Who can open the dashboard and what they see", usersTitle:"Users & permissions", usersHint:"Anyone who signs up from the login screen shows up here as “Waiting for approval”. Press “Edit” to activate them and set their permissions and branch.", uPending:"Waiting for approval", uApproved:"Active", uDisabled:"Disabled", uAdmin:"Admin (full access)", uStaff:"Staff", uAllBranches:"All branches", uEdit:"Edit", uSave:"Save", uSaved:"Saved ✅", uSelfLock:"You can't disable your own account or remove your own admin role", uNoUsers:"No users yet", uStatusLbl:"Status", uRoleLbl:"Type", uBranchLbl:"Branch", uPermsLbl:"Permissions", uNoPerms:"No permissions", uLastLogin:"Last login", uNever:"never", uYou:"you", uAdminNote:"Admins see everything in every branch and manage users.", uBranchNote:"Leaving the branch on “All branches” lets this staff member see every branch.", permAttendance:"Attendance & payment", uSaveErr:"Couldn't save, try again",
   navHome:"Home", navAppointments:"Appointments", navLeads:"Leads", navDoctors:"Doctors", navBranches:"Branches", navPatients:"Patients", navReports:"Reports", navActivity:"Activity log", navStatus:"System Status", integAiTitle:"AI assistant", integAiSub:"Understands WhatsApp messages with AI", titleOpstatus:"System status", subOpstatus:"Connection of the systems that run the clinic", navMore:"More",
   kickerOperations:"Operations", kickerInsights:"Insights", notifications:"Notifications", export:"Export",
@@ -2587,6 +2603,14 @@ function pushNotif(n){
   notifItems.unshift({...n,read:false}); notifItems=notifItems.slice(0,30);
   toast(n.text);
 }
+// Number on the installed app icon = bookings waiting for confirmation (only where the browser supports app badges).
+function updateAppBadge(){
+  try{
+    if(!('setAppBadge' in navigator)) return;
+    const n=(D.bookings||[]).filter(b=>b.status==='بانتظار الرد').length;
+    (n?navigator.setAppBadge(n):navigator.clearAppBadge()).catch(()=>{});
+  }catch(e){}
+}
 async function loadData(showToast=false){
   if(loading) return loading;
   loading=(async()=>{
@@ -2596,7 +2620,7 @@ async function loadData(showToast=false){
       if(data._http===401||data.code===401){ forceLogout(t('sessionExpired')); return; }
       if(!data.ok) throw new Error(data.error||'bad response');
       const firstLoad=!D.user; D=normalizeData(data); applyPerms(); if(firstLoad&&D.user&&D.user.branch){ qf.appointments='today'; } if(!can(currentSection)) showSection('home');
-      loadMyPhoto(); lastSync=Date.now(); setConnection('online'); detectNew(); fillSelects(); renderAll();
+      loadMyPhoto(); lastSync=Date.now(); setConnection('online'); detectNew(); fillSelects(); renderAll(); updateAppBadge();
       if(showToast) toast(t('toastDataRefreshed'));
     }catch(err){
       setConnection('offline'); if(showToast) toast(t('toastCantConnect'),true);
@@ -2889,10 +2913,12 @@ function renderUsers(){
     return `<div class="u-row${u.status==='pending'?' pending':''}"><div class="u-av">${escHtml(String(u.name||u.email).trim().charAt(0).toUpperCase())}</div>
       <div class="u-main"><b>${escHtml(u.name||'—')}${you}</b><small dir="ltr">${escHtml(u.email)}</small>
       <span class="u-meta">${stChip(u.status)} <span class="badge">${u.role==='admin'?t('uAdmin'):t('uStaff')}</span> <span class="badge">${escHtml(u.role==='admin'?t('uAllBranches'):(u.branch||t('uAllBranches')))}</span></span>
-      ${u.role==='admin'?'':`<small class="u-perms">${escHtml(perms)}</small>`}<small class="u-login">${t('uLastLogin')}: ${u.last_login?escHtml(fmtDT(String(u.last_login).replace('T',' ').slice(0,16))):t('uNever')}</small></div>
+      ${u.role==='admin'?'':`<small class="u-perms">${escHtml(perms)}</small>`}<small class="u-login">${t('uLastLogin')}: ${u.last_login?escHtml(fmtDT(cairoStamp(u.last_login))):t('uNever')}</small></div>
       <button type="button" class="btn${u.status==='pending'?' primary':''}" data-user-edit="${escHtml(u.email)}">${t('uEdit')}</button></div>`;
   }).join('')||`<div class="panel-empty"><svg><use href="#i-users"/></svg>${t('uNoUsers')}</div>`;
 }
+// last_login is stored in UTC (ISO); show it in Cairo time.
+function cairoStamp(v){ const d=new Date(v); if(isNaN(d)) return String(v||'').replace('T',' ').slice(0,16); return new Intl.DateTimeFormat('sv-SE',{timeZone:'Africa/Cairo',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(d).slice(0,16); }
 function openUserEditor(email){
   const u=(D.users||[]).find(x=>String(x.email).toLowerCase()===String(email).toLowerCase()); if(!u) return;
   const opt=(v,l,cur)=>`<option value="${escHtml(v)}"${v===cur?' selected':''}>${escHtml(l)}</option>`;
